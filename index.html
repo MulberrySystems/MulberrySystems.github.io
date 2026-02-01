@@ -674,6 +674,24 @@
       .mobile-menu-btn {
         display: block;
       }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(26,26,46,0.98);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 2rem;
+        gap: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .nav-links.active a {
+        padding: 0.8rem 0;
+      }
     }
   </style>
 </head>
@@ -1086,6 +1104,23 @@
     // Staggered animation for cards
     document.querySelectorAll('.expertise-card, .industry-card, .why-card').forEach((card, index) => {
       card.style.transitionDelay = `${index * 0.1}s`;
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Close mobile menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.textContent = '☰';
+      });
     });
   </script>
 </body>
