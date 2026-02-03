@@ -3,756 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mulberry Systems MBS | AI • Python • Backend</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='264' height='213' viewBox='0 0 264 213' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z' fill='%23A3E376'/%3E%3Cpath d='M55.7677 24.1096C100.554 9.65158 138.074 53.5974 122.479 58.3174C97.932 65.2051 67.7769 38.3821 55.7677 24.1096Z' fill='%236EB94D'/%3E%3Cpath d='M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z' stroke='%232E0036' stroke-width='9'/%3E%3Cpath d='M99.5 36.9807C122.24 48.9807 125.496 53.314 124.281 53.9807' stroke='%232E0036' stroke-width='9' stroke-linecap='round'/%3E%3Cpath d='M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z' fill='%23A3E376'/%3E%3Cpath d='M205.461 26.1096C160.675 11.6516 123.155 55.5974 138.75 60.3174C163.296 67.2051 193.452 40.3821 205.461 26.1096Z' fill='%236EB94D'/%3E%3Cpath d='M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z' stroke='%232E0036' stroke-width='9'/%3E%3Cpath d='M161.728 38.9807C138.988 50.9807 135.733 55.314 136.947 55.9807' stroke='%232E0036' stroke-width='9' stroke-linecap='round'/%3E%3Crect x='120.5' y='118.981' width='23' height='18' fill='%232E0036'/%3E%3Cpath d='M72.5 131.57C83.5457 131.57 92.5 123.534 92.5 113.622C92.5 103.709 83.5457 95.673 72.5 95.673C61.4543 95.673 52.5 103.709 52.5 113.622C52.5 123.534 61.4543 131.57 72.5 131.57Z' fill='%23711C69'/%3E%3Cpath d='M74.0628 121.576C84.9407 119.855 92.6706 112.919 91.3279 106.086C89.9853 99.2524 80.0786 95.1081 69.2007 96.8294C58.3228 98.5508 50.593 105.486 51.9356 112.319C53.2783 119.153 63.1849 123.297 74.0628 121.576Z' fill='%23932E81'/%3E%3Cpath d='M65.5 109.135C68.2614 109.135 70.5 107.126 70.5 104.647C70.5 102.169 68.2614 100.16 65.5 100.16C62.7386 100.16 60.5 102.169 60.5 104.647C60.5 107.126 62.7386 109.135 65.5 109.135Z' fill='%23E3CEE0'/%3E%3Cpath d='M72.5 134.263C85.2025 134.263 95.5 125.021 95.5 113.622C95.5 102.222 85.2025 92.9807 72.5 92.9807C59.7975 92.9807 49.5 102.222 49.5 113.622C49.5 125.021 59.7975 134.263 72.5 134.263Z' stroke='%232E0036' stroke-width='9'/%3E%3Cpath d='M192.5 131.57C203.546 131.57 212.5 123.534 212.5 113.622C212.5 103.709 203.546 95.673 192.5 95.673C181.454 95.673 172.5 103.709 172.5 113.622C172.5 123.534 181.454 131.57 192.5 131.57Z' fill='%23711C69'/%3E%3Cpath d='M194.063 121.576C204.941 119.855 212.671 112.919 211.328 106.086C209.985 99.2524 200.079 95.1081 189.201 96.8294C178.323 98.5508 170.593 105.486 171.936 112.319C173.278 119.153 183.185 123.297 194.063 121.576Z' fill='%23932E81'/%3E%3Cpath d='M185.5 109.135C188.261 109.135 190.5 107.126 190.5 104.647C190.5 102.169 188.261 100.16 185.5 100.16C182.739 100.16 180.5 102.169 180.5 104.647C180.5 107.126 182.739 109.135 185.5 109.135Z' fill='%23E3CEE0'/%3E%3Cpath d='M192.5 134.263C205.203 134.263 215.5 125.021 215.5 113.622C215.5 102.222 205.203 92.9807 192.5 92.9807C179.797 92.9807 169.5 102.222 169.5 113.622C169.5 125.021 179.797 134.263 192.5 134.263Z' stroke='%232E0036' stroke-width='9'/%3E%3Cpath d='M170.5 93.5704C181.546 93.5704 190.5 85.5345 190.5 75.6217C190.5 65.7089 181.546 57.673 170.5 57.673C159.454 57.673 150.5 65.7089 150.5 75.6217C150.5 85.5345 159.454 93.5704 170.5 93.5704Z' fill='%23711C69'/%3E%3Cpath d='M172.063 83.5759C182.941 81.8545 190.671 74.9194 189.328 68.0859C187.985 61.2524 178.079 57.1081 167.201 58.8294C156.323 60.5508 148.593 67.4859 149.936 74.3194C151.278 81.153 161.185 85.2972 172.063 83.5759Z' fill='%23932E81'/%3E%3Cpath d='M163.5 71.1345C166.261 71.1345 168.5 69.1255 168.5 66.6473C168.5 64.1691 166.261 62.1602 163.5 62.1602C160.739 62.1602 158.5 64.1691 158.5 66.6473C158.5 69.1255 160.739 71.1345 163.5 71.1345Z' fill='%23E3CEE0'/%3E%3Cpath d='M170.5 96.2627C183.203 96.2627 193.5 87.0214 193.5 75.6217C193.5 64.222 183.203 54.9807 170.5 54.9807C157.797 54.9807 147.5 64.222 147.5 75.6217C147.5 87.0214 157.797 96.2627 170.5 96.2627Z' stroke='%232E0036' stroke-width='9'/%3E%3Cpath d='M96.5 93.5704C107.546 93.5704 116.5 85.5345 116.5 75.6217C116.5 65.7089 107.546 57.673 96.5 57.673C85.4543 57.673 76.5 65.7089 76.5 75.6217C76.5 85.5345 85.4543 93.5704 96.5 93.5704Z' fill='%23711C69'/%3E%3Cpath d='M98.0628 83.5759C108.941 81.8545 116.671 74.9194 115.328 68.0859C113.985 61.2524 104.079 57.1081 93.2007 58.8294C82.3228 60.5508 74.593 67.4859 75.9356 74.3194C77.2783 81.153 87.1849 85.2972 98.0628 83.5759Z' fill='%23932E81'/%3E%3Cpath d='M89.5 71.1345C92.2614 71.1345 94.5 69.1255 94.5 66.6473C94.5 64.1691 92.2614 62.1602 89.5 62.1602C86.7386 62.1602 84.5 64.1691 84.5 66.6473C84.5 69.1255 86.7386 71.1345 89.5 71.1345Z' fill='%23E3CEE0'/%3E%3Cpath d='M96.5 96.2627C109.203 96.2627 119.5 87.0214 119.5 75.6217C119.5 64.222 109.203 54.9807 96.5 54.9807C83.7975 54.9807 73.5 64.222 73.5 75.6217C73.5 87.0214 83.7975 96.2627 96.5 96.2627Z' stroke='%232E0036' stroke-width='9'/%3E%3Cpath d='M219.5 34.9807C231.5 34.9807 239.5 43.2187 239.5 55.5759V100.885C239.5 113.243 247.5 121.481 259.5 121.481C247.5 121.481 239.5 129.719 239.5 142.076V187.385C239.5 199.743 231.5 207.981 219.5 207.981' stroke='%232D2D3A' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M44.5 34.9807C32.5 34.9807 24.5 43.2187 24.5 55.5759V100.885C24.5 113.243 16.5 121.481 4.5 121.481C16.5 121.481 24.5 129.719 24.5 142.076V187.385C24.5 199.743 32.5 207.981 44.5 207.981' stroke='%232D2D3A' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M131.5 189.57C142.546 189.57 151.5 181.534 151.5 171.622C151.5 161.709 142.546 153.673 131.5 153.673C120.454 153.673 111.5 161.709 111.5 171.622C111.5 181.534 120.454 189.57 131.5 189.57Z' fill='%23711C69'/%3E%3Cpath d='M124.5 167.135C127.261 167.135 129.5 165.126 129.5 162.647C129.5 160.169 127.261 158.16 124.5 158.16C121.739 158.16 119.5 160.169 119.5 162.647C119.5 165.126 121.739 167.135 124.5 167.135Z' fill='%23E3CEE0'/%3E%3Cpath d='M131.5 192.263C144.203 192.263 154.5 183.021 154.5 171.622C154.5 160.222 144.203 150.981 131.5 150.981C118.797 150.981 108.5 160.222 108.5 171.622C108.5 183.021 118.797 192.263 131.5 192.263Z' stroke='%232E0036' stroke-width='9'/%3E%3Cpath d='M106.5 161.176C118.026 161.176 127.37 152.806 127.37 142.481C127.37 132.155 118.026 123.785 106.5 123.785C94.9741 123.785 85.6304 132.155 85.6304 142.481C85.6304 152.806 94.9741 161.176 106.5 161.176Z' fill='%23711C69'/%3E%3Cpath d='M99.1957 137.807C102.077 137.807 104.413 135.714 104.413 133.133C104.413 130.552 102.077 128.459 99.1957 128.459C96.3142 128.459 93.9783 130.552 93.9783 133.133C93.9783 135.714 96.3142 137.807 99.1957 137.807Z' fill='%23E3CEE0'/%3E%3Cpath d='M106.5 163.981C119.755 163.981 130.5 154.355 130.5 142.481C130.5 130.607 119.755 120.981 106.5 120.981C93.2452 120.981 82.5 130.607 82.5 142.481C82.5 154.355 93.2452 163.981 106.5 163.981Z' stroke='%232E0036' stroke-width='9'/%3E%3Cpath d='M156.5 161.176C168.026 161.176 177.37 152.806 177.37 142.481C177.37 132.155 168.026 123.785 156.5 123.785C144.974 123.785 135.63 132.155 135.63 142.481C135.63 152.806 144.974 161.176 156.5 161.176Z' fill='%23711C69'/%3E%3Cpath d='M149.196 137.807C152.077 137.807 154.413 135.714 154.413 133.133C154.413 130.552 152.077 128.459 149.196 128.459C146.314 128.459 143.978 130.552 143.978 133.133C143.978 135.714 146.314 137.807 149.196 137.807Z' fill='%23E3CEE0'/%3E%3Cpath d='M156.5 163.981C169.755 163.981 180.5 154.355 180.5 142.481C180.5 130.607 169.755 120.981 156.5 120.981C143.245 120.981 132.5 130.607 132.5 142.481C132.5 154.355 143.245 163.981 156.5 163.981Z' stroke='%232E0036' stroke-width='9'/%3E%3Cpath d='M108.5 127.57C119.546 127.57 128.5 119.534 128.5 109.622C128.5 99.7089 119.546 91.673 108.5 91.673C97.4543 91.673 88.5 99.7089 88.5 109.622C88.5 119.534 97.4543 127.57 108.5 127.57Z' fill='%23711C69'/%3E%3Cpath d='M110.063 117.576C120.941 115.855 128.671 108.919 127.328 102.086C125.985 95.2524 116.079 91.1081 105.201 92.8294C94.3228 94.5508 86.593 101.486 87.9356 108.319C89.2783 115.153 99.1849 119.297 110.063 117.576Z' fill='%23932E81'/%3E%3Cpath d='M101.5 105.135C104.261 105.135 106.5 103.126 106.5 100.647C106.5 98.1691 104.261 96.1602 101.5 96.1602C98.7386 96.1602 96.5 98.1691 96.5 100.647C96.5 103.126 98.7386 105.135 101.5 105.135Z' fill='%23E3CEE0'/%3E%3Cpath d='M108.5 130.263C121.203 130.263 131.5 121.021 131.5 109.622C131.5 98.222 121.203 88.9807 108.5 88.9807C95.7975 88.9807 85.5 98.222 85.5 109.622C85.5 121.021 95.7975 130.263 108.5 130.263Z' stroke='%232E0036' stroke-width='9'/%3E%3Cpath d='M154.5 127.57C165.546 127.57 174.5 119.534 174.5 109.622C174.5 99.7089 165.546 91.673 154.5 91.673C143.454 91.673 134.5 99.7089 134.5 109.622C134.5 119.534 143.454 127.57 154.5 127.57Z' fill='%23711C69'/%3E%3Cpath d='M156.063 117.576C166.941 115.855 174.671 108.919 173.328 102.086C171.985 95.2524 162.079 91.1081 151.201 92.8294C140.323 94.5508 132.593 101.486 133.936 108.319C135.278 115.153 145.185 119.297 156.063 117.576Z' fill='%23932E81'/%3E%3Cpath d='M147.5 105.135C150.261 105.135 152.5 103.126 152.5 100.647C152.5 98.1691 150.261 96.1602 147.5 96.1602C144.739 96.1602 142.5 98.1691 142.5 100.647C142.5 103.126 144.739 105.135 147.5 105.135Z' fill='%23E3CEE0'/%3E%3Cpath d='M154.5 130.263C167.203 130.263 177.5 121.021 177.5 109.622C177.5 98.222 167.203 88.9807 154.5 88.9807C141.797 88.9807 131.5 98.222 131.5 109.622C131.5 121.021 141.797 130.263 154.5 130.263Z' stroke='%232E0036' stroke-width='9'/%3E%3Cpath d='M131.5 92.5704C142.546 92.5704 151.5 84.5345 151.5 74.6217C151.5 64.7089 142.546 56.673 131.5 56.673C120.454 56.673 111.5 64.7089 111.5 74.6217C111.5 84.5345 120.454 92.5704 131.5 92.5704Z' fill='%23711C69'/%3E%3Cpath d='M133.063 82.5759C143.941 80.8545 151.671 73.9194 150.328 67.0859C148.985 60.2524 139.079 56.1081 128.201 57.8294C117.323 59.5508 109.593 66.4859 110.936 73.3194C112.278 80.153 122.185 84.2972 133.063 82.5759Z' fill='%23932E81'/%3E%3Cpath d='M124.5 70.1345C127.261 70.1345 129.5 68.1255 129.5 65.6473C129.5 63.1691 127.261 61.1602 124.5 61.1602C121.739 61.1602 119.5 63.1691 119.5 65.6473C119.5 68.1255 121.739 70.1345 124.5 70.1345Z' fill='%23E3CEE0'/%3E%3Cpath d='M131.5 95.2627C144.203 95.2627 154.5 86.0214 154.5 74.6217C154.5 63.222 144.203 53.9807 131.5 53.9807C118.797 53.9807 108.5 63.222 108.5 74.6217C108.5 86.0214 118.797 95.2627 131.5 95.2627Z' stroke='%232E0036' stroke-width='9'/%3E%3C/svg%3E">
+  <title>Mulberry Systems MBS | AI-Native Engineering | Transform Your Business</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Mulberry Systems MBS - AI-native engineering and backend development for global companies. Python, FastAPI, and intelligent systems. Transform your business with proven expertise.">
+  <meta name="keywords" content="AI development, Python development, FastAPI, backend engineering, machine learning, Bosnia Herzegovina, software agency">
+  <meta name="author" content="Mulberry Systems MBS">
+
+  <!-- Open Graph Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mulberrysystems.com/">
+  <meta property="og:title" content="Mulberry Systems MBS | AI-Native Engineering">
+  <meta property="og:description" content="Transform your business with AI-native engineering and backend development. Python, FastAPI, and intelligent systems from Bosnia and Herzegovina.">
+  <meta property="og:image" content="https://mulberrysystems.com/logo-mbs-final.svg">
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mulberry Systems MBS | AI-Native Engineering">
+  <meta name="twitter:description" content="Transform your business with AI-native engineering and backend development.">
+  <meta name="twitter:image" content="https://mulberrysystems.com/logo-mbs-final.svg">
+
+  <link rel="icon" type="image/svg+xml" href="./public/icons/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --mulberry-dark: #2E0036;
-      --mulberry: #711C69;
-      --mulberry-mid: #932E81;
-      --mulberry-light: #9B4D8C;
-      --leaf-dark: #6EB94D;
-      --leaf: #A3E376;
-      --dark: #1a1a2e;
-      --dark-mid: #252540;
-      --gray: #888888;
-      --light-gray: #f5f5f5;
-      --white: #ffffff;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Source Sans 3', sans-serif;
-      background: var(--dark);
-      color: var(--white);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* Noise texture overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
-      opacity: 0.03;
-      pointer-events: none;
-      z-index: 1000;
-    }
-
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: 1.5rem 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-      background: linear-gradient(180deg, rgba(26,26,46,0.95) 0%, rgba(26,26,46,0) 100%);
-      transition: all 0.3s ease;
-    }
-
-    nav.scrolled {
-      background: rgba(26,26,46,0.98);
-      backdrop-filter: blur(10px);
-      padding: 1rem 4rem;
-    }
-
-    .logo {
-      height: 80px;
-      width: auto;
-      transform: scaleX(1.1);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--white);
-      text-decoration: none;
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      position: relative;
-      padding: 0.5rem 0;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--mulberry-mid);
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--mulberry-mid);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding: 6rem 4rem;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(ellipse at 20% 50%, rgba(113, 28, 105, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 50%, rgba(110, 185, 77, 0.1) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 100%, rgba(113, 28, 105, 0.2) 0%, transparent 40%);
-    }
-
-    .hero-content {
-      max-width: 1400px;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-text h1 {
-      font-family: 'Nunito', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-text h1 .highlight {
-      color: var(--mulberry-mid);
-    }
-
-    .hero-text .tagline {
-      font-family: 'Nunito', sans-serif;
-      color: var(--gray);
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-
-    .hero-text p {
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.8);
-      max-width: 500px;
-      margin-bottom: 2.5rem;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 1rem 2.5rem;
-      background: var(--mulberry);
-      color: var(--white);
-      text-decoration: none;
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      border: 2px solid var(--mulberry);
-    }
-
-    .cta-button:hover {
-      background: transparent;
-      color: var(--mulberry-mid);
-      border-color: var(--mulberry-mid);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(113, 28, 105, 0.3);
-    }
-
-    .hero-visual {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero-logo {
-      width: 100%;
-      max-width: 462px;
-      transform: scaleY(1.2) scaleX(1.1);
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-
-    /* Section Styles */
-    section {
-      padding: 6rem 4rem;
-      position: relative;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .section-header h2 {
-      font-family: 'Nunito', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-
-    .section-header h2 .accent {
-      color: var(--mulberry-mid);
-    }
-
-    .section-header p {
-      color: var(--gray);
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Expertise Section */
-    .expertise {
-      background: linear-gradient(180deg, var(--dark) 0%, var(--dark-mid) 100%);
-    }
-
-    .expertise-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .expertise-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 2.5rem;
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .expertise-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--mulberry), var(--mulberry-mid));
-      transform: scaleX(0);
-      transition: transform 0.4s ease;
-    }
-
-    .expertise-card:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(147, 46, 129, 0.3);
-      transform: translateY(-5px);
-    }
-
-    .expertise-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .expertise-card .icon {
-      width: 55px;
-      height: 55px;
-      background: var(--mulberry);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      font-size: 1.6rem;
-    }
-
-    .expertise-card h3 {
-      font-family: 'Nunito', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--white);
-    }
-
-    .expertise-card ul {
-      list-style: none;
-      color: rgba(255,255,255,0.7);
-    }
-
-    .expertise-card li {
-      padding: 0.4rem 0;
-      padding-left: 1.2rem;
-      position: relative;
-    }
-
-    .expertise-card li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--mulberry-mid);
-    }
-
-    /* Tech Stack Section */
-    .tech-stack {
-      background: var(--dark-mid);
-    }
-
-    .tech-categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .tech-category h3 {
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.9rem;
-      color: var(--mulberry-mid);
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 700;
-    }
-
-    .tech-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .tech-tag {
-      background: rgba(113, 28, 105, 0.2);
-      border: 1px solid rgba(113, 28, 105, 0.4);
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.9);
-      transition: all 0.3s ease;
-    }
-
-    .tech-tag:hover {
-      background: var(--mulberry);
-      border-color: var(--mulberry);
-      transform: scale(1.05);
-    }
-
-    /* Featured Project */
-    .featured-project {
-      background: linear-gradient(180deg, var(--dark-mid) 0%, var(--dark) 100%);
-    }
-
-    .project-showcase {
-      max-width: 1000px;
-      margin: 0 auto;
-      background: linear-gradient(135deg, rgba(113, 28, 105, 0.1) 0%, rgba(110, 185, 77, 0.05) 100%);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 24px;
-      padding: 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-showcase::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(113, 28, 105, 0.15) 0%, transparent 70%);
-    }
-
-    .project-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .project-label {
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.85rem;
-      color: var(--leaf-dark);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-
-    .project-content h3 {
-      font-family: 'Nunito', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-    }
-
-    .project-content p {
-      color: rgba(255,255,255,0.8);
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 2rem;
-    }
-
-    .project-tech {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .project-tech span {
-      background: rgba(110, 185, 77, 0.2);
-      border: 1px solid rgba(110, 185, 77, 0.4);
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    /* Industries Section */
-    .industries {
-      background: var(--dark);
-    }
-
-    .industries-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .industry-card {
-      text-align: center;
-      padding: 2.5rem 2rem;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      transition: all 0.3s ease;
-    }
-
-    .industry-card:hover {
-      border-color: var(--mulberry-mid);
-      background: rgba(113, 28, 105, 0.05);
-    }
-
-    .industry-card .industry-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .industry-card h3 {
-      font-family: 'Nunito', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .industry-card p {
-      color: var(--gray);
-      font-size: 0.95rem;
-    }
-
-    /* Why Us Section */
-    .why-us {
-      background: linear-gradient(180deg, var(--dark) 0%, var(--dark-mid) 100%);
-    }
-
-    .why-us-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .why-card {
-      padding: 2rem;
-      border-left: 4px solid var(--mulberry);
-      background: rgba(255,255,255,0.02);
-      border-radius: 0 12px 12px 0;
-    }
-
-    .why-card h3 {
-      font-family: 'Nunito', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-      color: var(--mulberry-mid);
-    }
-
-    .why-card p {
-      color: rgba(255,255,255,0.7);
-    }
-
-    /* Contact Section */
-    .contact {
-      background: var(--dark-mid);
-      text-align: center;
-    }
-
-    .contact-content {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .contact-content h2 {
-      font-family: 'Nunito', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-
-    .contact-content > p {
-      color: var(--gray);
-      font-size: 1.1rem;
-      margin-bottom: 3rem;
-    }
-
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      font-size: 1.1rem;
-    }
-
-    .contact-item .icon {
-      font-size: 1.3rem;
-    }
-
-    .contact-item a {
-      color: var(--white);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .contact-item a:hover {
-      color: var(--mulberry-mid);
-    }
-
-    .contact-cta {
-      padding: 1.2rem 3rem;
-      background: linear-gradient(135deg, var(--mulberry) 0%, var(--mulberry-mid) 100%);
-      color: var(--white);
-      text-decoration: none;
-      font-family: 'Nunito', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      border-radius: 50px;
-      display: inline-block;
-      transition: all 0.3s ease;
-    }
-
-    .contact-cta:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(113, 28, 105, 0.4);
-    }
-
-    /* Footer */
-    footer {
-      background: var(--dark);
-      padding: 2rem 4rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .footer-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-content p {
-      color: var(--gray);
-      font-size: 0.9rem;
-    }
-
-    .footer-logo {
-      height: 58px;
-      transform: scaleX(1.1);
-      opacity: 0.8;
-    }
-
-    /* Scroll animations */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 968px) {
-      nav {
-        padding: 1rem 2rem;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero-text h1 {
-        font-size: 2.5rem;
-      }
-
-      .hero-text p {
-        margin: 0 auto 2.5rem auto;
-      }
-
-      .hero-logo {
-        max-width: 330px;
-      }
-
-      section {
-        padding: 4rem 2rem;
-      }
-
-      .section-header h2 {
-        font-size: 2rem;
-      }
-
-      .footer-content {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
-    }
-
-    /* Mobile menu */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--white);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    @media (max-width: 968px) {
-      .mobile-menu-btn {
-        display: block;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="./public/css/styles.css">
+
+  <!-- Structured Data (Organization Schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mulberry Systems MBS",
+    "url": "https://mulberrysystems.com",
+    "logo": "https://mulberrysystems.com/logo-mbs-final.svg",
+    "description": "AI-native engineering and backend development agency specializing in Python, FastAPI, machine learning, and intelligent systems.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kakanj",
+      "addressCountry": "BA"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+387-62-205-130",
+      "email": "amar.begovac@gmail.com",
+      "contactType": "Business Inquiries"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/mulberry-systems",
+      "https://github.com/mulberrysystems"
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Navigation -->
   <nav id="navbar">
     <svg class="logo" viewBox="0 0 264 213" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" fill="#A3E376"/>
-      <path d="M55.7677 24.1096C100.554 9.65158 138.074 53.5974 122.479 58.3174C97.932 65.2051 67.7769 38.3821 55.7677 24.1096Z" fill="#6EB94D"/>
-      <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" stroke="#2E0036" stroke-width="9"/>
-      <path d="M99.5 36.9807C122.24 48.9807 125.496 53.314 124.281 53.9807" stroke="#2E0036" stroke-width="9" stroke-linecap="round"/>
-      <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" fill="#A3E376"/>
-      <path d="M205.461 26.1096C160.675 11.6516 123.155 55.5974 138.75 60.3174C163.296 67.2051 193.452 40.3821 205.461 26.1096Z" fill="#6EB94D"/>
-      <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" stroke="#2E0036" stroke-width="9"/>
-      <path d="M161.728 38.9807C138.988 50.9807 135.733 55.314 136.947 55.9807" stroke="#2E0036" stroke-width="9" stroke-linecap="round"/>
-      <rect x="120.5" y="118.981" width="23" height="18" fill="#2E0036"/>
-      <path d="M72.5 131.57C83.5457 131.57 92.5 123.534 92.5 113.622C92.5 103.709 83.5457 95.673 72.5 95.673C61.4543 95.673 52.5 103.709 52.5 113.622C52.5 123.534 61.4543 131.57 72.5 131.57Z" fill="#711C69"/>
-      <path d="M74.0628 121.576C84.9407 119.855 92.6706 112.919 91.3279 106.086C89.9853 99.2524 80.0786 95.1081 69.2007 96.8294C58.3228 98.5508 50.593 105.486 51.9356 112.319C53.2783 119.153 63.1849 123.297 74.0628 121.576Z" fill="#932E81"/>
+      <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" fill="#c1ff00"/>
+      <path d="M55.7677 24.1096C100.554 9.65158 138.074 53.5974 122.479 58.3174C97.932 65.2051 67.7769 38.3821 55.7677 24.1096Z" fill="#85b000"/>
+      <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M99.5 36.9807C122.24 48.9807 125.496 53.314 124.281 53.9807" stroke="#0a0a0f" stroke-width="9" stroke-linecap="round"/>
+      <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" fill="#c1ff00"/>
+      <path d="M205.461 26.1096C160.675 11.6516 123.155 55.5974 138.75 60.3174C163.296 67.2051 193.452 40.3821 205.461 26.1096Z" fill="#85b000"/>
+      <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M161.728 38.9807C138.988 50.9807 135.733 55.314 136.947 55.9807" stroke="#0a0a0f" stroke-width="9" stroke-linecap="round"/>
+      <rect x="120.5" y="118.981" width="23" height="18" fill="#0a0a0f"/>
+      <path d="M72.5 131.57C83.5457 131.57 92.5 123.534 92.5 113.622C92.5 103.709 83.5457 95.673 72.5 95.673C61.4543 95.673 52.5 103.709 52.5 113.622C52.5 123.534 61.4543 131.57 72.5 131.57Z" fill="#7100a5"/>
+      <path d="M74.0628 121.576C84.9407 119.855 92.6706 112.919 91.3279 106.086C89.9853 99.2524 80.0786 95.1081 69.2007 96.8294C58.3228 98.5508 50.593 105.486 51.9356 112.319C53.2783 119.153 63.1849 123.297 74.0628 121.576Z" fill="#ae00ff"/>
       <path d="M65.5 109.135C68.2614 109.135 70.5 107.126 70.5 104.647C70.5 102.169 68.2614 100.16 65.5 100.16C62.7386 100.16 60.5 102.169 60.5 104.647C60.5 107.126 62.7386 109.135 65.5 109.135Z" fill="#E3CEE0"/>
-      <path d="M72.5 134.263C85.2025 134.263 95.5 125.021 95.5 113.622C95.5 102.222 85.2025 92.9807 72.5 92.9807C59.7975 92.9807 49.5 102.222 49.5 113.622C49.5 125.021 59.7975 134.263 72.5 134.263Z" stroke="#2E0036" stroke-width="9"/>
-      <path d="M192.5 131.57C203.546 131.57 212.5 123.534 212.5 113.622C212.5 103.709 203.546 95.673 192.5 95.673C181.454 95.673 172.5 103.709 172.5 113.622C172.5 123.534 181.454 131.57 192.5 131.57Z" fill="#711C69"/>
-      <path d="M194.063 121.576C204.941 119.855 212.671 112.919 211.328 106.086C209.985 99.2524 200.079 95.1081 189.201 96.8294C178.323 98.5508 170.593 105.486 171.936 112.319C173.278 119.153 183.185 123.297 194.063 121.576Z" fill="#932E81"/>
+      <path d="M72.5 134.263C85.2025 134.263 95.5 125.021 95.5 113.622C95.5 102.222 85.2025 92.9807 72.5 92.9807C59.7975 92.9807 49.5 102.222 49.5 113.622C49.5 125.021 59.7975 134.263 72.5 134.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M192.5 131.57C203.546 131.57 212.5 123.534 212.5 113.622C212.5 103.709 203.546 95.673 192.5 95.673C181.454 95.673 172.5 103.709 172.5 113.622C172.5 123.534 181.454 131.57 192.5 131.57Z" fill="#7100a5"/>
+      <path d="M194.063 121.576C204.941 119.855 212.671 112.919 211.328 106.086C209.985 99.2524 200.079 95.1081 189.201 96.8294C178.323 98.5508 170.593 105.486 171.936 112.319C173.278 119.153 183.185 123.297 194.063 121.576Z" fill="#ae00ff"/>
       <path d="M185.5 109.135C188.261 109.135 190.5 107.126 190.5 104.647C190.5 102.169 188.261 100.16 185.5 100.16C182.739 100.16 180.5 102.169 180.5 104.647C180.5 107.126 182.739 109.135 185.5 109.135Z" fill="#E3CEE0"/>
-      <path d="M192.5 134.263C205.203 134.263 215.5 125.021 215.5 113.622C215.5 102.222 205.203 92.9807 192.5 92.9807C179.797 92.9807 169.5 102.222 169.5 113.622C169.5 125.021 179.797 134.263 192.5 134.263Z" stroke="#2E0036" stroke-width="9"/>
-      <path d="M170.5 93.5704C181.546 93.5704 190.5 85.5345 190.5 75.6217C190.5 65.7089 181.546 57.673 170.5 57.673C159.454 57.673 150.5 65.7089 150.5 75.6217C150.5 85.5345 159.454 93.5704 170.5 93.5704Z" fill="#711C69"/>
-      <path d="M172.063 83.5759C182.941 81.8545 190.671 74.9194 189.328 68.0859C187.985 61.2524 178.079 57.1081 167.201 58.8294C156.323 60.5508 148.593 67.4859 149.936 74.3194C151.278 81.153 161.185 85.2972 172.063 83.5759Z" fill="#932E81"/>
+      <path d="M192.5 134.263C205.203 134.263 215.5 125.021 215.5 113.622C215.5 102.222 205.203 92.9807 192.5 92.9807C179.797 92.9807 169.5 102.222 169.5 113.622C169.5 125.021 179.797 134.263 192.5 134.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M170.5 93.5704C181.546 93.5704 190.5 85.5345 190.5 75.6217C190.5 65.7089 181.546 57.673 170.5 57.673C159.454 57.673 150.5 65.7089 150.5 75.6217C150.5 85.5345 159.454 93.5704 170.5 93.5704Z" fill="#7100a5"/>
+      <path d="M172.063 83.5759C182.941 81.8545 190.671 74.9194 189.328 68.0859C187.985 61.2524 178.079 57.1081 167.201 58.8294C156.323 60.5508 148.593 67.4859 149.936 74.3194C151.278 81.153 161.185 85.2972 172.063 83.5759Z" fill="#ae00ff"/>
       <path d="M163.5 71.1345C166.261 71.1345 168.5 69.1255 168.5 66.6473C168.5 64.1691 166.261 62.1602 163.5 62.1602C160.739 62.1602 158.5 64.1691 158.5 66.6473C158.5 69.1255 160.739 71.1345 163.5 71.1345Z" fill="#E3CEE0"/>
-      <path d="M170.5 96.2627C183.203 96.2627 193.5 87.0214 193.5 75.6217C193.5 64.222 183.203 54.9807 170.5 54.9807C157.797 54.9807 147.5 64.222 147.5 75.6217C147.5 87.0214 157.797 96.2627 170.5 96.2627Z" stroke="#2E0036" stroke-width="9"/>
-      <path d="M96.5 93.5704C107.546 93.5704 116.5 85.5345 116.5 75.6217C116.5 65.7089 107.546 57.673 96.5 57.673C85.4543 57.673 76.5 65.7089 76.5 75.6217C76.5 85.5345 85.4543 93.5704 96.5 93.5704Z" fill="#711C69"/>
-      <path d="M98.0628 83.5759C108.941 81.8545 116.671 74.9194 115.328 68.0859C113.985 61.2524 104.079 57.1081 93.2007 58.8294C82.3228 60.5508 74.593 67.4859 75.9356 74.3194C77.2783 81.153 87.1849 85.2972 98.0628 83.5759Z" fill="#932E81"/>
+      <path d="M170.5 96.2627C183.203 96.2627 193.5 87.0214 193.5 75.6217C193.5 64.222 183.203 54.9807 170.5 54.9807C157.797 54.9807 147.5 64.222 147.5 75.6217C147.5 87.0214 157.797 96.2627 170.5 96.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M96.5 93.5704C107.546 93.5704 116.5 85.5345 116.5 75.6217C116.5 65.7089 107.546 57.673 96.5 57.673C85.4543 57.673 76.5 65.7089 76.5 75.6217C76.5 85.5345 85.4543 93.5704 96.5 93.5704Z" fill="#7100a5"/>
+      <path d="M98.0628 83.5759C108.941 81.8545 116.671 74.9194 115.328 68.0859C113.985 61.2524 104.079 57.1081 93.2007 58.8294C82.3228 60.5508 74.593 67.4859 75.9356 74.3194C77.2783 81.153 87.1849 85.2972 98.0628 83.5759Z" fill="#ae00ff"/>
       <path d="M89.5 71.1345C92.2614 71.1345 94.5 69.1255 94.5 66.6473C94.5 64.1691 92.2614 62.1602 89.5 62.1602C86.7386 62.1602 84.5 64.1691 84.5 66.6473C84.5 69.1255 86.7386 71.1345 89.5 71.1345Z" fill="#E3CEE0"/>
-      <path d="M96.5 96.2627C109.203 96.2627 119.5 87.0214 119.5 75.6217C119.5 64.222 109.203 54.9807 96.5 54.9807C83.7975 54.9807 73.5 64.222 73.5 75.6217C73.5 87.0214 83.7975 96.2627 96.5 96.2627Z" stroke="#2E0036" stroke-width="9"/>
-      <path d="M219.5 34.9807C231.5 34.9807 239.5 43.2187 239.5 55.5759V100.885C239.5 113.243 247.5 121.481 259.5 121.481C247.5 121.481 239.5 129.719 239.5 142.076V187.385C239.5 199.743 231.5 207.981 219.5 207.981" stroke="#2D2D3A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M44.5 34.9807C32.5 34.9807 24.5 43.2187 24.5 55.5759V100.885C24.5 113.243 16.5 121.481 4.5 121.481C16.5 121.481 24.5 129.719 24.5 142.076V187.385C24.5 199.743 32.5 207.981 44.5 207.981" stroke="#2D2D3A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M131.5 189.57C142.546 189.57 151.5 181.534 151.5 171.622C151.5 161.709 142.546 153.673 131.5 153.673C120.454 153.673 111.5 161.709 111.5 171.622C111.5 181.534 120.454 189.57 131.5 189.57Z" fill="#711C69"/>
+      <path d="M96.5 96.2627C109.203 96.2627 119.5 87.0214 119.5 75.6217C119.5 64.222 109.203 54.9807 96.5 54.9807C83.7975 54.9807 73.5 64.222 73.5 75.6217C73.5 87.0214 83.7975 96.2627 96.5 96.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M219.5 34.9807C231.5 34.9807 239.5 43.2187 239.5 55.5759V100.885C239.5 113.243 247.5 121.481 259.5 121.481C247.5 121.481 239.5 129.719 239.5 142.076V187.385C239.5 199.743 231.5 207.981 219.5 207.981" stroke="#1a1a22" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M44.5 34.9807C32.5 34.9807 24.5 43.2187 24.5 55.5759V100.885C24.5 113.243 16.5 121.481 4.5 121.481C16.5 121.481 24.5 129.719 24.5 142.076V187.385C24.5 199.743 32.5 207.981 44.5 207.981" stroke="#1a1a22" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M131.5 189.57C142.546 189.57 151.5 181.534 151.5 171.622C151.5 161.709 142.546 153.673 131.5 153.673C120.454 153.673 111.5 161.709 111.5 171.622C111.5 181.534 120.454 189.57 131.5 189.57Z" fill="#7100a5"/>
       <path d="M124.5 167.135C127.261 167.135 129.5 165.126 129.5 162.647C129.5 160.169 127.261 158.16 124.5 158.16C121.739 158.16 119.5 160.169 119.5 162.647C119.5 165.126 121.739 167.135 124.5 167.135Z" fill="#E3CEE0"/>
-      <path d="M131.5 192.263C144.203 192.263 154.5 183.021 154.5 171.622C154.5 160.222 144.203 150.981 131.5 150.981C118.797 150.981 108.5 160.222 108.5 171.622C108.5 183.021 118.797 192.263 131.5 192.263Z" stroke="#2E0036" stroke-width="9"/>
-      <path d="M106.5 161.176C118.026 161.176 127.37 152.806 127.37 142.481C127.37 132.155 118.026 123.785 106.5 123.785C94.9741 123.785 85.6304 132.155 85.6304 142.481C85.6304 152.806 94.9741 161.176 106.5 161.176Z" fill="#711C69"/>
+      <path d="M131.5 192.263C144.203 192.263 154.5 183.021 154.5 171.622C154.5 160.222 144.203 150.981 131.5 150.981C118.797 150.981 108.5 160.222 108.5 171.622C108.5 183.021 118.797 192.263 131.5 192.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M106.5 161.176C118.026 161.176 127.37 152.806 127.37 142.481C127.37 132.155 118.026 123.785 106.5 123.785C94.9741 123.785 85.6304 132.155 85.6304 142.481C85.6304 152.806 94.9741 161.176 106.5 161.176Z" fill="#7100a5"/>
       <path d="M99.1957 137.807C102.077 137.807 104.413 135.714 104.413 133.133C104.413 130.552 102.077 128.459 99.1957 128.459C96.3142 128.459 93.9783 130.552 93.9783 133.133C93.9783 135.714 96.3142 137.807 99.1957 137.807Z" fill="#E3CEE0"/>
-      <path d="M106.5 163.981C119.755 163.981 130.5 154.355 130.5 142.481C130.5 130.607 119.755 120.981 106.5 120.981C93.2452 120.981 82.5 130.607 82.5 142.481C82.5 154.355 93.2452 163.981 106.5 163.981Z" stroke="#2E0036" stroke-width="9"/>
-      <path d="M156.5 161.176C168.026 161.176 177.37 152.806 177.37 142.481C177.37 132.155 168.026 123.785 156.5 123.785C144.974 123.785 135.63 132.155 135.63 142.481C135.63 152.806 144.974 161.176 156.5 161.176Z" fill="#711C69"/>
+      <path d="M106.5 163.981C119.755 163.981 130.5 154.355 130.5 142.481C130.5 130.607 119.755 120.981 106.5 120.981C93.2452 120.981 82.5 130.607 82.5 142.481C82.5 154.355 93.2452 163.981 106.5 163.981Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M156.5 161.176C168.026 161.176 177.37 152.806 177.37 142.481C177.37 132.155 168.026 123.785 156.5 123.785C144.974 123.785 135.63 132.155 135.63 142.481C135.63 152.806 144.974 161.176 156.5 161.176Z" fill="#7100a5"/>
       <path d="M149.196 137.807C152.077 137.807 154.413 135.714 154.413 133.133C154.413 130.552 152.077 128.459 149.196 128.459C146.314 128.459 143.978 130.552 143.978 133.133C143.978 135.714 146.314 137.807 149.196 137.807Z" fill="#E3CEE0"/>
-      <path d="M156.5 163.981C169.755 163.981 180.5 154.355 180.5 142.481C180.5 130.607 169.755 120.981 156.5 120.981C143.245 120.981 132.5 130.607 132.5 142.481C132.5 154.355 143.245 163.981 156.5 163.981Z" stroke="#2E0036" stroke-width="9"/>
-      <path d="M108.5 127.57C119.546 127.57 128.5 119.534 128.5 109.622C128.5 99.7089 119.546 91.673 108.5 91.673C97.4543 91.673 88.5 99.7089 88.5 109.622C88.5 119.534 97.4543 127.57 108.5 127.57Z" fill="#711C69"/>
-      <path d="M110.063 117.576C120.941 115.855 128.671 108.919 127.328 102.086C125.985 95.2524 116.079 91.1081 105.201 92.8294C94.3228 94.5508 86.593 101.486 87.9356 108.319C89.2783 115.153 99.1849 119.297 110.063 117.576Z" fill="#932E81"/>
+      <path d="M156.5 163.981C169.755 163.981 180.5 154.355 180.5 142.481C180.5 130.607 169.755 120.981 156.5 120.981C143.245 120.981 132.5 130.607 132.5 142.481C132.5 154.355 143.245 163.981 156.5 163.981Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M108.5 127.57C119.546 127.57 128.5 119.534 128.5 109.622C128.5 99.7089 119.546 91.673 108.5 91.673C97.4543 91.673 88.5 99.7089 88.5 109.622C88.5 119.534 97.4543 127.57 108.5 127.57Z" fill="#7100a5"/>
+      <path d="M110.063 117.576C120.941 115.855 128.671 108.919 127.328 102.086C125.985 95.2524 116.079 91.1081 105.201 92.8294C94.3228 94.5508 86.593 101.486 87.9356 108.319C89.2783 115.153 99.1849 119.297 110.063 117.576Z" fill="#ae00ff"/>
       <path d="M101.5 105.135C104.261 105.135 106.5 103.126 106.5 100.647C106.5 98.1691 104.261 96.1602 101.5 96.1602C98.7386 96.1602 96.5 98.1691 96.5 100.647C96.5 103.126 98.7386 105.135 101.5 105.135Z" fill="#E3CEE0"/>
-      <path d="M108.5 130.263C121.203 130.263 131.5 121.021 131.5 109.622C131.5 98.222 121.203 88.9807 108.5 88.9807C95.7975 88.9807 85.5 98.222 85.5 109.622C85.5 121.021 95.7975 130.263 108.5 130.263Z" stroke="#2E0036" stroke-width="9"/>
-      <path d="M154.5 127.57C165.546 127.57 174.5 119.534 174.5 109.622C174.5 99.7089 165.546 91.673 154.5 91.673C143.454 91.673 134.5 99.7089 134.5 109.622C134.5 119.534 143.454 127.57 154.5 127.57Z" fill="#711C69"/>
-      <path d="M156.063 117.576C166.941 115.855 174.671 108.919 173.328 102.086C171.985 95.2524 162.079 91.1081 151.201 92.8294C140.323 94.5508 132.593 101.486 133.936 108.319C135.278 115.153 145.185 119.297 156.063 117.576Z" fill="#932E81"/>
+      <path d="M108.5 130.263C121.203 130.263 131.5 121.021 131.5 109.622C131.5 98.222 121.203 88.9807 108.5 88.9807C95.7975 88.9807 85.5 98.222 85.5 109.622C85.5 121.021 95.7975 130.263 108.5 130.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M154.5 127.57C165.546 127.57 174.5 119.534 174.5 109.622C174.5 99.7089 165.546 91.673 154.5 91.673C143.454 91.673 134.5 99.7089 134.5 109.622C134.5 119.534 143.454 127.57 154.5 127.57Z" fill="#7100a5"/>
+      <path d="M156.063 117.576C166.941 115.855 174.671 108.919 173.328 102.086C171.985 95.2524 162.079 91.1081 151.201 92.8294C140.323 94.5508 132.593 101.486 133.936 108.319C135.278 115.153 145.185 119.297 156.063 117.576Z" fill="#ae00ff"/>
       <path d="M147.5 105.135C150.261 105.135 152.5 103.126 152.5 100.647C152.5 98.1691 150.261 96.1602 147.5 96.1602C144.739 96.1602 142.5 98.1691 142.5 100.647C142.5 103.126 144.739 105.135 147.5 105.135Z" fill="#E3CEE0"/>
-      <path d="M154.5 130.263C167.203 130.263 177.5 121.021 177.5 109.622C177.5 98.222 167.203 88.9807 154.5 88.9807C141.797 88.9807 131.5 98.222 131.5 109.622C131.5 121.021 141.797 130.263 154.5 130.263Z" stroke="#2E0036" stroke-width="9"/>
-      <path d="M131.5 92.5704C142.546 92.5704 151.5 84.5345 151.5 74.6217C151.5 64.7089 142.546 56.673 131.5 56.673C120.454 56.673 111.5 64.7089 111.5 74.6217C111.5 84.5345 120.454 92.5704 131.5 92.5704Z" fill="#711C69"/>
-      <path d="M133.063 82.5759C143.941 80.8545 151.671 73.9194 150.328 67.0859C148.985 60.2524 139.079 56.1081 128.201 57.8294C117.323 59.5508 109.593 66.4859 110.936 73.3194C112.278 80.153 122.185 84.2972 133.063 82.5759Z" fill="#932E81"/>
+      <path d="M154.5 130.263C167.203 130.263 177.5 121.021 177.5 109.622C177.5 98.222 167.203 88.9807 154.5 88.9807C141.797 88.9807 131.5 98.222 131.5 109.622C131.5 121.021 141.797 130.263 154.5 130.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M131.5 92.5704C142.546 92.5704 151.5 84.5345 151.5 74.6217C151.5 64.7089 142.546 56.673 131.5 56.673C120.454 56.673 111.5 64.7089 111.5 74.6217C111.5 84.5345 120.454 92.5704 131.5 92.5704Z" fill="#7100a5"/>
+      <path d="M133.063 82.5759C143.941 80.8545 151.671 73.9194 150.328 67.0859C148.985 60.2524 139.079 56.1081 128.201 57.8294C117.323 59.5508 109.593 66.4859 110.936 73.3194C112.278 80.153 122.185 84.2972 133.063 82.5759Z" fill="#ae00ff"/>
       <path d="M124.5 70.1345C127.261 70.1345 129.5 68.1255 129.5 65.6473C129.5 63.1691 127.261 61.1602 124.5 61.1602C121.739 61.1602 119.5 63.1691 119.5 65.6473C119.5 68.1255 121.739 70.1345 124.5 70.1345Z" fill="#E3CEE0"/>
-      <path d="M131.5 95.2627C144.203 95.2627 154.5 86.0214 154.5 74.6217C154.5 63.222 144.203 53.9807 131.5 53.9807C118.797 53.9807 108.5 63.222 108.5 74.6217C108.5 86.0214 118.797 95.2627 131.5 95.2627Z" stroke="#2E0036" stroke-width="9"/>
+      <path d="M131.5 95.2627C144.203 95.2627 154.5 86.0214 154.5 74.6217C154.5 63.222 144.203 53.9807 131.5 53.9807C118.797 53.9807 108.5 63.222 108.5 74.6217C108.5 86.0214 118.797 95.2627 131.5 95.2627Z" stroke="#0a0a0f" stroke-width="9"/>
     </svg>
     <ul class="nav-links">
       <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#tech">Tech Stack</a></li>
-      <li><a href="#project">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="header-cta">Get in Touch</a></li>
+    </ul>
+    <button class="mobile-menu-btn">&#9776;</button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <button class="mobile-menu-close">&times;</button>
+    <ul>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#tech">Tech Stack</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="mobile-menu-btn">☰</button>
-  </nav>
+    <a href="#contact" class="cta-button">Get in Touch</a>
+  </div>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -760,115 +137,500 @@
     <div class="hero-content">
       <div class="hero-text">
         <h1>We Build <span class="highlight">Intelligent</span> Systems</h1>
-        <p class="tagline">// AI • Python • Backend</p>
-        <p>A developer agency from Bosnia and Herzegovina, specializing in AI solutions, Python development, and robust backend engineering. We've delivered for global companies—now let's build something for you.</p>
-        <a href="#contact" class="cta-button">Get In Touch</a>
+        <p class="tagline">// AI &bull; Python &bull; Backend</p>
+        <p>A developer agency from Bosnia and Herzegovina, specializing in AI solutions, Python development, and robust backend engineering. We've delivered for global companies&mdash;now let's build something for you.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="cta-button">Start a Project</a>
+          <a href="#projects" class="cta-button secondary">See Our Work</a>
+        </div>
       </div>
       <div class="hero-visual">
         <svg class="hero-logo" viewBox="0 0 264 213" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" fill="#A3E376"/>
-          <path d="M55.7677 24.1096C100.554 9.65158 138.074 53.5974 122.479 58.3174C97.932 65.2051 67.7769 38.3821 55.7677 24.1096Z" fill="#6EB94D"/>
-          <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" stroke="#2E0036" stroke-width="9"/>
-          <path d="M99.5 36.9807C122.24 48.9807 125.496 53.314 124.281 53.9807" stroke="#2E0036" stroke-width="9" stroke-linecap="round"/>
-          <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" fill="#A3E376"/>
-          <path d="M205.461 26.1096C160.675 11.6516 123.155 55.5974 138.75 60.3174C163.296 67.2051 193.452 40.3821 205.461 26.1096Z" fill="#6EB94D"/>
-          <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" stroke="#2E0036" stroke-width="9"/>
-          <path d="M161.728 38.9807C138.988 50.9807 135.733 55.314 136.947 55.9807" stroke="#2E0036" stroke-width="9" stroke-linecap="round"/>
-          <rect x="120.5" y="118.981" width="23" height="18" fill="#2E0036"/>
-          <path d="M72.5 131.57C83.5457 131.57 92.5 123.534 92.5 113.622C92.5 103.709 83.5457 95.673 72.5 95.673C61.4543 95.673 52.5 103.709 52.5 113.622C52.5 123.534 61.4543 131.57 72.5 131.57Z" fill="#711C69"/>
-          <path d="M74.0628 121.576C84.9407 119.855 92.6706 112.919 91.3279 106.086C89.9853 99.2524 80.0786 95.1081 69.2007 96.8294C58.3228 98.5508 50.593 105.486 51.9356 112.319C53.2783 119.153 63.1849 123.297 74.0628 121.576Z" fill="#932E81"/>
+          <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" fill="#c1ff00"/>
+          <path d="M55.7677 24.1096C100.554 9.65158 138.074 53.5974 122.479 58.3174C97.932 65.2051 67.7769 38.3821 55.7677 24.1096Z" fill="#85b000"/>
+          <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M99.5 36.9807C122.24 48.9807 125.496 53.314 124.281 53.9807" stroke="#0a0a0f" stroke-width="9" stroke-linecap="round"/>
+          <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" fill="#c1ff00"/>
+          <path d="M205.461 26.1096C160.675 11.6516 123.155 55.5974 138.75 60.3174C163.296 67.2051 193.452 40.3821 205.461 26.1096Z" fill="#85b000"/>
+          <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M161.728 38.9807C138.988 50.9807 135.733 55.314 136.947 55.9807" stroke="#0a0a0f" stroke-width="9" stroke-linecap="round"/>
+          <rect x="120.5" y="118.981" width="23" height="18" fill="#0a0a0f"/>
+          <path d="M72.5 131.57C83.5457 131.57 92.5 123.534 92.5 113.622C92.5 103.709 83.5457 95.673 72.5 95.673C61.4543 95.673 52.5 103.709 52.5 113.622C52.5 123.534 61.4543 131.57 72.5 131.57Z" fill="#7100a5"/>
+          <path d="M74.0628 121.576C84.9407 119.855 92.6706 112.919 91.3279 106.086C89.9853 99.2524 80.0786 95.1081 69.2007 96.8294C58.3228 98.5508 50.593 105.486 51.9356 112.319C53.2783 119.153 63.1849 123.297 74.0628 121.576Z" fill="#ae00ff"/>
           <path d="M65.5 109.135C68.2614 109.135 70.5 107.126 70.5 104.647C70.5 102.169 68.2614 100.16 65.5 100.16C62.7386 100.16 60.5 102.169 60.5 104.647C60.5 107.126 62.7386 109.135 65.5 109.135Z" fill="#E3CEE0"/>
-          <path d="M72.5 134.263C85.2025 134.263 95.5 125.021 95.5 113.622C95.5 102.222 85.2025 92.9807 72.5 92.9807C59.7975 92.9807 49.5 102.222 49.5 113.622C49.5 125.021 59.7975 134.263 72.5 134.263Z" stroke="#2E0036" stroke-width="9"/>
-          <path d="M192.5 131.57C203.546 131.57 212.5 123.534 212.5 113.622C212.5 103.709 203.546 95.673 192.5 95.673C181.454 95.673 172.5 103.709 172.5 113.622C172.5 123.534 181.454 131.57 192.5 131.57Z" fill="#711C69"/>
-          <path d="M194.063 121.576C204.941 119.855 212.671 112.919 211.328 106.086C209.985 99.2524 200.079 95.1081 189.201 96.8294C178.323 98.5508 170.593 105.486 171.936 112.319C173.278 119.153 183.185 123.297 194.063 121.576Z" fill="#932E81"/>
+          <path d="M72.5 134.263C85.2025 134.263 95.5 125.021 95.5 113.622C95.5 102.222 85.2025 92.9807 72.5 92.9807C59.7975 92.9807 49.5 102.222 49.5 113.622C49.5 125.021 59.7975 134.263 72.5 134.263Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M192.5 131.57C203.546 131.57 212.5 123.534 212.5 113.622C212.5 103.709 203.546 95.673 192.5 95.673C181.454 95.673 172.5 103.709 172.5 113.622C172.5 123.534 181.454 131.57 192.5 131.57Z" fill="#7100a5"/>
+          <path d="M194.063 121.576C204.941 119.855 212.671 112.919 211.328 106.086C209.985 99.2524 200.079 95.1081 189.201 96.8294C178.323 98.5508 170.593 105.486 171.936 112.319C173.278 119.153 183.185 123.297 194.063 121.576Z" fill="#ae00ff"/>
           <path d="M185.5 109.135C188.261 109.135 190.5 107.126 190.5 104.647C190.5 102.169 188.261 100.16 185.5 100.16C182.739 100.16 180.5 102.169 180.5 104.647C180.5 107.126 182.739 109.135 185.5 109.135Z" fill="#E3CEE0"/>
-          <path d="M192.5 134.263C205.203 134.263 215.5 125.021 215.5 113.622C215.5 102.222 205.203 92.9807 192.5 92.9807C179.797 92.9807 169.5 102.222 169.5 113.622C169.5 125.021 179.797 134.263 192.5 134.263Z" stroke="#2E0036" stroke-width="9"/>
-          <path d="M170.5 93.5704C181.546 93.5704 190.5 85.5345 190.5 75.6217C190.5 65.7089 181.546 57.673 170.5 57.673C159.454 57.673 150.5 65.7089 150.5 75.6217C150.5 85.5345 159.454 93.5704 170.5 93.5704Z" fill="#711C69"/>
-          <path d="M172.063 83.5759C182.941 81.8545 190.671 74.9194 189.328 68.0859C187.985 61.2524 178.079 57.1081 167.201 58.8294C156.323 60.5508 148.593 67.4859 149.936 74.3194C151.278 81.153 161.185 85.2972 172.063 83.5759Z" fill="#932E81"/>
+          <path d="M192.5 134.263C205.203 134.263 215.5 125.021 215.5 113.622C215.5 102.222 205.203 92.9807 192.5 92.9807C179.797 92.9807 169.5 102.222 169.5 113.622C169.5 125.021 179.797 134.263 192.5 134.263Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M170.5 93.5704C181.546 93.5704 190.5 85.5345 190.5 75.6217C190.5 65.7089 181.546 57.673 170.5 57.673C159.454 57.673 150.5 65.7089 150.5 75.6217C150.5 85.5345 159.454 93.5704 170.5 93.5704Z" fill="#7100a5"/>
+          <path d="M172.063 83.5759C182.941 81.8545 190.671 74.9194 189.328 68.0859C187.985 61.2524 178.079 57.1081 167.201 58.8294C156.323 60.5508 148.593 67.4859 149.936 74.3194C151.278 81.153 161.185 85.2972 172.063 83.5759Z" fill="#ae00ff"/>
           <path d="M163.5 71.1345C166.261 71.1345 168.5 69.1255 168.5 66.6473C168.5 64.1691 166.261 62.1602 163.5 62.1602C160.739 62.1602 158.5 64.1691 158.5 66.6473C158.5 69.1255 160.739 71.1345 163.5 71.1345Z" fill="#E3CEE0"/>
-          <path d="M170.5 96.2627C183.203 96.2627 193.5 87.0214 193.5 75.6217C193.5 64.222 183.203 54.9807 170.5 54.9807C157.797 54.9807 147.5 64.222 147.5 75.6217C147.5 87.0214 157.797 96.2627 170.5 96.2627Z" stroke="#2E0036" stroke-width="9"/>
-          <path d="M96.5 93.5704C107.546 93.5704 116.5 85.5345 116.5 75.6217C116.5 65.7089 107.546 57.673 96.5 57.673C85.4543 57.673 76.5 65.7089 76.5 75.6217C76.5 85.5345 85.4543 93.5704 96.5 93.5704Z" fill="#711C69"/>
-          <path d="M98.0628 83.5759C108.941 81.8545 116.671 74.9194 115.328 68.0859C113.985 61.2524 104.079 57.1081 93.2007 58.8294C82.3228 60.5508 74.593 67.4859 75.9356 74.3194C77.2783 81.153 87.1849 85.2972 98.0628 83.5759Z" fill="#932E81"/>
+          <path d="M170.5 96.2627C183.203 96.2627 193.5 87.0214 193.5 75.6217C193.5 64.222 183.203 54.9807 170.5 54.9807C157.797 54.9807 147.5 64.222 147.5 75.6217C147.5 87.0214 157.797 96.2627 170.5 96.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M96.5 93.5704C107.546 93.5704 116.5 85.5345 116.5 75.6217C116.5 65.7089 107.546 57.673 96.5 57.673C85.4543 57.673 76.5 65.7089 76.5 75.6217C76.5 85.5345 85.4543 93.5704 96.5 93.5704Z" fill="#7100a5"/>
+          <path d="M98.0628 83.5759C108.941 81.8545 116.671 74.9194 115.328 68.0859C113.985 61.2524 104.079 57.1081 93.2007 58.8294C82.3228 60.5508 74.593 67.4859 75.9356 74.3194C77.2783 81.153 87.1849 85.2972 98.0628 83.5759Z" fill="#ae00ff"/>
           <path d="M89.5 71.1345C92.2614 71.1345 94.5 69.1255 94.5 66.6473C94.5 64.1691 92.2614 62.1602 89.5 62.1602C86.7386 62.1602 84.5 64.1691 84.5 66.6473C84.5 69.1255 86.7386 71.1345 89.5 71.1345Z" fill="#E3CEE0"/>
-          <path d="M96.5 96.2627C109.203 96.2627 119.5 87.0214 119.5 75.6217C119.5 64.222 109.203 54.9807 96.5 54.9807C83.7975 54.9807 73.5 64.222 73.5 75.6217C73.5 87.0214 83.7975 96.2627 96.5 96.2627Z" stroke="#2E0036" stroke-width="9"/>
-          <path d="M219.5 34.9807C231.5 34.9807 239.5 43.2187 239.5 55.5759V100.885C239.5 113.243 247.5 121.481 259.5 121.481C247.5 121.481 239.5 129.719 239.5 142.076V187.385C239.5 199.743 231.5 207.981 219.5 207.981" stroke="#2D2D3A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M44.5 34.9807C32.5 34.9807 24.5 43.2187 24.5 55.5759V100.885C24.5 113.243 16.5 121.481 4.5 121.481C16.5 121.481 24.5 129.719 24.5 142.076V187.385C24.5 199.743 32.5 207.981 44.5 207.981" stroke="#2D2D3A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M131.5 189.57C142.546 189.57 151.5 181.534 151.5 171.622C151.5 161.709 142.546 153.673 131.5 153.673C120.454 153.673 111.5 161.709 111.5 171.622C111.5 181.534 120.454 189.57 131.5 189.57Z" fill="#711C69"/>
+          <path d="M96.5 96.2627C109.203 96.2627 119.5 87.0214 119.5 75.6217C119.5 64.222 109.203 54.9807 96.5 54.9807C83.7975 54.9807 73.5 64.222 73.5 75.6217C73.5 87.0214 83.7975 96.2627 96.5 96.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M219.5 34.9807C231.5 34.9807 239.5 43.2187 239.5 55.5759V100.885C239.5 113.243 247.5 121.481 259.5 121.481C247.5 121.481 239.5 129.719 239.5 142.076V187.385C239.5 199.743 231.5 207.981 219.5 207.981" stroke="#1a1a22" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M44.5 34.9807C32.5 34.9807 24.5 43.2187 24.5 55.5759V100.885C24.5 113.243 16.5 121.481 4.5 121.481C16.5 121.481 24.5 129.719 24.5 142.076V187.385C24.5 199.743 32.5 207.981 44.5 207.981" stroke="#1a1a22" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M131.5 189.57C142.546 189.57 151.5 181.534 151.5 171.622C151.5 161.709 142.546 153.673 131.5 153.673C120.454 153.673 111.5 161.709 111.5 171.622C111.5 181.534 120.454 189.57 131.5 189.57Z" fill="#7100a5"/>
           <path d="M124.5 167.135C127.261 167.135 129.5 165.126 129.5 162.647C129.5 160.169 127.261 158.16 124.5 158.16C121.739 158.16 119.5 160.169 119.5 162.647C119.5 165.126 121.739 167.135 124.5 167.135Z" fill="#E3CEE0"/>
-          <path d="M131.5 192.263C144.203 192.263 154.5 183.021 154.5 171.622C154.5 160.222 144.203 150.981 131.5 150.981C118.797 150.981 108.5 160.222 108.5 171.622C108.5 183.021 118.797 192.263 131.5 192.263Z" stroke="#2E0036" stroke-width="9"/>
-          <path d="M106.5 161.176C118.026 161.176 127.37 152.806 127.37 142.481C127.37 132.155 118.026 123.785 106.5 123.785C94.9741 123.785 85.6304 132.155 85.6304 142.481C85.6304 152.806 94.9741 161.176 106.5 161.176Z" fill="#711C69"/>
+          <path d="M131.5 192.263C144.203 192.263 154.5 183.021 154.5 171.622C154.5 160.222 144.203 150.981 131.5 150.981C118.797 150.981 108.5 160.222 108.5 171.622C108.5 183.021 118.797 192.263 131.5 192.263Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M106.5 161.176C118.026 161.176 127.37 152.806 127.37 142.481C127.37 132.155 118.026 123.785 106.5 123.785C94.9741 123.785 85.6304 132.155 85.6304 142.481C85.6304 152.806 94.9741 161.176 106.5 161.176Z" fill="#7100a5"/>
           <path d="M99.1957 137.807C102.077 137.807 104.413 135.714 104.413 133.133C104.413 130.552 102.077 128.459 99.1957 128.459C96.3142 128.459 93.9783 130.552 93.9783 133.133C93.9783 135.714 96.3142 137.807 99.1957 137.807Z" fill="#E3CEE0"/>
-          <path d="M106.5 163.981C119.755 163.981 130.5 154.355 130.5 142.481C130.5 130.607 119.755 120.981 106.5 120.981C93.2452 120.981 82.5 130.607 82.5 142.481C82.5 154.355 93.2452 163.981 106.5 163.981Z" stroke="#2E0036" stroke-width="9"/>
-          <path d="M156.5 161.176C168.026 161.176 177.37 152.806 177.37 142.481C177.37 132.155 168.026 123.785 156.5 123.785C144.974 123.785 135.63 132.155 135.63 142.481C135.63 152.806 144.974 161.176 156.5 161.176Z" fill="#711C69"/>
+          <path d="M106.5 163.981C119.755 163.981 130.5 154.355 130.5 142.481C130.5 130.607 119.755 120.981 106.5 120.981C93.2452 120.981 82.5 130.607 82.5 142.481C82.5 154.355 93.2452 163.981 106.5 163.981Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M156.5 161.176C168.026 161.176 177.37 152.806 177.37 142.481C177.37 132.155 168.026 123.785 156.5 123.785C144.974 123.785 135.63 132.155 135.63 142.481C135.63 152.806 144.974 161.176 156.5 161.176Z" fill="#7100a5"/>
           <path d="M149.196 137.807C152.077 137.807 154.413 135.714 154.413 133.133C154.413 130.552 152.077 128.459 149.196 128.459C146.314 128.459 143.978 130.552 143.978 133.133C143.978 135.714 146.314 137.807 149.196 137.807Z" fill="#E3CEE0"/>
-          <path d="M156.5 163.981C169.755 163.981 180.5 154.355 180.5 142.481C180.5 130.607 169.755 120.981 156.5 120.981C143.245 120.981 132.5 130.607 132.5 142.481C132.5 154.355 143.245 163.981 156.5 163.981Z" stroke="#2E0036" stroke-width="9"/>
-          <path d="M108.5 127.57C119.546 127.57 128.5 119.534 128.5 109.622C128.5 99.7089 119.546 91.673 108.5 91.673C97.4543 91.673 88.5 99.7089 88.5 109.622C88.5 119.534 97.4543 127.57 108.5 127.57Z" fill="#711C69"/>
-          <path d="M110.063 117.576C120.941 115.855 128.671 108.919 127.328 102.086C125.985 95.2524 116.079 91.1081 105.201 92.8294C94.3228 94.5508 86.593 101.486 87.9356 108.319C89.2783 115.153 99.1849 119.297 110.063 117.576Z" fill="#932E81"/>
+          <path d="M156.5 163.981C169.755 163.981 180.5 154.355 180.5 142.481C180.5 130.607 169.755 120.981 156.5 120.981C143.245 120.981 132.5 130.607 132.5 142.481C132.5 154.355 143.245 163.981 156.5 163.981Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M108.5 127.57C119.546 127.57 128.5 119.534 128.5 109.622C128.5 99.7089 119.546 91.673 108.5 91.673C97.4543 91.673 88.5 99.7089 88.5 109.622C88.5 119.534 97.4543 127.57 108.5 127.57Z" fill="#7100a5"/>
+          <path d="M110.063 117.576C120.941 115.855 128.671 108.919 127.328 102.086C125.985 95.2524 116.079 91.1081 105.201 92.8294C94.3228 94.5508 86.593 101.486 87.9356 108.319C89.2783 115.153 99.1849 119.297 110.063 117.576Z" fill="#ae00ff"/>
           <path d="M101.5 105.135C104.261 105.135 106.5 103.126 106.5 100.647C106.5 98.1691 104.261 96.1602 101.5 96.1602C98.7386 96.1602 96.5 98.1691 96.5 100.647C96.5 103.126 98.7386 105.135 101.5 105.135Z" fill="#E3CEE0"/>
-          <path d="M108.5 130.263C121.203 130.263 131.5 121.021 131.5 109.622C131.5 98.222 121.203 88.9807 108.5 88.9807C95.7975 88.9807 85.5 98.222 85.5 109.622C85.5 121.021 95.7975 130.263 108.5 130.263Z" stroke="#2E0036" stroke-width="9"/>
-          <path d="M154.5 127.57C165.546 127.57 174.5 119.534 174.5 109.622C174.5 99.7089 165.546 91.673 154.5 91.673C143.454 91.673 134.5 99.7089 134.5 109.622C134.5 119.534 143.454 127.57 154.5 127.57Z" fill="#711C69"/>
-          <path d="M156.063 117.576C166.941 115.855 174.671 108.919 173.328 102.086C171.985 95.2524 162.079 91.1081 151.201 92.8294C140.323 94.5508 132.593 101.486 133.936 108.319C135.278 115.153 145.185 119.297 156.063 117.576Z" fill="#932E81"/>
+          <path d="M108.5 130.263C121.203 130.263 131.5 121.021 131.5 109.622C131.5 98.222 121.203 88.9807 108.5 88.9807C95.7975 88.9807 85.5 98.222 85.5 109.622C85.5 121.021 95.7975 130.263 108.5 130.263Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M154.5 127.57C165.546 127.57 174.5 119.534 174.5 109.622C174.5 99.7089 165.546 91.673 154.5 91.673C143.454 91.673 134.5 99.7089 134.5 109.622C134.5 119.534 143.454 127.57 154.5 127.57Z" fill="#7100a5"/>
+          <path d="M156.063 117.576C166.941 115.855 174.671 108.919 173.328 102.086C171.985 95.2524 162.079 91.1081 151.201 92.8294C140.323 94.5508 132.593 101.486 133.936 108.319C135.278 115.153 145.185 119.297 156.063 117.576Z" fill="#ae00ff"/>
           <path d="M147.5 105.135C150.261 105.135 152.5 103.126 152.5 100.647C152.5 98.1691 150.261 96.1602 147.5 96.1602C144.739 96.1602 142.5 98.1691 142.5 100.647C142.5 103.126 144.739 105.135 147.5 105.135Z" fill="#E3CEE0"/>
-          <path d="M154.5 130.263C167.203 130.263 177.5 121.021 177.5 109.622C177.5 98.222 167.203 88.9807 154.5 88.9807C141.797 88.9807 131.5 98.222 131.5 109.622C131.5 121.021 141.797 130.263 154.5 130.263Z" stroke="#2E0036" stroke-width="9"/>
-          <path d="M131.5 92.5704C142.546 92.5704 151.5 84.5345 151.5 74.6217C151.5 64.7089 142.546 56.673 131.5 56.673C120.454 56.673 111.5 64.7089 111.5 74.6217C111.5 84.5345 120.454 92.5704 131.5 92.5704Z" fill="#711C69"/>
-          <path d="M133.063 82.5759C143.941 80.8545 151.671 73.9194 150.328 67.0859C148.985 60.2524 139.079 56.1081 128.201 57.8294C117.323 59.5508 109.593 66.4859 110.936 73.3194C112.278 80.153 122.185 84.2972 133.063 82.5759Z" fill="#932E81"/>
+          <path d="M154.5 130.263C167.203 130.263 177.5 121.021 177.5 109.622C177.5 98.222 167.203 88.9807 154.5 88.9807C141.797 88.9807 131.5 98.222 131.5 109.622C131.5 121.021 141.797 130.263 154.5 130.263Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M131.5 92.5704C142.546 92.5704 151.5 84.5345 151.5 74.6217C151.5 64.7089 142.546 56.673 131.5 56.673C120.454 56.673 111.5 64.7089 111.5 74.6217C111.5 84.5345 120.454 92.5704 131.5 92.5704Z" fill="#7100a5"/>
+          <path d="M133.063 82.5759C143.941 80.8545 151.671 73.9194 150.328 67.0859C148.985 60.2524 139.079 56.1081 128.201 57.8294C117.323 59.5508 109.593 66.4859 110.936 73.3194C112.278 80.153 122.185 84.2972 133.063 82.5759Z" fill="#ae00ff"/>
           <path d="M124.5 70.1345C127.261 70.1345 129.5 68.1255 129.5 65.6473C129.5 63.1691 127.261 61.1602 124.5 61.1602C121.739 61.1602 119.5 63.1691 119.5 65.6473C119.5 68.1255 121.739 70.1345 124.5 70.1345Z" fill="#E3CEE0"/>
-          <path d="M131.5 95.2627C144.203 95.2627 154.5 86.0214 154.5 74.6217C154.5 63.222 144.203 53.9807 131.5 53.9807C118.797 53.9807 108.5 63.222 108.5 74.6217C108.5 86.0214 118.797 95.2627 131.5 95.2627Z" stroke="#2E0036" stroke-width="9"/>
+          <path d="M131.5 95.2627C144.203 95.2627 154.5 86.0214 154.5 74.6217C154.5 63.222 144.203 53.9807 131.5 53.9807C118.797 53.9807 108.5 63.222 108.5 74.6217C108.5 86.0214 118.797 95.2627 131.5 95.2627Z" stroke="#0a0a0f" stroke-width="9"/>
         </svg>
       </div>
     </div>
   </section>
 
-  <!-- Expertise Section -->
+  <!-- Metrics Bar -->
+  <section class="metrics-bar fade-in">
+    <div class="metrics-grid">
+      <div class="metric-item">
+        <span class="metric-number">20+</span>
+        <span class="metric-label">Projects Delivered</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-number">5+</span>
+        <span class="metric-label">Years Experience</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-number">10+</span>
+        <span class="metric-label">Happy Clients</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-number">3+</span>
+        <span class="metric-label">Countries Served</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise Section - Terracode Style -->
   <section class="expertise" id="expertise">
     <div class="section-header fade-in">
       <h2>Our <span class="accent">Expertise</span></h2>
       <p>From AI models to cloud infrastructure, we deliver end-to-end technical solutions</p>
     </div>
-    <div class="expertise-grid">
-      <div class="expertise-card fade-in">
-        <div class="icon">🤖</div>
-        <h3>AI & Machine Learning</h3>
-        <ul>
-          <li>Custom ML model development</li>
-          <li>Handwritten text recognition</li>
-          <li>NLP & sentiment analysis</li>
-          <li>Computer vision (YOLO, TensorFlow)</li>
-          <li>Document understanding</li>
-        </ul>
+    <div class="expertise-list">
+      <!-- AI & Machine Learning -->
+      <div class="expertise-item fade-in">
+        <div class="expertise-header" onclick="toggleExpertise(this)">
+          <span class="expertise-number">01</span>
+          <div class="expertise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="expertise-title">
+            <h3>AI & Machine Learning</h3>
+            <p>Custom intelligent systems that transform your business operations</p>
+          </div>
+          <div class="expertise-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </div>
+        </div>
+        <div class="expertise-content">
+          <ul>
+            <li>Custom ML model development</li>
+            <li>Handwritten text recognition</li>
+            <li>NLP & sentiment analysis</li>
+            <li>Computer vision (YOLO, TensorFlow)</li>
+            <li>Document understanding</li>
+            <li>Predictive analytics</li>
+          </ul>
+          <div class="expertise-cta">
+            <a href="#contact">Get in touch &rarr;</a>
+          </div>
+        </div>
       </div>
-      <div class="expertise-card fade-in">
-        <div class="icon">🐍</div>
-        <h3>Python Development</h3>
-        <ul>
-          <li>Production-grade applications</li>
-          <li>FastAPI & Flask APIs</li>
-          <li>PySpark data pipelines</li>
-          <li>Streaming applications</li>
-          <li>Automation solutions</li>
-        </ul>
+
+      <!-- Python Development -->
+      <div class="expertise-item fade-in">
+        <div class="expertise-header" onclick="toggleExpertise(this)">
+          <span class="expertise-number">02</span>
+          <div class="expertise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>
+            </svg>
+          </div>
+          <div class="expertise-title">
+            <h3>Python Development</h3>
+            <p>Production-grade applications built for scale and reliability</p>
+          </div>
+          <div class="expertise-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </div>
+        </div>
+        <div class="expertise-content">
+          <ul>
+            <li>Production-grade applications</li>
+            <li>FastAPI & Flask APIs</li>
+            <li>PySpark data pipelines</li>
+            <li>Streaming applications</li>
+            <li>Automation solutions</li>
+            <li>Performance optimization</li>
+          </ul>
+          <div class="expertise-cta">
+            <a href="#contact">Get in touch &rarr;</a>
+          </div>
+        </div>
       </div>
-      <div class="expertise-card fade-in">
-        <div class="icon">⚙️</div>
-        <h3>Backend Engineering</h3>
-        <ul>
-          <li>Microservices architecture</li>
-          <li>RESTful API design</li>
-          <li>Database optimization</li>
-          <li>Event-driven systems (Kafka)</li>
-          <li>ETL pipeline development</li>
-        </ul>
+
+      <!-- Backend Engineering -->
+      <div class="expertise-item fade-in">
+        <div class="expertise-header" onclick="toggleExpertise(this)">
+          <span class="expertise-number">03</span>
+          <div class="expertise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <div class="expertise-title">
+            <h3>Backend Engineering</h3>
+            <p>Scalable architectures that power enterprise applications</p>
+          </div>
+          <div class="expertise-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </div>
+        </div>
+        <div class="expertise-content">
+          <ul>
+            <li>Microservices architecture</li>
+            <li>RESTful API design</li>
+            <li>Database optimization</li>
+            <li>Event-driven systems (Kafka)</li>
+            <li>ETL pipeline development</li>
+            <li>System integration</li>
+          </ul>
+          <div class="expertise-cta">
+            <a href="#contact">Get in touch &rarr;</a>
+          </div>
+        </div>
       </div>
-      <div class="expertise-card fade-in">
-        <div class="icon">☁️</div>
-        <h3>Cloud & Infrastructure</h3>
-        <ul>
-          <li>AWS & Azure solutions</li>
-          <li>Docker & Kubernetes</li>
-          <li>Terraform IaC</li>
-          <li>CI/CD pipelines</li>
-          <li>Monitoring & observability</li>
-        </ul>
+
+      <!-- Cloud & Infrastructure -->
+      <div class="expertise-item fade-in">
+        <div class="expertise-header" onclick="toggleExpertise(this)">
+          <span class="expertise-number">04</span>
+          <div class="expertise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/>
+            </svg>
+          </div>
+          <div class="expertise-title">
+            <h3>Cloud & DevOps</h3>
+            <p>Modern infrastructure that scales with your growth</p>
+          </div>
+          <div class="expertise-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </div>
+        </div>
+        <div class="expertise-content">
+          <ul>
+            <li>AWS & Azure solutions</li>
+            <li>Docker & Kubernetes</li>
+            <li>Terraform IaC</li>
+            <li>CI/CD pipelines</li>
+            <li>Monitoring & observability</li>
+            <li>Security best practices</li>
+          </ul>
+          <div class="expertise-cta">
+            <a href="#contact">Get in touch &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section class="case-studies" id="projects">
+    <div class="section-header fade-in">
+      <h2>Featured <span class="accent">Projects</span></h2>
+      <p>Real impact through intelligent solutions</p>
+    </div>
+    <div class="case-studies-grid">
+      <!-- Case Study 1: Payment Integration Platform -->
+      <article class="case-study-card fade-in">
+        <div class="case-study-header">
+          <div class="case-study-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="1" y="4" width="22" height="16" rx="2"/>
+              <line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+          </div>
+          <span class="case-study-label">Travel & E-commerce</span>
+          <h3>Enterprise Booking & Payment Platform</h3>
+          <p>Multi-channel booking system with integrated payment processing for a global travel company.</p>
+        </div>
+        <div class="case-study-body">
+          <div class="case-study-section">
+            <h4>Challenge</h4>
+            <p>The client needed to consolidate multiple legacy booking systems and integrate diverse payment providers including Klarna, while handling high transaction volumes across multiple regions.</p>
+          </div>
+          <div class="case-study-section">
+            <h4>Solution</h4>
+            <p>We built a unified FastAPI backend with microservices architecture, implementing robust payment orchestration and real-time inventory management across all sales channels.</p>
+          </div>
+          <div class="case-study-section">
+            <h4>Results</h4>
+            <div class="case-study-results">
+              <div class="result-stat">
+                <span class="number">40%</span>
+                <span class="label">Faster checkout</span>
+              </div>
+              <div class="result-stat">
+                <span class="number">99.9%</span>
+                <span class="label">Uptime</span>
+              </div>
+              <div class="result-stat">
+                <span class="number">3x</span>
+                <span class="label">Transaction capacity</span>
+              </div>
+            </div>
+          </div>
+          <div class="case-study-tech">
+            <span>Python</span>
+            <span>FastAPI</span>
+            <span>PostgreSQL</span>
+            <span>Redis</span>
+            <span>AWS</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case Study 2: Data Pipeline & Analytics -->
+      <article class="case-study-card fade-in">
+        <div class="case-study-header">
+          <div class="case-study-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+              <polyline points="7.5,4.21 12,6.81 16.5,4.21"/>
+              <polyline points="7.5,19.79 7.5,14.6 3,12"/>
+              <polyline points="21,12 16.5,14.6 16.5,19.79"/>
+              <polyline points="3.27,6.96 12,12.01 20.73,6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <span class="case-study-label">Research & Intelligence</span>
+          <h3>Real-Time Data Pipeline & Analytics Platform</h3>
+          <p>Event processing system for cyber intelligence and research data analysis.</p>
+        </div>
+        <div class="case-study-body">
+          <div class="case-study-section">
+            <h4>Challenge</h4>
+            <p>Processing millions of events per day from diverse data sources, requiring real-time analysis, sentiment detection, and actionable intelligence extraction with minimal latency.</p>
+          </div>
+          <div class="case-study-section">
+            <h4>Solution</h4>
+            <p>We designed a Kafka-based streaming architecture with PySpark processing, custom NLP models for sentiment analysis, and Elasticsearch for fast querying and visualization.</p>
+          </div>
+          <div class="case-study-section">
+            <h4>Results</h4>
+            <div class="case-study-results">
+              <div class="result-stat">
+                <span class="number">10M+</span>
+                <span class="label">Events/day</span>
+              </div>
+              <div class="result-stat">
+                <span class="number">&lt;100ms</span>
+                <span class="label">Latency</span>
+              </div>
+              <div class="result-stat">
+                <span class="number">85%</span>
+                <span class="label">Analysis accuracy</span>
+              </div>
+            </div>
+          </div>
+          <div class="case-study-tech">
+            <span>PySpark</span>
+            <span>Kafka</span>
+            <span>Elasticsearch</span>
+            <span>spaCy</span>
+            <span>Docker</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case Study 3: Digital Platform Modernization -->
+      <article class="case-study-card fade-in">
+        <div class="case-study-header">
+          <div class="case-study-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <span class="case-study-label">Digital Transformation</span>
+          <h3>Legacy System Modernization</h3>
+          <p>Complete platform overhaul for a financial services company moving to cloud-native architecture.</p>
+        </div>
+        <div class="case-study-body">
+          <div class="case-study-section">
+            <h4>Challenge</h4>
+            <p>A 15-year-old monolithic system needed modernization without disrupting ongoing operations. The platform handled sensitive financial data requiring strict compliance and zero downtime migration.</p>
+          </div>
+          <div class="case-study-section">
+            <h4>Solution</h4>
+            <p>We implemented a strangler fig pattern, gradually replacing components with microservices. Built comprehensive API layer, containerized workloads, and established robust CI/CD pipelines.</p>
+          </div>
+          <div class="case-study-section">
+            <h4>Results</h4>
+            <div class="case-study-results">
+              <div class="result-stat">
+                <span class="number">60%</span>
+                <span class="label">Cost reduction</span>
+              </div>
+              <div class="result-stat">
+                <span class="number">Zero</span>
+                <span class="label">Downtime</span>
+              </div>
+              <div class="result-stat">
+                <span class="number">5x</span>
+                <span class="label">Faster deploys</span>
+              </div>
+            </div>
+          </div>
+          <div class="case-study-tech">
+            <span>.NET</span>
+            <span>Azure</span>
+            <span>Kubernetes</span>
+            <span>Terraform</span>
+            <span>GitHub Actions</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case Study 4: Humanitarian AI Project -->
+      <article class="case-study-card fade-in">
+        <div class="case-study-header">
+          <div class="case-study-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+            </svg>
+          </div>
+          <span class="case-study-label">Humanitarian Tech</span>
+          <h3>AI-Powered Minefield Documentation System</h3>
+          <p>Document understanding system supporting humanitarian demining operations in Bosnia and Herzegovina.</p>
+        </div>
+        <div class="case-study-body">
+          <div class="case-study-section">
+            <h4>Challenge</h4>
+            <p>Minefield records contain critical handwritten data that must be digitized to support demining operations. Manual transcription was slow, error-prone, and created bottlenecks in life-saving work.</p>
+          </div>
+          <div class="case-study-section">
+            <h4>Solution</h4>
+            <p>We developed an AI-powered system combining YOLO for object detection with custom TensorFlow models for handwritten text recognition. The FastAPI backend processes documents in real-time.</p>
+          </div>
+          <div class="case-study-section">
+            <h4>Results</h4>
+            <div class="case-study-results">
+              <div class="result-stat">
+                <span class="number">95%</span>
+                <span class="label">Recognition accuracy</span>
+              </div>
+              <div class="result-stat">
+                <span class="number">10hrs</span>
+                <span class="label">Saved per batch</span>
+              </div>
+              <div class="result-stat">
+                <span class="number">1,000+</span>
+                <span class="label">Docs processed</span>
+              </div>
+            </div>
+          </div>
+          <div class="case-study-tech">
+            <span>Python</span>
+            <span>FastAPI</span>
+            <span>YOLO</span>
+            <span>TensorFlow</span>
+            <span>OpenCV</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Section CTA -->
+    <div class="section-cta fade-in">
+      <h3>Have a similar challenge to solve?</h3>
+      <a href="#contact" class="cta-button">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- Industries Section -->
+  <section class="industries">
+    <div class="section-header fade-in">
+      <h2>Industries We <span class="accent">Serve</span></h2>
+      <p>Delivering solutions across diverse sectors</p>
+    </div>
+    <div class="industries-grid">
+      <div class="industry-card fade-in">
+        <div class="industry-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+            <path d="M14.05 2a9 9 0 018 7.94M14.05 6A5 5 0 0118 10"/>
+          </svg>
+        </div>
+        <h3>Travel & Hospitality</h3>
+        <p>Large-scale database workflows, payment integrations, survey management systems</p>
+      </div>
+      <div class="industry-card fade-in">
+        <div class="industry-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </div>
+        <h3>Research & Data</h3>
+        <p>Data pipelines, microservices infrastructure, sentiment analysis</p>
+      </div>
+      <div class="industry-card fade-in">
+        <div class="industry-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+          </svg>
+        </div>
+        <h3>E-commerce</h3>
+        <p>Payment provider integrations (Klarna), A/B testing, UI optimizations</p>
+      </div>
+      <div class="industry-card fade-in">
+        <div class="industry-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+        </div>
+        <h3>Humanitarian</h3>
+        <p>Document processing for minefield records, supporting demining efforts</p>
       </div>
     </div>
   </section>
@@ -886,6 +648,7 @@
           <span class="tech-tag">Python</span>
           <span class="tech-tag">C#</span>
           <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">TypeScript</span>
         </div>
       </div>
       <div class="tech-category">
@@ -896,7 +659,6 @@
           <span class="tech-tag">.NET</span>
           <span class="tech-tag">NestJS</span>
           <span class="tech-tag">ReactJS</span>
-          <span class="tech-tag">Blazor</span>
         </div>
       </div>
       <div class="tech-category">
@@ -904,8 +666,6 @@
         <div class="tech-tags">
           <span class="tech-tag">PostgreSQL</span>
           <span class="tech-tag">MongoDB</span>
-          <span class="tech-tag">ArangoDB</span>
-          <span class="tech-tag">MSSQL</span>
           <span class="tech-tag">Redis</span>
           <span class="tech-tag">Elasticsearch</span>
         </div>
@@ -918,7 +678,6 @@
           <span class="tech-tag">Docker</span>
           <span class="tech-tag">Kubernetes</span>
           <span class="tech-tag">Terraform</span>
-          <span class="tech-tag">GitHub Actions</span>
         </div>
       </div>
       <div class="tech-category">
@@ -930,57 +689,6 @@
           <span class="tech-tag">YOLO</span>
           <span class="tech-tag">spaCy</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Project Section -->
-  <section class="featured-project" id="project">
-    <div class="section-header fade-in">
-      <h2>Featured <span class="accent">Project</span></h2>
-      <p>Real impact through intelligent solutions</p>
-    </div>
-    <div class="project-showcase fade-in">
-      <div class="project-content">
-        <span class="project-label">Humanitarian Tech</span>
-        <h3>Handwritten Text Detection for Minefield Records</h3>
-        <p>Developed a system for extracting and recognizing handwritten text from complex documents related to minefield obstacles in Bosnia and Herzegovina. Using deep learning models and advanced document segmentation techniques, we built a solution that interprets challenging handwritten content to support humanitarian demining efforts.</p>
-        <div class="project-tech">
-          <span>Python</span>
-          <span>FastAPI</span>
-          <span>YOLO</span>
-          <span>TensorFlow</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Industries Section -->
-  <section class="industries">
-    <div class="section-header fade-in">
-      <h2>Industries We <span class="accent">Serve</span></h2>
-      <p>Delivering solutions across diverse sectors</p>
-    </div>
-    <div class="industries-grid">
-      <div class="industry-card fade-in">
-        <div class="industry-icon">✈️</div>
-        <h3>Travel & Hospitality</h3>
-        <p>Large-scale database workflows, payment integrations, survey management systems</p>
-      </div>
-      <div class="industry-card fade-in">
-        <div class="industry-icon">📊</div>
-        <h3>Research & Data</h3>
-        <p>Data pipelines, microservices infrastructure, sentiment analysis</p>
-      </div>
-      <div class="industry-card fade-in">
-        <div class="industry-icon">🛒</div>
-        <h3>E-commerce</h3>
-        <p>Payment provider integrations (Klarna), A/B testing, UI optimizations</p>
-      </div>
-      <div class="industry-card fade-in">
-        <div class="industry-icon">🕊️</div>
-        <h3>Humanitarian</h3>
-        <p>Document processing for minefield records, supporting demining efforts</p>
       </div>
     </div>
   </section>
@@ -1014,18 +722,20 @@
   <section class="contact" id="contact">
     <div class="contact-content fade-in">
       <h2>Ready to Build Something?</h2>
-      <p>Whether you need a data pipeline, an AI solution, or a complete backend system—let's talk.</p>
+      <p>Whether you need a data pipeline, an AI solution, or a complete backend system&mdash;let's talk.</p>
       <div class="contact-details">
         <div class="contact-item">
-          <span class="icon">📍</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
           <span>Kakanj, Bosnia and Herzegovina</span>
         </div>
         <div class="contact-item">
-          <span class="icon">📞</span>
-          <a href="tel:+38762205130">+387 62 205 130</a>
-        </div>
-        <div class="contact-item">
-          <span class="icon">📧</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
           <a href="mailto:amar.begovac@gmail.com">amar.begovac@gmail.com</a>
         </div>
       </div>
@@ -1035,78 +745,94 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-content">
-      <p>© 2026 Mulberry Systems MBS. All rights reserved.</p>
-      <svg class="footer-logo" viewBox="0 0 264 213" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" fill="#A3E376"/>
-        <path d="M55.7677 24.1096C100.554 9.65158 138.074 53.5974 122.479 58.3174C97.932 65.2051 67.7769 38.3821 55.7677 24.1096Z" fill="#6EB94D"/>
-        <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" stroke="#2E0036" stroke-width="9"/>
-        <path d="M99.5 36.9807C122.24 48.9807 125.496 53.314 124.281 53.9807" stroke="#2E0036" stroke-width="9" stroke-linecap="round"/>
-        <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" fill="#A3E376"/>
-        <path d="M205.461 26.1096C160.675 11.6516 123.155 55.5974 138.75 60.3174C163.296 67.2051 193.452 40.3821 205.461 26.1096Z" fill="#6EB94D"/>
-        <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" stroke="#2E0036" stroke-width="9"/>
-        <path d="M161.728 38.9807C138.988 50.9807 135.733 55.314 136.947 55.9807" stroke="#2E0036" stroke-width="9" stroke-linecap="round"/>
-        <rect x="120.5" y="118.981" width="23" height="18" fill="#2E0036"/>
-        <path d="M72.5 131.57C83.5457 131.57 92.5 123.534 92.5 113.622C92.5 103.709 83.5457 95.673 72.5 95.673C61.4543 95.673 52.5 103.709 52.5 113.622C52.5 123.534 61.4543 131.57 72.5 131.57Z" fill="#711C69"/>
-        <path d="M74.0628 121.576C84.9407 119.855 92.6706 112.919 91.3279 106.086C89.9853 99.2524 80.0786 95.1081 69.2007 96.8294C58.3228 98.5508 50.593 105.486 51.9356 112.319C53.2783 119.153 63.1849 123.297 74.0628 121.576Z" fill="#932E81"/>
-        <path d="M65.5 109.135C68.2614 109.135 70.5 107.126 70.5 104.647C70.5 102.169 68.2614 100.16 65.5 100.16C62.7386 100.16 60.5 102.169 60.5 104.647C60.5 107.126 62.7386 109.135 65.5 109.135Z" fill="#E3CEE0"/>
-        <path d="M72.5 134.263C85.2025 134.263 95.5 125.021 95.5 113.622C95.5 102.222 85.2025 92.9807 72.5 92.9807C59.7975 92.9807 49.5 102.222 49.5 113.622C49.5 125.021 59.7975 134.263 72.5 134.263Z" stroke="#2E0036" stroke-width="9"/>
-        <path d="M192.5 131.57C203.546 131.57 212.5 123.534 212.5 113.622C212.5 103.709 203.546 95.673 192.5 95.673C181.454 95.673 172.5 103.709 172.5 113.622C172.5 123.534 181.454 131.57 192.5 131.57Z" fill="#711C69"/>
-        <path d="M219.5 34.9807C231.5 34.9807 239.5 43.2187 239.5 55.5759V100.885C239.5 113.243 247.5 121.481 259.5 121.481C247.5 121.481 239.5 129.719 239.5 142.076V187.385C239.5 199.743 231.5 207.981 219.5 207.981" stroke="#2D2D3A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M44.5 34.9807C32.5 34.9807 24.5 43.2187 24.5 55.5759V100.885C24.5 113.243 16.5 121.481 4.5 121.481C16.5 121.481 24.5 129.719 24.5 142.076V187.385C24.5 199.743 32.5 207.981 44.5 207.981" stroke="#2D2D3A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M131.5 189.57C142.546 189.57 151.5 181.534 151.5 171.622C151.5 161.709 142.546 153.673 131.5 153.673C120.454 153.673 111.5 161.709 111.5 171.622C111.5 181.534 120.454 189.57 131.5 189.57Z" fill="#711C69"/>
-        <path d="M131.5 92.5704C142.546 92.5704 151.5 84.5345 151.5 74.6217C151.5 64.7089 142.546 56.673 131.5 56.673C120.454 56.673 111.5 64.7089 111.5 74.6217C111.5 84.5345 120.454 92.5704 131.5 92.5704Z" fill="#711C69"/>
-      </svg>
+    <div class="footer-grid">
+      <div class="footer-column footer-brand">
+        <svg class="footer-logo" viewBox="0 0 264 213" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" fill="#c1ff00"/>
+          <path d="M55.7677 24.1096C100.554 9.65158 138.074 53.5974 122.479 58.3174C97.932 65.2051 67.7769 38.3821 55.7677 24.1096Z" fill="#85b000"/>
+          <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M99.5 36.9807C122.24 48.9807 125.496 53.314 124.281 53.9807" stroke="#0a0a0f" stroke-width="9" stroke-linecap="round"/>
+          <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" fill="#c1ff00"/>
+          <path d="M205.461 26.1096C160.675 11.6516 123.155 55.5974 138.75 60.3174C163.296 67.2051 193.452 40.3821 205.461 26.1096Z" fill="#85b000"/>
+          <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M161.728 38.9807C138.988 50.9807 135.733 55.314 136.947 55.9807" stroke="#0a0a0f" stroke-width="9" stroke-linecap="round"/>
+          <rect x="120.5" y="118.981" width="23" height="18" fill="#0a0a0f"/>
+          <path d="M72.5 131.57C83.5457 131.57 92.5 123.534 92.5 113.622C92.5 103.709 83.5457 95.673 72.5 95.673C61.4543 95.673 52.5 103.709 52.5 113.622C52.5 123.534 61.4543 131.57 72.5 131.57Z" fill="#7100a5"/>
+          <path d="M74.0628 121.576C84.9407 119.855 92.6706 112.919 91.3279 106.086C89.9853 99.2524 80.0786 95.1081 69.2007 96.8294C58.3228 98.5508 50.593 105.486 51.9356 112.319C53.2783 119.153 63.1849 123.297 74.0628 121.576Z" fill="#ae00ff"/>
+          <path d="M65.5 109.135C68.2614 109.135 70.5 107.126 70.5 104.647C70.5 102.169 68.2614 100.16 65.5 100.16C62.7386 100.16 60.5 102.169 60.5 104.647C60.5 107.126 62.7386 109.135 65.5 109.135Z" fill="#E3CEE0"/>
+          <path d="M72.5 134.263C85.2025 134.263 95.5 125.021 95.5 113.622C95.5 102.222 85.2025 92.9807 72.5 92.9807C59.7975 92.9807 49.5 102.222 49.5 113.622C49.5 125.021 59.7975 134.263 72.5 134.263Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M192.5 131.57C203.546 131.57 212.5 123.534 212.5 113.622C212.5 103.709 203.546 95.673 192.5 95.673C181.454 95.673 172.5 103.709 172.5 113.622C172.5 123.534 181.454 131.57 192.5 131.57Z" fill="#7100a5"/>
+          <path d="M194.063 121.576C204.941 119.855 212.671 112.919 211.328 106.086C209.985 99.2524 200.079 95.1081 189.201 96.8294C178.323 98.5508 170.593 105.486 171.936 112.319C173.278 119.153 183.185 123.297 194.063 121.576Z" fill="#ae00ff"/>
+          <path d="M185.5 109.135C188.261 109.135 190.5 107.126 190.5 104.647C190.5 102.169 188.261 100.16 185.5 100.16C182.739 100.16 180.5 102.169 180.5 104.647C180.5 107.126 182.739 109.135 185.5 109.135Z" fill="#E3CEE0"/>
+          <path d="M192.5 134.263C205.203 134.263 215.5 125.021 215.5 113.622C215.5 102.222 205.203 92.9807 192.5 92.9807C179.797 92.9807 169.5 102.222 169.5 113.622C169.5 125.021 179.797 134.263 192.5 134.263Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M170.5 93.5704C181.546 93.5704 190.5 85.5345 190.5 75.6217C190.5 65.7089 181.546 57.673 170.5 57.673C159.454 57.673 150.5 65.7089 150.5 75.6217C150.5 85.5345 159.454 93.5704 170.5 93.5704Z" fill="#7100a5"/>
+          <path d="M172.063 83.5759C182.941 81.8545 190.671 74.9194 189.328 68.0859C187.985 61.2524 178.079 57.1081 167.201 58.8294C156.323 60.5508 148.593 67.4859 149.936 74.3194C151.278 81.153 161.185 85.2972 172.063 83.5759Z" fill="#ae00ff"/>
+          <path d="M163.5 71.1345C166.261 71.1345 168.5 69.1255 168.5 66.6473C168.5 64.1691 166.261 62.1602 163.5 62.1602C160.739 62.1602 158.5 64.1691 158.5 66.6473C158.5 69.1255 160.739 71.1345 163.5 71.1345Z" fill="#E3CEE0"/>
+          <path d="M170.5 96.2627C183.203 96.2627 193.5 87.0214 193.5 75.6217C193.5 64.222 183.203 54.9807 170.5 54.9807C157.797 54.9807 147.5 64.222 147.5 75.6217C147.5 87.0214 157.797 96.2627 170.5 96.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M96.5 93.5704C107.546 93.5704 116.5 85.5345 116.5 75.6217C116.5 65.7089 107.546 57.673 96.5 57.673C85.4543 57.673 76.5 65.7089 76.5 75.6217C76.5 85.5345 85.4543 93.5704 96.5 93.5704Z" fill="#7100a5"/>
+          <path d="M98.0628 83.5759C108.941 81.8545 116.671 74.9194 115.328 68.0859C113.985 61.2524 104.079 57.1081 93.2007 58.8294C82.3228 60.5508 74.593 67.4859 75.9356 74.3194C77.2783 81.153 87.1849 85.2972 98.0628 83.5759Z" fill="#ae00ff"/>
+          <path d="M89.5 71.1345C92.2614 71.1345 94.5 69.1255 94.5 66.6473C94.5 64.1691 92.2614 62.1602 89.5 62.1602C86.7386 62.1602 84.5 64.1691 84.5 66.6473C84.5 69.1255 86.7386 71.1345 89.5 71.1345Z" fill="#E3CEE0"/>
+          <path d="M96.5 96.2627C109.203 96.2627 119.5 87.0214 119.5 75.6217C119.5 64.222 109.203 54.9807 96.5 54.9807C83.7975 54.9807 73.5 64.222 73.5 75.6217C73.5 87.0214 83.7975 96.2627 96.5 96.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M219.5 34.9807C231.5 34.9807 239.5 43.2187 239.5 55.5759V100.885C239.5 113.243 247.5 121.481 259.5 121.481C247.5 121.481 239.5 129.719 239.5 142.076V187.385C239.5 199.743 231.5 207.981 219.5 207.981" stroke="#1a1a22" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M44.5 34.9807C32.5 34.9807 24.5 43.2187 24.5 55.5759V100.885C24.5 113.243 16.5 121.481 4.5 121.481C16.5 121.481 24.5 129.719 24.5 142.076V187.385C24.5 199.743 32.5 207.981 44.5 207.981" stroke="#1a1a22" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M131.5 189.57C142.546 189.57 151.5 181.534 151.5 171.622C151.5 161.709 142.546 153.673 131.5 153.673C120.454 153.673 111.5 161.709 111.5 171.622C111.5 181.534 120.454 189.57 131.5 189.57Z" fill="#7100a5"/>
+          <path d="M124.5 167.135C127.261 167.135 129.5 165.126 129.5 162.647C129.5 160.169 127.261 158.16 124.5 158.16C121.739 158.16 119.5 160.169 119.5 162.647C119.5 165.126 121.739 167.135 124.5 167.135Z" fill="#E3CEE0"/>
+          <path d="M131.5 192.263C144.203 192.263 154.5 183.021 154.5 171.622C154.5 160.222 144.203 150.981 131.5 150.981C118.797 150.981 108.5 160.222 108.5 171.622C108.5 183.021 118.797 192.263 131.5 192.263Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M106.5 161.176C118.026 161.176 127.37 152.806 127.37 142.481C127.37 132.155 118.026 123.785 106.5 123.785C94.9741 123.785 85.6304 132.155 85.6304 142.481C85.6304 152.806 94.9741 161.176 106.5 161.176Z" fill="#7100a5"/>
+          <path d="M99.1957 137.807C102.077 137.807 104.413 135.714 104.413 133.133C104.413 130.552 102.077 128.459 99.1957 128.459C96.3142 128.459 93.9783 130.552 93.9783 133.133C93.9783 135.714 96.3142 137.807 99.1957 137.807Z" fill="#E3CEE0"/>
+          <path d="M106.5 163.981C119.755 163.981 130.5 154.355 130.5 142.481C130.5 130.607 119.755 120.981 106.5 120.981C93.2452 120.981 82.5 130.607 82.5 142.481C82.5 154.355 93.2452 163.981 106.5 163.981Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M156.5 161.176C168.026 161.176 177.37 152.806 177.37 142.481C177.37 132.155 168.026 123.785 156.5 123.785C144.974 123.785 135.63 132.155 135.63 142.481C135.63 152.806 144.974 161.176 156.5 161.176Z" fill="#7100a5"/>
+          <path d="M149.196 137.807C152.077 137.807 154.413 135.714 154.413 133.133C154.413 130.552 152.077 128.459 149.196 128.459C146.314 128.459 143.978 130.552 143.978 133.133C143.978 135.714 146.314 137.807 149.196 137.807Z" fill="#E3CEE0"/>
+          <path d="M156.5 163.981C169.755 163.981 180.5 154.355 180.5 142.481C180.5 130.607 169.755 120.981 156.5 120.981C143.245 120.981 132.5 130.607 132.5 142.481C132.5 154.355 143.245 163.981 156.5 163.981Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M108.5 127.57C119.546 127.57 128.5 119.534 128.5 109.622C128.5 99.7089 119.546 91.673 108.5 91.673C97.4543 91.673 88.5 99.7089 88.5 109.622C88.5 119.534 97.4543 127.57 108.5 127.57Z" fill="#7100a5"/>
+          <path d="M110.063 117.576C120.941 115.855 128.671 108.919 127.328 102.086C125.985 95.2524 116.079 91.1081 105.201 92.8294C94.3228 94.5508 86.593 101.486 87.9356 108.319C89.2783 115.153 99.1849 119.297 110.063 117.576Z" fill="#ae00ff"/>
+          <path d="M101.5 105.135C104.261 105.135 106.5 103.126 106.5 100.647C106.5 98.1691 104.261 96.1602 101.5 96.1602C98.7386 96.1602 96.5 98.1691 96.5 100.647C96.5 103.126 98.7386 105.135 101.5 105.135Z" fill="#E3CEE0"/>
+          <path d="M108.5 130.263C121.203 130.263 131.5 121.021 131.5 109.622C131.5 98.222 121.203 88.9807 108.5 88.9807C95.7975 88.9807 85.5 98.222 85.5 109.622C85.5 121.021 95.7975 130.263 108.5 130.263Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M154.5 127.57C165.546 127.57 174.5 119.534 174.5 109.622C174.5 99.7089 165.546 91.673 154.5 91.673C143.454 91.673 134.5 99.7089 134.5 109.622C134.5 119.534 143.454 127.57 154.5 127.57Z" fill="#7100a5"/>
+          <path d="M156.063 117.576C166.941 115.855 174.671 108.919 173.328 102.086C171.985 95.2524 162.079 91.1081 151.201 92.8294C140.323 94.5508 132.593 101.486 133.936 108.319C135.278 115.153 145.185 119.297 156.063 117.576Z" fill="#ae00ff"/>
+          <path d="M147.5 105.135C150.261 105.135 152.5 103.126 152.5 100.647C152.5 98.1691 150.261 96.1602 147.5 96.1602C144.739 96.1602 142.5 98.1691 142.5 100.647C142.5 103.126 144.739 105.135 147.5 105.135Z" fill="#E3CEE0"/>
+          <path d="M154.5 130.263C167.203 130.263 177.5 121.021 177.5 109.622C177.5 98.222 167.203 88.9807 154.5 88.9807C141.797 88.9807 131.5 98.222 131.5 109.622C131.5 121.021 141.797 130.263 154.5 130.263Z" stroke="#0a0a0f" stroke-width="9"/>
+          <path d="M131.5 92.5704C142.546 92.5704 151.5 84.5345 151.5 74.6217C151.5 64.7089 142.546 56.673 131.5 56.673C120.454 56.673 111.5 64.7089 111.5 74.6217C111.5 84.5345 120.454 92.5704 131.5 92.5704Z" fill="#7100a5"/>
+          <path d="M133.063 82.5759C143.941 80.8545 151.671 73.9194 150.328 67.0859C148.985 60.2524 139.079 56.1081 128.201 57.8294C117.323 59.5508 109.593 66.4859 110.936 73.3194C112.278 80.153 122.185 84.2972 133.063 82.5759Z" fill="#ae00ff"/>
+          <path d="M124.5 70.1345C127.261 70.1345 129.5 68.1255 129.5 65.6473C129.5 63.1691 127.261 61.1602 124.5 61.1602C121.739 61.1602 119.5 63.1691 119.5 65.6473C119.5 68.1255 121.739 70.1345 124.5 70.1345Z" fill="#E3CEE0"/>
+          <path d="M131.5 95.2627C144.203 95.2627 154.5 86.0214 154.5 74.6217C154.5 63.222 144.203 53.9807 131.5 53.9807C118.797 53.9807 108.5 63.222 108.5 74.6217C108.5 86.0214 118.797 95.2627 131.5 95.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+        </svg>
+        <p class="footer-tagline">AI-native engineering for global companies</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/company/mulberry-systems" class="social-link" aria-label="LinkedIn">in</a>
+          <a href="https://github.com/mulberrysystems" class="social-link" aria-label="GitHub">gh</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#expertise">Expertise</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#tech">Tech Stack</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <ul class="footer-links">
+          <li>Kakanj, Bosnia and Herzegovina</li>
+          <li><a href="mailto:amar.begovac@gmail.com">amar.begovac@gmail.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal</h3>
+        <ul class="footer-links">
+          <li><a href="#privacy">Privacy Policy</a></li>
+          <li><a href="#terms">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Mulberry Systems MBS. All rights reserved.</p>
+      <p>Made with care in Bosnia and Herzegovina</p>
     </div>
   </footer>
 
-  <script>
-    // Navbar scroll effect
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-
-    // Scroll animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
-    });
-
-    // Smooth scroll for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-    // Staggered animation for cards
-    document.querySelectorAll('.expertise-card, .industry-card, .why-card').forEach((card, index) => {
-      card.style.transitionDelay = `${index * 0.1}s`;
-    });
-  </script>
+  <script src="./public/js/main.js"></script>
 </body>
 </html>
