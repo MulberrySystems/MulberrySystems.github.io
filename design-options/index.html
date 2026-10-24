@@ -1,0 +1,230 @@
+<title>Mulberry Redesign Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: a slim control bar over a full-height live preview; notes fold out below the bar. */
+:root {
+  --bg: #f6f3f8;
+  --surface: #ffffff;
+  --fg: #22172b;
+  --muted: #6c6176;
+  --line: #e2dbe8;
+  --accent: #7a1fa8;
+  --accent-ink: #ffffff;
+  --leaf: #5f7d00;
+  --stage: #ebe6ef;
+  --sans: 'Figtree', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #150e1a; --surface: #1f1626; --fg: #f1eaf5; --muted: #a99db3;
+    --line: #34283d; --accent: #c77dff; --accent-ink: #1a0f20; --leaf: #b5e033; --stage: #0f0a13;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #150e1a; --surface: #1f1626; --fg: #f1eaf5; --muted: #a99db3;
+  --line: #34283d; --accent: #c77dff; --accent-ink: #1a0f20; --leaf: #b5e033; --stage: #0f0a13;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.5 var(--sans);
+  display: flex; flex-direction: column;
+}
+.bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;
+  padding: 12px 16px; background: var(--surface); color: var(--fg); border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; flex-direction: column; min-width: 0; }
+.brand b { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+.brand span { font: 11px/1.3 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; flex: 1 1 auto; }
+.tab {
+  font: 600 14px/1 var(--sans); color: var(--fg); background: transparent;
+  border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.tab kbd { font: 11px var(--mono); color: var(--muted); }
+.group { font: 11px/1 var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); align-self: center; padding-inline: 6px 2px; }
+.group:not(:first-child) { margin-left: 10px; border-left: 1px solid var(--line); padding-left: 14px; }
+.tab:hover { border-color: var(--accent); }
+.tab[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.tab[aria-selected="true"] kbd { color: inherit; }
+.tools { display: flex; gap: 6px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg button, .notes-btn {
+  font: 500 13px/1 var(--sans); color: var(--muted); background: transparent; border: 0;
+  padding: 8px 11px; cursor: pointer;
+}
+.seg button[aria-pressed="true"] { background: var(--stage); color: var(--fg); }
+.notes-btn { border: 1px solid var(--line); border-radius: 8px; }
+.notes-btn[aria-expanded="true"] { color: var(--fg); border-color: var(--fg); }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.notes { background: var(--surface); color: var(--fg); border-bottom: 1px solid var(--line); padding: 4px 16px 20px; }
+.notes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; max-width: 1200px; }
+.notes h2 { font-size: 13px; font-family: var(--mono); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 16px 0 8px; }
+.notes ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.notes li { max-width: 62ch; }
+.pitch { margin: 0; max-width: 62ch; }
+.pitch strong { color: var(--accent); }
+
+.stage { flex: 1 1 auto; min-height: 0; background: var(--stage); display: flex; justify-content: center; padding: 0; }
+.frame-wrap { width: 100%; height: 100%; transition: width .25s ease; }
+.stage.mobile { padding-block: 16px; }
+.stage.mobile .frame-wrap { width: min(400px, 100%); border-radius: 18px; overflow: hidden; box-shadow: 0 0 0 1px var(--line), 0 20px 50px rgba(0,0,0,.18); }
+iframe { display: block; width: 100%; height: 100%; border: 0; background: #fff; }
+.foot { font: 12px var(--mono); color: var(--muted); padding: 8px 16px; background: var(--surface); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: space-between; }
+.foot a { color: var(--accent); }
+@media (max-width: 640px) { .tab kbd, .seg, .group { display: none; } }
+@media (prefers-reduced-motion: reduce) { .frame-wrap { transition: none; } }
+</style>
+
+<header class="bar">
+  <div class="brand"><b>Mulberry Systems</b><span>Redesign options</span></div>
+  <div class="tabs" role="tablist" aria-label="Design options" id="tabs"></div>
+  <div class="tools">
+    <div class="seg" role="group" aria-label="Preview width">
+      <button id="w-desk" aria-pressed="true">Desktop</button>
+      <button id="w-mob" aria-pressed="false">Phone</button>
+    </div>
+    <button class="notes-btn" id="notes-btn" aria-expanded="false" aria-controls="notes">Notes</button>
+  </div>
+</header>
+
+<section class="notes" id="notes" hidden>
+  <div class="notes-grid">
+    <div>
+      <h2>This option</h2>
+      <p class="pitch" id="pitch"></p>
+    </div>
+    <div>
+      <h2>What holds the current page back</h2>
+      <ul>
+        <li>It reads like a generic agency template: “We Build Intelligent Systems”, centred two-tone headings, and every block in the same rounded card with the same purple shadow.</li>
+        <li>The best story is buried. The AI minefield documentation project is unique and sits fourth of four.</li>
+        <li>Four sections say the same thing (Expertise, Industries, Tech Stack, Why Us), and the services are hidden inside accordions.</li>
+        <li>The vanity metrics bar (20+, 5+, 10+, 3+) is weaker than the real numbers in the case studies.</li>
+        <li>Nunito’s rounded letterforms feel soft for a backend and AI engineering studio.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Round 2: why not purple</h2>
+      <ul>
+        <li>Purple is the default “AI startup” colour, so it blends in. Its complements (greens, chartreuse, gold) are rarer in the space and suit the mulberry tree’s leaves.</li>
+        <li>The logo keeps its purple berries. Against a green or gold site they become the one spot of contrast, which makes the mark stand out more.</li>
+        <li>All round-2 options keep Orchard’s layout and type and add the new AI agents section.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>What every option changes</h2>
+      <ul>
+        <li>Leads with the humanitarian AI project as the featured case.</li>
+        <li>One tighter flow: Featured case, Services, Selected work, Stack, How we work, Contact.</li>
+        <li>All services are visible at once. The Industries section and metrics bar are gone.</li>
+        <li>Same real copy and figures. No new claims.</li>
+        <li>Also worth doing whichever you pick: a domain email (hello@mulberry-systems.com) instead of Gmail.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<main class="stage" id="stage">
+  <div class="frame-wrap"><iframe id="frame" title="Design option preview"></iframe></div>
+</main>
+
+<footer class="foot">
+  <span id="status"></span>
+  <span>Use ← → or number keys to switch · <a id="open" href="#" target="_blank" rel="noopener">Open this option alone</a></span>
+</footer>
+
+<script>
+const OPTIONS = [
+  { id: 'pollen-light', name: 'Pollen Light', round: 3, file: 'option-9-pollen.html#light',
+    pitch: '<strong>Your pick, light theme.</strong> Cream, butter and pale-saffron sections, each within 10% lightness of its neighbour, so the page flows instead of jumping between bands. Full saffron is kept for buttons, highlights and the agents flow.' },
+  { id: 'pollen-dark', name: 'Pollen Dark', round: 3, file: 'option-9-pollen.html#dark',
+    pitch: '<strong>Your pick, dark theme.</strong> Olive-black sections stepped within 10% lightness, with Pollen’s cream for text and saffron and leaf green as accents. It is the same page with a theme toggle in the nav.' },
+  { id: 'grove', name: 'Grove', round: 2, file: 'option-5-grove.html',
+    pitch: '<strong>Orchard without the purple.</strong> Deep forest-green bands with a chartreuse accent on a warm off-white ground. Rich, natural and grown-up. Purple stays only in the logo.' },
+  { id: 'pollen', name: 'Pollen', round: 2, file: 'option-6-pollen.html',
+    pitch: '<strong>Yellow, the true complement of violet.</strong> A golden hero, olive-black ink and butter-cream sections. Sunny and bold, and clearly not another tech-purple site.' },
+  { id: 'sage', name: 'Sage', round: 2, file: 'option-7-sage.html',
+    pitch: '<strong>Calm and premium.</strong> Pale sage and mint grounds, moss-charcoal ink and one or two dark bands. Green accents used sparingly, with more whitespace.' },
+  { id: 'chartreuse', name: 'Chartreuse', round: 2, file: 'option-8-chartreuse.html',
+    pitch: '<strong>The loudest one.</strong> A bright chartreuse hero, near-black green ink, crisp white sections and a single small purple berry as a complementary pop.' },
+  { id: 'orchard', name: 'Orchard', round: 1, file: 'option-1-orchard.html',
+    pitch: '<strong>Round 1 reference.</strong> The purple version you liked, kept here so you can compare. It does not have the new AI agents section.' },
+  { id: 'dossier', name: 'Dossier', round: 1, file: 'option-2-dossier.html',
+    pitch: '<strong>Round 1.</strong> Projects as case files on graph paper.' },
+  { id: 'console', name: 'Console', round: 1, file: 'option-3-console.html',
+    pitch: '<strong>Round 1.</strong> Dark, with an API request and response in the hero.' },
+  { id: 'silk', name: 'Silk', round: 1, file: 'option-4-silk.html',
+    pitch: '<strong>Round 1.</strong> Editorial, with woven threads.' }
+];
+const $ = (id) => document.getElementById(id);
+const tabs = $('tabs'), frame = $('frame'), stage = $('stage');
+let current = 0;
+
+function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+OPTIONS.forEach((o, i) => {
+  if (i === 0 || OPTIONS[i - 1].round !== o.round) {
+    const g = document.createElement('span');
+    g.className = 'group'; g.textContent = 'Round ' + o.round;
+    tabs.appendChild(g);
+  }
+  const b = document.createElement('button');
+  b.className = 'tab'; b.role = 'tab'; b.id = 'tab-' + o.id;
+  b.innerHTML = `<kbd>${i + 1}</kbd>${o.name}`;
+  b.addEventListener('click', () => select(i));
+  tabs.appendChild(b);
+});
+
+function select(i) {
+  current = (i + OPTIONS.length) % OPTIONS.length;
+  const o = OPTIONS[current];
+  [...tabs.querySelectorAll('.tab')].forEach((t, j) => {
+    t.setAttribute('aria-selected', j === current);
+    t.tabIndex = j === current ? 0 : -1;
+  });
+  frame.src = o.file;
+  $('pitch').innerHTML = o.pitch;
+  $('open').href = o.file;
+  $('open').textContent = 'Open this option alone';
+  $('status').textContent = `Option ${current + 1} of ${OPTIONS.length} · ${o.name}`;
+  store('mbs-option', o.id);
+  if (location.hash.slice(1) !== o.id) history.replaceState(null, '', '#' + o.id);
+}
+
+function setWidth(mobile) {
+  stage.classList.toggle('mobile', mobile);
+  $('w-desk').setAttribute('aria-pressed', !mobile);
+  $('w-mob').setAttribute('aria-pressed', mobile);
+  store('mbs-width', mobile ? 'mobile' : 'desktop');
+}
+$('w-desk').addEventListener('click', () => setWidth(false));
+$('w-mob').addEventListener('click', () => setWidth(true));
+
+$('notes-btn').addEventListener('click', (e) => {
+  const open = $('notes').hidden;
+  $('notes').hidden = !open;
+  e.currentTarget.setAttribute('aria-expanded', open);
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.key === 'ArrowRight') select(current + 1);
+  else if (e.key === 'ArrowLeft') select(current - 1);
+  else if (/^[1-9]$/.test(e.key) && +e.key <= OPTIONS.length) select(+e.key - 1);
+});
+
+const fromHash = OPTIONS.findIndex(o => o.id === location.hash.slice(1));
+const fromStore = OPTIONS.findIndex(o => o.id === load('mbs-option'));
+setWidth(load('mbs-width') === 'mobile');
+select(fromHash >= 0 ? fromHash : fromStore >= 0 ? fromStore : 0);
+</script>

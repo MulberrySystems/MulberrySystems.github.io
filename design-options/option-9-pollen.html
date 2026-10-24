@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mulberry Systems — Pollen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: pale-saffron hero, then soft cream/butter bands; left-aligned editorial columns.
+   Section ramp, OKLCH L (adjacent pairs differ by <= 10 points in both themes):
+   order      light            dark
+   nav        #fffaeb  98.5    #040501  11.0
+   hero       #fbe39c  91.9    #161904  20.4
+   agents     #fcf0cc  95.5    #0d1103  16.8
+   featured   #fffaeb  98.5    #080b02  14.2
+   services   #f6e8bb  93.1    #131806  19.8
+   work       #fffaeb  98.5    #080b02  14.2
+   stack      #fcf0cc  95.5    #0d1103  16.8
+   how        #f6e8bb  93.1    #131806  19.8
+   contact    #fffaeb  98.5    #080b02  14.2
+   footer     #f3e3ae  91.6    #040501  11.0 */
+:root {
+  /* section grounds */
+  --bg-nav: rgba(255, 250, 235, 0.94);
+  --bg-hero: #fbe39c;
+  --bg-1: #fffaeb;
+  --bg-2: #fcf0cc;
+  --bg-3: #f6e8bb;
+  --bg-footer: #f3e3ae;
+  --hero-blob: #f8d878;
+  /* surfaces */
+  --surface: #fffdf5;
+  --chip: #f4e6b6;
+  /* text */
+  --fg: #1d2210;
+  --fg-soft: #57583f;
+  --label: #4a5410;
+  --label-2: #4d6400;
+  --icon: #4d6400;
+  /* accents */
+  --accent: #f2c230;
+  --accent-hi: #ffd54f;
+  --accent-ink: #1d2210;
+  --leaf: #7a9a00;
+  --berry: #7d2a8f;
+  --solid-bg: #1d2210;
+  --solid-bg-hi: #2c3318;
+  --solid-fg: #fbf5e1;
+  --em-fg: #1d2210;
+  --em-mark: #f2c230;
+  /* lines */
+  --line: rgba(29, 34, 16, 0.14);
+  --line-strong: rgba(29, 34, 16, 0.34);
+  --focus: #1d2210;
+  /* logo badge stays light in both themes so the black-stroked mark reads */
+  --badge: #fbf5e1;
+  --disc-a: #fffcf2;
+  --disc-b: #fbf0cf;
+  --disc-c: #f3e1a6;
+  --disc-ring: rgba(29, 34, 16, 0.08);
+
+  --display: 'Bricolage Grotesque', 'Avenir Next', 'Segoe UI', sans-serif;
+  --body: 'Figtree', 'Helvetica Neue', Arial, sans-serif;
+  --wrap: 1180px;
+  --gutter: clamp(16px, 4vw, 48px);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-nav: rgba(4, 5, 1, 0.95);
+    --bg-hero: #161904;
+    --bg-1: #080b02;
+    --bg-2: #0d1103;
+    --bg-3: #131806;
+    --bg-footer: #040501;
+    --hero-blob: #1d2106;
+    --surface: #1c2209;
+    --chip: #252c0f;
+    --fg: #fbf5e1;
+    --fg-soft: #cfcdb0;
+    --label: #f2c230;
+    --label-2: #b9d65a;
+    --icon: #f2c230;
+    --accent: #f2c230;
+    --accent-hi: #ffd54f;
+    --accent-ink: #1d2210;
+    --leaf: #9fbf1f;
+    --berry: #b65cc8;
+    --solid-bg: #fbf5e1;
+    --solid-bg-hi: #ffffff;
+    --solid-fg: #1d2210;
+    --em-fg: #f2c230;
+    --em-mark: #302f04;
+    --line: rgba(251, 245, 225, 0.14);
+    --line-strong: rgba(251, 245, 225, 0.34);
+    --focus: #f2c230;
+    --disc-ring: rgba(251, 245, 225, 0.1);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg-nav: rgba(4, 5, 1, 0.95);
+  --bg-hero: #161904;
+  --bg-1: #080b02;
+  --bg-2: #0d1103;
+  --bg-3: #131806;
+  --bg-footer: #040501;
+  --hero-blob: #1d2106;
+  --surface: #1c2209;
+  --chip: #252c0f;
+  --fg: #fbf5e1;
+  --fg-soft: #cfcdb0;
+  --label: #f2c230;
+  --label-2: #b9d65a;
+  --icon: #f2c230;
+  --accent: #f2c230;
+  --accent-hi: #ffd54f;
+  --accent-ink: #1d2210;
+  --leaf: #9fbf1f;
+  --berry: #b65cc8;
+  --solid-bg: #fbf5e1;
+  --solid-bg-hi: #ffffff;
+  --solid-fg: #1d2210;
+  --em-fg: #f2c230;
+  --em-mark: #302f04;
+  --line: rgba(251, 245, 225, 0.14);
+  --line-strong: rgba(251, 245, 225, 0.34);
+  --focus: #f2c230;
+  --disc-ring: rgba(251, 245, 225, 0.1);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  background: var(--bg-1);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: var(--gutter); }
+h1, h2, h3 { font-family: var(--display); font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; text-wrap: balance; color: var(--fg); }
+h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+h3 { font-size: 1.45rem; letter-spacing: -0.02em; line-height: 1.15; }
+.eyebrow {
+  font-family: var(--body); font-weight: 700; font-size: 0.78rem;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--label);
+  display: inline-flex; align-items: center; gap: 0.6rem;
+}
+.eyebrow::before { content: ""; width: 14px; height: 9px; background: var(--leaf); border-radius: 0 100% 0 100%; }
+section { padding-block: clamp(4rem, 9vw, 7.5rem); }
+
+/* Nav */
+nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: var(--bg-nav); backdrop-filter: blur(10px);
+  color: var(--fg); border-bottom: 1px solid var(--line);
+}
+nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; padding-block: 0.8rem; }
+.brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; min-width: 0; }
+.brand-mark { background: var(--badge); border: 1px solid var(--line); border-radius: 50%; padding: 4px; width: 44px; height: 44px; display: grid; place-items: center; flex: none; }
+.brand-mark svg { width: 36px; height: 30px; }
+nav ul { list-style: none; display: flex; gap: 1.6rem; align-items: center; }
+nav ul a { text-decoration: none; font-weight: 600; font-size: 0.95rem; color: var(--fg-soft); }
+nav ul a:hover { color: var(--fg); }
+.theme-toggle {
+  width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--line-strong);
+  background: transparent; color: var(--fg); cursor: pointer; display: grid; place-items: center; flex: none;
+}
+.theme-toggle:hover { border-color: var(--fg); }
+.theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle .moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .sun-i { display: none; }
+:root[data-theme="dark"] .theme-toggle .moon { display: block; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--body); font-weight: 700; font-size: 1rem; text-decoration: none;
+  padding: 0.85rem 1.4rem; border-radius: 999px; transition: transform .2s ease, background .2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-sun { background: var(--accent); color: var(--accent-ink); }
+nav ul a.btn-sun, nav ul a.btn-sun:hover { color: var(--accent-ink); }
+.btn-sun:hover { background: var(--accent-hi); }
+.btn-ghost { border: 1.5px solid var(--line-strong); color: var(--fg); }
+.btn-ghost:hover { border-color: var(--fg); }
+.btn-solid { background: var(--solid-bg); color: var(--solid-fg); }
+.btn-solid:hover { background: var(--solid-bg-hi); }
+nav .btn { padding: 0.55rem 1.1rem; font-size: 0.9rem; white-space: nowrap; }
+@media (max-width: 760px) { nav ul li:not(.keep) { display: none; } nav ul { gap: 0.6rem; } }
+@media (max-width: 440px) {
+  .brand-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+
+/* Hero */
+.hero { position: relative; overflow: hidden; background: var(--bg-hero); padding-block: clamp(3.5rem, 8vw, 6.5rem) clamp(4rem, 9vw, 7rem); }
+.hero .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; position: relative; z-index: 1; }
+.hero h1 { font-size: clamp(2.9rem, 7.5vw, 6.2rem); }
+.hero h1 em, .contact h2 em { font-style: normal; color: var(--em-fg); background: linear-gradient(transparent 60%, var(--em-mark) 60%, var(--em-mark) 92%, transparent 92%); padding-inline: 0.06em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.hero .lede { font-size: clamp(1.1rem, 1.6vw, 1.3rem); max-width: 34ch; margin-top: 1.6rem; color: var(--fg-soft); }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2.2rem; }
+.hero-meta { margin-top: 2.6rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; font-size: 0.92rem; color: var(--fg-soft); font-weight: 600; }
+.hero-meta span { display: inline-flex; align-items: center; gap: 0.45rem; }
+.hero-meta span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--leaf); }
+.hero-art { position: relative; aspect-ratio: 1; max-width: 100%; }
+.hero-art .disc { position: absolute; inset: 6%; border-radius: 50%; background: radial-gradient(circle at 35% 30%, var(--disc-a) 0%, var(--disc-b) 62%, var(--disc-c) 100%); box-shadow: 0 0 0 10px var(--disc-ring); }
+.hero-art svg.logo { position: absolute; inset: 18% 14%; width: 72%; height: 64%; animation: sway 7s ease-in-out infinite; transform-origin: 50% 25%; }
+.leaf { position: absolute; border-radius: 0 100% 0 100%; }
+.leaf.l1 { width: 26%; height: 15%; background: var(--leaf); top: 2%; right: 4%; transform: rotate(-24deg); }
+.leaf.l2 { width: 18%; height: 10%; background: var(--accent); bottom: 8%; left: 0; transform: rotate(32deg); }
+.leaf.l3 { width: 4.5%; height: 4.5%; border-radius: 50%; background: var(--berry); bottom: 9%; right: 22%; } /* the one berry */
+.berry-bg { position: absolute; border-radius: 50%; background: var(--hero-blob); }
+.berry-bg.b1 { width: 520px; height: 520px; right: -160px; top: -200px; }
+.berry-bg.b2 { width: 260px; height: 260px; left: -90px; bottom: -120px; }
+@keyframes sway { 0%,100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero-art { max-width: 340px; width: 100%; margin-inline: auto; order: -1; }
+}
+
+/* AI agents */
+.agents { position: relative; overflow: hidden; background: var(--bg-2); }
+.flow { list-style: none; position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+.flow::before { content: ""; position: absolute; left: 1rem; right: 1.2rem; top: 50%; height: 2px; transform: translateY(-50%); background: repeating-linear-gradient(90deg, var(--fg-soft) 0 10px, transparent 10px 16px); }
+.flow::after { content: ""; position: absolute; right: 0; top: 50%; transform: translateY(-50%); border: 8px solid transparent; border-left: 12px solid var(--fg-soft); border-right: 0; }
+.flow li { position: relative; z-index: 1; display: flex; }
+.node { display: inline-flex; align-items: center; gap: 0.65rem; padding: 0.6rem 1.3rem 0.6rem 0.6rem; border-radius: 999px; line-height: 1.15; background: var(--accent); color: var(--accent-ink); font-family: var(--display); font-weight: 800; font-size: 1.05rem; letter-spacing: -0.01em; }
+.node .t { display: grid; gap: 0.1rem; }
+.node small { font-family: var(--body); font-weight: 600; font-size: 0.8rem; letter-spacing: 0; }
+.node .n { flex: none; width: 1.9rem; height: 1.9rem; border-radius: 50%; display: grid; place-items: center; background: var(--accent-ink); color: var(--accent); font-family: var(--body); font-size: 0.85rem; font-weight: 700; }
+.flow li:first-child .node { background: var(--bg-2); color: var(--fg); border: 1.5px dashed var(--line-strong); }
+.flow li:first-child .node .n { background: var(--chip); color: var(--fg); }
+.agent-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.agent-card { background: var(--surface); border: 1px solid var(--line); border-radius: 28px 28px 28px 6px; padding: clamp(1.5rem, 3vw, 2.2rem); display: grid; gap: 0.9rem; align-content: start; min-width: 0; }
+.agent-card .kicker { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--label); }
+.agent-card p { color: var(--fg-soft); }
+.agent-card ul { list-style: none; display: grid; gap: 0.5rem; padding-top: 0.9rem; border-top: 1px solid var(--line); }
+.agent-card li { position: relative; padding-left: 1.6rem; color: var(--fg); font-size: 0.97rem; }
+.agent-card li::before { content: ""; position: absolute; left: 0.15rem; top: 0.42em; width: 0.8rem; height: 0.45rem; border-left: 2px solid var(--icon); border-bottom: 2px solid var(--icon); transform: rotate(-45deg); }
+.agents-cta { margin-top: 2.2rem; }
+.agents-cta a { color: var(--fg); font-weight: 700; font-size: 1.1rem; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 3px; text-underline-offset: 5px; }
+.agents-cta a:hover { text-decoration-color: var(--fg); }
+@media (max-width: 960px) { .agent-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) {
+  .flow { grid-template-columns: 1fr; gap: 0.8rem; }
+  .flow::before { left: 1.55rem; right: auto; top: 0.5rem; bottom: 0.5rem; width: 2px; height: auto; transform: none; background: repeating-linear-gradient(180deg, var(--fg-soft) 0 10px, transparent 10px 16px); }
+  .flow::after { display: none; }
+}
+
+/* Featured case */
+.featured { background: var(--bg-1); }
+.featured .wrap { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+.featured h2 { margin-top: 1rem; }
+.featured .intro { margin-top: 1.4rem; font-size: 1.15rem; color: var(--fg-soft); max-width: 46ch; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.6rem; list-style: none; }
+.tags li { font-size: 0.85rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--chip); color: var(--fg); }
+.story { display: grid; gap: 0; border-top: 2px solid var(--fg); }
+.story-row { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.2rem; padding-block: 1.4rem; border-bottom: 1px solid var(--line); }
+.story-row h3 { font-family: var(--body); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--label); padding-top: 0.25rem; }
+.story-row p { color: var(--fg); min-width: 0; }
+.big-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+.big-stat { background: var(--solid-bg); color: var(--solid-fg); padding: 1.4rem 1.2rem; border-radius: 22px 22px 22px 4px; }
+.big-stat:nth-child(2) { background: var(--accent); color: var(--accent-ink); }
+.big-stat:nth-child(3) { background: var(--leaf); color: var(--accent-ink); }
+.big-stat b { display: block; font-family: var(--display); font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.big-stat span { display: block; margin-top: 0.5rem; font-size: 0.9rem; font-weight: 600; }
+@media (max-width: 860px) { .featured .wrap { grid-template-columns: 1fr; } }
+@media (max-width: 520px) {
+  .story-row { grid-template-columns: 1fr; gap: 0.3rem; }
+  .big-stats { grid-template-columns: 1fr; }
+}
+
+/* Services */
+.services { background: var(--bg-3); }
+.section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.section-head p { max-width: 42ch; font-size: 1.1rem; color: var(--fg-soft); }
+@media (max-width: 760px) { .section-head { grid-template-columns: 1fr; } }
+.services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 28px; overflow: hidden; }
+.service { background: var(--surface); padding: clamp(1.6rem, 3vw, 2.4rem); display: grid; gap: 1rem; align-content: start; }
+.service p { color: var(--fg-soft); }
+.service-top { display: flex; align-items: center; gap: 0.9rem; }
+.service-icon { width: 46px; height: 46px; border-radius: 50%; background: var(--chip); display: grid; place-items: center; flex: none; }
+.service-icon svg { width: 22px; height: 22px; stroke: var(--icon); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.service ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.service li { font-size: 0.9rem; padding: 0.3rem 0.75rem; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--fg); }
+@media (max-width: 760px) { .services-grid { grid-template-columns: 1fr; } }
+
+/* Selected work */
+.work { background: var(--bg-1); }
+.projects { display: grid; gap: 1.5rem; }
+.project { background: var(--surface); border-radius: 28px; padding: clamp(1.5rem, 3.5vw, 2.6rem); display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(1.5rem, 4vw, 3rem); border: 1px solid var(--line); }
+.project-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--label-2); }
+.project h3 { margin-top: 0.6rem; font-size: clamp(1.45rem, 2.4vw, 1.9rem); }
+.project .summary { margin-top: 0.8rem; color: var(--fg-soft); }
+.project-body { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem 1.8rem; min-width: 0; }
+.project-body h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--label); margin-bottom: 0.35rem; }
+.project-body p { font-size: 0.98rem; color: var(--fg); }
+.results { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; padding-top: 1.2rem; border-top: 1px dashed var(--line-strong); }
+.results div b { display: inline-block; padding-bottom: 0.2rem; border-bottom: 4px solid var(--accent); margin-bottom: 0.45rem; font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 2.8vw, 2.1rem); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; color: var(--fg); }
+.results div span { display: block; font-size: 0.88rem; color: var(--fg-soft); font-weight: 500; }
+@media (max-width: 900px) { .project { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .project-body { grid-template-columns: 1fr; } .results { grid-template-columns: 1fr 1fr; } }
+
+/* Stack */
+.stack { background: var(--bg-2); padding-block: clamp(3rem, 6vw, 4.5rem); }
+.stack .wrap { display: grid; grid-template-columns: 14rem 1fr; gap: 2rem; align-items: start; }
+.stack h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); }
+.stack dl { display: grid; gap: 0; }
+.stack-row { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding-block: 0.8rem; border-bottom: 1px solid var(--line); }
+.stack-row:first-child { padding-top: 0; }
+.stack dt { font-weight: 700; color: var(--label); font-size: 0.95rem; }
+.stack dd { color: var(--fg); min-width: 0; }
+@media (max-width: 760px) { .stack .wrap { grid-template-columns: 1fr; } }
+@media (max-width: 460px) { .stack-row { grid-template-columns: 1fr; gap: 0.2rem; } }
+
+/* How we work */
+.how { background: var(--bg-3); }
+.how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1.2rem, 3vw, 2.2rem); }
+.how-item { border-top: 3px solid var(--accent); padding-top: 1.2rem; }
+.how-item h3 { font-size: 1.3rem; }
+.how-item p { margin-top: 0.6rem; font-size: 0.98rem; color: var(--fg-soft); }
+@media (max-width: 960px) { .how-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .how-grid { grid-template-columns: 1fr; } }
+
+/* Contact */
+.contact { background: var(--bg-1); }
+.contact .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.contact h2 { font-size: clamp(2.6rem, 6.5vw, 5rem); }
+.contact .intro { margin-top: 1.2rem; font-size: 1.15rem; color: var(--fg-soft); max-width: 40ch; }
+.contact-card { background: var(--surface); border-radius: 32px 32px 32px 6px; padding: clamp(1.6rem, 3vw, 2.4rem); border: 1px solid var(--line); display: grid; gap: 1.3rem; min-width: 0; }
+.contact-card small { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--label-2); margin-bottom: 0.25rem; }
+.email { font-family: var(--display); font-weight: 600; font-size: clamp(1.05rem, 2.2vw, 1.35rem); color: var(--fg); overflow-wrap: anywhere; user-select: all; }
+.contact-card .row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.copy-btn { font: inherit; font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1.2rem; border-radius: 999px; border: 1.5px solid var(--line-strong); background: transparent; color: var(--fg); cursor: pointer; }
+.copy-btn:hover { border-color: var(--fg); }
+@media (max-width: 860px) { .contact .wrap { grid-template-columns: 1fr; } }
+
+/* Footer */
+footer { padding-block: 2rem; background: var(--bg-footer); color: var(--fg-soft); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; align-items: center; font-size: 0.92rem; }
+footer ul { list-style: none; display: flex; gap: 1.4rem; flex-wrap: wrap; }
+footer a { text-decoration: none; color: var(--fg-soft); }
+footer a:hover { color: var(--fg); text-decoration: underline; text-decoration-color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+<script>
+/* Apply a saved or #light/#dark theme before paint */
+(function () {
+  var h = location.hash.slice(1), t = null;
+  if (h === 'light' || h === 'dark') t = h;
+  else { try { t = localStorage.getItem('mbs-theme'); } catch (e) {} }
+  if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="mbs-logo" viewBox="0 0 264 213" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" fill="#c1ff00"/>
+      <path d="M55.7677 24.1096C100.554 9.65158 138.074 53.5974 122.479 58.3174C97.932 65.2051 67.7769 38.3821 55.7677 24.1096Z" fill="#85b000"/>
+      <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M99.5 36.9807C122.24 48.9807 125.496 53.314 124.281 53.9807" stroke="#0a0a0f" stroke-width="9" stroke-linecap="round"/>
+      <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" fill="#c1ff00"/>
+      <path d="M205.461 26.1096C160.675 11.6516 123.155 55.5974 138.75 60.3174C163.296 67.2051 193.452 40.3821 205.461 26.1096Z" fill="#85b000"/>
+      <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M161.728 38.9807C138.988 50.9807 135.733 55.314 136.947 55.9807" stroke="#0a0a0f" stroke-width="9" stroke-linecap="round"/>
+      <rect x="120.5" y="118.981" width="23" height="18" fill="#0a0a0f"/>
+      <path d="M72.5 131.57C83.5457 131.57 92.5 123.534 92.5 113.622C92.5 103.709 83.5457 95.673 72.5 95.673C61.4543 95.673 52.5 103.709 52.5 113.622C52.5 123.534 61.4543 131.57 72.5 131.57Z" fill="#7100a5"/>
+      <path d="M74.0628 121.576C84.9407 119.855 92.6706 112.919 91.3279 106.086C89.9853 99.2524 80.0786 95.1081 69.2007 96.8294C58.3228 98.5508 50.593 105.486 51.9356 112.319C53.2783 119.153 63.1849 123.297 74.0628 121.576Z" fill="#ae00ff"/>
+      <path d="M65.5 109.135C68.2614 109.135 70.5 107.126 70.5 104.647C70.5 102.169 68.2614 100.16 65.5 100.16C62.7386 100.16 60.5 102.169 60.5 104.647C60.5 107.126 62.7386 109.135 65.5 109.135Z" fill="#E3CEE0"/>
+      <path d="M72.5 134.263C85.2025 134.263 95.5 125.021 95.5 113.622C95.5 102.222 85.2025 92.9807 72.5 92.9807C59.7975 92.9807 49.5 102.222 49.5 113.622C49.5 125.021 59.7975 134.263 72.5 134.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M192.5 131.57C203.546 131.57 212.5 123.534 212.5 113.622C212.5 103.709 203.546 95.673 192.5 95.673C181.454 95.673 172.5 103.709 172.5 113.622C172.5 123.534 181.454 131.57 192.5 131.57Z" fill="#7100a5"/>
+      <path d="M194.063 121.576C204.941 119.855 212.671 112.919 211.328 106.086C209.985 99.2524 200.079 95.1081 189.201 96.8294C178.323 98.5508 170.593 105.486 171.936 112.319C173.278 119.153 183.185 123.297 194.063 121.576Z" fill="#ae00ff"/>
+      <path d="M185.5 109.135C188.261 109.135 190.5 107.126 190.5 104.647C190.5 102.169 188.261 100.16 185.5 100.16C182.739 100.16 180.5 102.169 180.5 104.647C180.5 107.126 182.739 109.135 185.5 109.135Z" fill="#E3CEE0"/>
+      <path d="M192.5 134.263C205.203 134.263 215.5 125.021 215.5 113.622C215.5 102.222 205.203 92.9807 192.5 92.9807C179.797 92.9807 169.5 102.222 169.5 113.622C169.5 125.021 179.797 134.263 192.5 134.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M170.5 93.5704C181.546 93.5704 190.5 85.5345 190.5 75.6217C190.5 65.7089 181.546 57.673 170.5 57.673C159.454 57.673 150.5 65.7089 150.5 75.6217C150.5 85.5345 159.454 93.5704 170.5 93.5704Z" fill="#7100a5"/>
+      <path d="M172.063 83.5759C182.941 81.8545 190.671 74.9194 189.328 68.0859C187.985 61.2524 178.079 57.1081 167.201 58.8294C156.323 60.5508 148.593 67.4859 149.936 74.3194C151.278 81.153 161.185 85.2972 172.063 83.5759Z" fill="#ae00ff"/>
+      <path d="M163.5 71.1345C166.261 71.1345 168.5 69.1255 168.5 66.6473C168.5 64.1691 166.261 62.1602 163.5 62.1602C160.739 62.1602 158.5 64.1691 158.5 66.6473C158.5 69.1255 160.739 71.1345 163.5 71.1345Z" fill="#E3CEE0"/>
+      <path d="M170.5 96.2627C183.203 96.2627 193.5 87.0214 193.5 75.6217C193.5 64.222 183.203 54.9807 170.5 54.9807C157.797 54.9807 147.5 64.222 147.5 75.6217C147.5 87.0214 157.797 96.2627 170.5 96.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M96.5 93.5704C107.546 93.5704 116.5 85.5345 116.5 75.6217C116.5 65.7089 107.546 57.673 96.5 57.673C85.4543 57.673 76.5 65.7089 76.5 75.6217C76.5 85.5345 85.4543 93.5704 96.5 93.5704Z" fill="#7100a5"/>
+      <path d="M98.0628 83.5759C108.941 81.8545 116.671 74.9194 115.328 68.0859C113.985 61.2524 104.079 57.1081 93.2007 58.8294C82.3228 60.5508 74.593 67.4859 75.9356 74.3194C77.2783 81.153 87.1849 85.2972 98.0628 83.5759Z" fill="#ae00ff"/>
+      <path d="M89.5 71.1345C92.2614 71.1345 94.5 69.1255 94.5 66.6473C94.5 64.1691 92.2614 62.1602 89.5 62.1602C86.7386 62.1602 84.5 64.1691 84.5 66.6473C84.5 69.1255 86.7386 71.1345 89.5 71.1345Z" fill="#E3CEE0"/>
+      <path d="M96.5 96.2627C109.203 96.2627 119.5 87.0214 119.5 75.6217C119.5 64.222 109.203 54.9807 96.5 54.9807C83.7975 54.9807 73.5 64.222 73.5 75.6217C73.5 87.0214 83.7975 96.2627 96.5 96.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M219.5 34.9807C231.5 34.9807 239.5 43.2187 239.5 55.5759V100.885C239.5 113.243 247.5 121.481 259.5 121.481C247.5 121.481 239.5 129.719 239.5 142.076V187.385C239.5 199.743 231.5 207.981 219.5 207.981" stroke="#1a1a22" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M44.5 34.9807C32.5 34.9807 24.5 43.2187 24.5 55.5759V100.885C24.5 113.243 16.5 121.481 4.5 121.481C16.5 121.481 24.5 129.719 24.5 142.076V187.385C24.5 199.743 32.5 207.981 44.5 207.981" stroke="#1a1a22" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M131.5 189.57C142.546 189.57 151.5 181.534 151.5 171.622C151.5 161.709 142.546 153.673 131.5 153.673C120.454 153.673 111.5 161.709 111.5 171.622C111.5 181.534 120.454 189.57 131.5 189.57Z" fill="#7100a5"/>
+      <path d="M124.5 167.135C127.261 167.135 129.5 165.126 129.5 162.647C129.5 160.169 127.261 158.16 124.5 158.16C121.739 158.16 119.5 160.169 119.5 162.647C119.5 165.126 121.739 167.135 124.5 167.135Z" fill="#E3CEE0"/>
+      <path d="M131.5 192.263C144.203 192.263 154.5 183.021 154.5 171.622C154.5 160.222 144.203 150.981 131.5 150.981C118.797 150.981 108.5 160.222 108.5 171.622C108.5 183.021 118.797 192.263 131.5 192.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M106.5 161.176C118.026 161.176 127.37 152.806 127.37 142.481C127.37 132.155 118.026 123.785 106.5 123.785C94.9741 123.785 85.6304 132.155 85.6304 142.481C85.6304 152.806 94.9741 161.176 106.5 161.176Z" fill="#7100a5"/>
+      <path d="M99.1957 137.807C102.077 137.807 104.413 135.714 104.413 133.133C104.413 130.552 102.077 128.459 99.1957 128.459C96.3142 128.459 93.9783 130.552 93.9783 133.133C93.9783 135.714 96.3142 137.807 99.1957 137.807Z" fill="#E3CEE0"/>
+      <path d="M106.5 163.981C119.755 163.981 130.5 154.355 130.5 142.481C130.5 130.607 119.755 120.981 106.5 120.981C93.2452 120.981 82.5 130.607 82.5 142.481C82.5 154.355 93.2452 163.981 106.5 163.981Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M156.5 161.176C168.026 161.176 177.37 152.806 177.37 142.481C177.37 132.155 168.026 123.785 156.5 123.785C144.974 123.785 135.63 132.155 135.63 142.481C135.63 152.806 144.974 161.176 156.5 161.176Z" fill="#7100a5"/>
+      <path d="M149.196 137.807C152.077 137.807 154.413 135.714 154.413 133.133C154.413 130.552 152.077 128.459 149.196 128.459C146.314 128.459 143.978 130.552 143.978 133.133C143.978 135.714 146.314 137.807 149.196 137.807Z" fill="#E3CEE0"/>
+      <path d="M156.5 163.981C169.755 163.981 180.5 154.355 180.5 142.481C180.5 130.607 169.755 120.981 156.5 120.981C143.245 120.981 132.5 130.607 132.5 142.481C132.5 154.355 143.245 163.981 156.5 163.981Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M108.5 127.57C119.546 127.57 128.5 119.534 128.5 109.622C128.5 99.7089 119.546 91.673 108.5 91.673C97.4543 91.673 88.5 99.7089 88.5 109.622C88.5 119.534 97.4543 127.57 108.5 127.57Z" fill="#7100a5"/>
+      <path d="M110.063 117.576C120.941 115.855 128.671 108.919 127.328 102.086C125.985 95.2524 116.079 91.1081 105.201 92.8294C94.3228 94.5508 86.593 101.486 87.9356 108.319C89.2783 115.153 99.1849 119.297 110.063 117.576Z" fill="#ae00ff"/>
+      <path d="M101.5 105.135C104.261 105.135 106.5 103.126 106.5 100.647C106.5 98.1691 104.261 96.1602 101.5 96.1602C98.7386 96.1602 96.5 98.1691 96.5 100.647C96.5 103.126 98.7386 105.135 101.5 105.135Z" fill="#E3CEE0"/>
+      <path d="M108.5 130.263C121.203 130.263 131.5 121.021 131.5 109.622C131.5 98.222 121.203 88.9807 108.5 88.9807C95.7975 88.9807 85.5 98.222 85.5 109.622C85.5 121.021 95.7975 130.263 108.5 130.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M154.5 127.57C165.546 127.57 174.5 119.534 174.5 109.622C174.5 99.7089 165.546 91.673 154.5 91.673C143.454 91.673 134.5 99.7089 134.5 109.622C134.5 119.534 143.454 127.57 154.5 127.57Z" fill="#7100a5"/>
+      <path d="M156.063 117.576C166.941 115.855 174.671 108.919 173.328 102.086C171.985 95.2524 162.079 91.1081 151.201 92.8294C140.323 94.5508 132.593 101.486 133.936 108.319C135.278 115.153 145.185 119.297 156.063 117.576Z" fill="#ae00ff"/>
+      <path d="M147.5 105.135C150.261 105.135 152.5 103.126 152.5 100.647C152.5 98.1691 150.261 96.1602 147.5 96.1602C144.739 96.1602 142.5 98.1691 142.5 100.647C142.5 103.126 144.739 105.135 147.5 105.135Z" fill="#E3CEE0"/>
+      <path d="M154.5 130.263C167.203 130.263 177.5 121.021 177.5 109.622C177.5 98.222 167.203 88.9807 154.5 88.9807C141.797 88.9807 131.5 98.222 131.5 109.622C131.5 121.021 141.797 130.263 154.5 130.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M131.5 92.5704C142.546 92.5704 151.5 84.5345 151.5 74.6217C151.5 64.7089 142.546 56.673 131.5 56.673C120.454 56.673 111.5 64.7089 111.5 74.6217C111.5 84.5345 120.454 92.5704 131.5 92.5704Z" fill="#7100a5"/>
+      <path d="M133.063 82.5759C143.941 80.8545 151.671 73.9194 150.328 67.0859C148.985 60.2524 139.079 56.1081 128.201 57.8294C117.323 59.5508 109.593 66.4859 110.936 73.3194C112.278 80.153 122.185 84.2972 133.063 82.5759Z" fill="#ae00ff"/>
+      <path d="M124.5 70.1345C127.261 70.1345 129.5 68.1255 129.5 65.6473C129.5 63.1691 127.261 61.1602 124.5 61.1602C121.739 61.1602 119.5 63.1691 119.5 65.6473C119.5 68.1255 121.739 70.1345 124.5 70.1345Z" fill="#E3CEE0"/>
+      <path d="M131.5 95.2627C144.203 95.2627 154.5 86.0214 154.5 74.6217C154.5 63.222 144.203 53.9807 131.5 53.9807C118.797 53.9807 108.5 63.222 108.5 74.6217C108.5 86.0214 118.797 95.2627 131.5 95.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+    </symbol>
+  </svg>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="brand-mark"><svg viewBox="0 0 264 213" aria-hidden="true"><use href="#mbs-logo"></use></svg></span><span class="brand-name">Mulberry Systems</span></a>
+    <ul>
+      <li><a href="#agents">AI agents</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">How we work</a></li>
+      <li class="keep"><button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch to dark theme"><svg class="sun-i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button></li>
+      <li class="keep"><a href="#contact" class="btn btn-sun">Start a project</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <span class="berry-bg b1" aria-hidden="true"></span>
+  <span class="berry-bg b2" aria-hidden="true"></span>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">AI &middot; Python &middot; Backend</span>
+      <h1 style="margin-top:1.2rem">Software that grows with your business, <em>built with care.</em></h1>
+      <p class="lede">We're a small engineering studio from Bosnia and Herzegovina. We build AI systems, Python applications and backends that hold up in production, and now AI agents that work with the systems you already run.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-solid">Start a project &rarr;</a>
+        <a href="#work" class="btn btn-ghost">See our work</a>
+      </div>
+      <div class="hero-meta">
+        <span>Kakanj, Bosnia and Herzegovina</span>
+        <span>Working across time zones</span>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <span class="disc"></span>
+      <span class="leaf l1"></span>
+      <span class="leaf l2"></span>
+      <span class="leaf l3"></span>
+      <svg class="logo" viewBox="0 0 264 213"><use href="#mbs-logo"></use></svg>
+    </div>
+  </div>
+</header>
+
+<section class="agents" id="agents" aria-labelledby="agents-title">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">New &middot; AI agents</span>
+        <h2 id="agents-title" style="margin-top:1rem">Let AI agents work with the systems you already run</h2>
+      </div>
+      <p>You don't need to rebuild to use AI. We put a secure, agent-ready layer on top of the API you already have, then build the agents that use it.</p>
+    </div>
+    <ol class="flow" aria-label="How the pieces connect">
+      <li><span class="node"><span class="n">1</span><span class="t">Your existing API<small>Already running today</small></span></span></li>
+      <li><span class="node"><span class="n">2</span><span class="t">Headless mode<small>Authenticated MCP server</small></span></span></li>
+      <li><span class="node"><span class="n">3</span><span class="t">Agents<small>Chat and multi-agent flows</small></span></span></li>
+    </ol>
+    <div class="agent-grid">
+      <article class="agent-card">
+        <span class="kicker">Headless mode</span>
+        <h3>Your system, operated by agents</h3>
+        <p>We turn your existing API into an MCP server that people sign in to with their own account. They connect the AI assistant they already use, like Claude or ChatGPT, and work with your system through it, with their usual permissions and no new interface to build.</p>
+        <ul><li>MCP server built on your existing API</li><li>Users sign in, agents act with their permissions</li><li>A log of every action an agent takes</li></ul>
+      </article>
+      <article class="agent-card">
+        <span class="kicker">Agent chat</span>
+        <h3>An assistant inside your product</h3>
+        <p>A chat assistant inside your product or internal tools that answers from your own data and gets tasks done, with a person approving the steps that matter.</p>
+        <ul><li>Chat embedded in web apps and internal tools</li><li>Answers grounded in your documents and data</li><li>Approval steps for sensitive actions</li></ul>
+      </article>
+      <article class="agent-card">
+        <span class="kicker">Multi-agent flows</span>
+        <h3>Teams of agents for complex work</h3>
+        <p>For work too big for one prompt, we build long-running multi-agent flows in LangGraph. Specialised agents pass tasks to each other, check each other's output, and deliver what the user asked for. Every step is traced in Langfuse, so you can see how each result was produced.</p>
+        <ul><li>Orchestration with LangGraph</li><li>Long-running flows with handoffs and review steps</li><li>Tracing and evaluation with Langfuse</li></ul>
+      </article>
+    </div>
+    <p class="agents-cta"><a href="#contact">Have a system you want agents to use? Tell us about it &rarr;</a></p>
+  </div>
+</section>
+<section class="featured" id="work" aria-labelledby="featured-title">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Featured project &middot; Humanitarian tech</span>
+      <h2 id="featured-title">Reading minefield records so deminers can move faster</h2>
+      <p class="intro">An AI document-understanding system that supports humanitarian demining operations in Bosnia and Herzegovina.</p>
+      <ul class="tags" aria-label="Technologies">
+        <li>Python</li><li>FastAPI</li><li>YOLO</li><li>TensorFlow</li><li>OpenCV</li>
+      </ul>
+    </div>
+    <div>
+      <div class="story">
+        <div class="story-row"><h3>Challenge</h3><p>Minefield records hold critical handwritten data that has to be digitised. Manual transcription was slow, error-prone, and held up life-saving work.</p></div>
+        <div class="story-row"><h3>Solution</h3><p>YOLO object detection combined with custom TensorFlow models for handwritten text recognition, served by a FastAPI backend that processes documents in real time.</p></div>
+      </div>
+      <div class="big-stats">
+        <div class="big-stat"><b>95%</b><span>Recognition accuracy</span></div>
+        <div class="big-stat"><b>10 hrs</b><span>Saved per batch</span></div>
+        <div class="big-stat"><b>1,000+</b><span>Documents processed</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services" aria-labelledby="services-title">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Services</span>
+        <h2 id="services-title" style="margin-top:1rem">From the model to the cloud it runs on</h2>
+      </div>
+      <p>We cover the whole technical picture, so you work with one team instead of four.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service">
+        <div class="service-top">
+          <span class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></span>
+          <h3>AI &amp; Machine Learning</h3>
+        </div>
+        <p>Custom intelligent systems that change how your business operates.</p>
+        <ul><li>Custom ML models</li><li>Handwritten text recognition</li><li>NLP &amp; sentiment analysis</li><li>Computer vision</li><li>Document understanding</li><li>Predictive analytics</li></ul>
+      </article>
+      <article class="service">
+        <div class="service-top">
+          <span class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6M14 4l-4 16"/></svg></span>
+          <h3>Python Development</h3>
+        </div>
+        <p>Production-grade applications built for scale and reliability.</p>
+        <ul><li>FastAPI &amp; Flask APIs</li><li>PySpark data pipelines</li><li>Streaming applications</li><li>Automation</li><li>Performance optimisation</li></ul>
+      </article>
+      <article class="service">
+        <div class="service-top">
+          <span class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01"/></svg></span>
+          <h3>Backend Engineering</h3>
+        </div>
+        <p>Scalable architectures that power enterprise applications.</p>
+        <ul><li>Microservices</li><li>RESTful API design</li><li>Database optimisation</li><li>Event-driven systems (Kafka)</li><li>ETL pipelines</li><li>System integration</li></ul>
+      </article>
+      <article class="service">
+        <div class="service-top">
+          <span class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 10h-1.3A7 7 0 1 0 9 19h9a4.5 4.5 0 0 0 0-9z"/></svg></span>
+          <h3>Cloud &amp; DevOps</h3>
+        </div>
+        <p>Modern infrastructure that scales as you grow.</p>
+        <ul><li>AWS &amp; Azure</li><li>Docker &amp; Kubernetes</li><li>Terraform IaC</li><li>CI/CD pipelines</li><li>Monitoring &amp; observability</li><li>Security best practices</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="work" aria-labelledby="work-title">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Selected work</span>
+        <h2 id="work-title" style="margin-top:1rem">More things we've built</h2>
+      </div>
+      <p>Real systems for real companies, measured by what changed after launch.</p>
+    </div>
+    <div class="projects">
+      <article class="project">
+        <div>
+          <span class="project-label">Travel &amp; E-commerce</span>
+          <h3>Enterprise booking &amp; payment platform</h3>
+          <p class="summary">Multi-channel booking with integrated payments for a global travel company.</p>
+          <ul class="tags" aria-label="Technologies"><li>Python</li><li>FastAPI</li><li>PostgreSQL</li><li>Redis</li><li>AWS</li></ul>
+        </div>
+        <div class="project-body">
+          <div><h4>Challenge</h4><p>Consolidate several legacy booking systems and integrate payment providers including Klarna, at high transaction volumes across regions.</p></div>
+          <div><h4>Solution</h4><p>A unified FastAPI backend on microservices, with payment orchestration and real-time inventory across every sales channel.</p></div>
+          <div class="results">
+            <div><b>40%</b><span>Faster checkout</span></div>
+            <div><b>99.9%</b><span>Uptime</span></div>
+            <div><b>3&times;</b><span>Transaction capacity</span></div>
+          </div>
+        </div>
+      </article>
+      <article class="project">
+        <div>
+          <span class="project-label">Research &amp; Intelligence</span>
+          <h3>Real-time data pipeline &amp; analytics</h3>
+          <p class="summary">Event processing for cyber intelligence and research data analysis.</p>
+          <ul class="tags" aria-label="Technologies"><li>PySpark</li><li>Kafka</li><li>Elasticsearch</li><li>spaCy</li><li>Docker</li></ul>
+        </div>
+        <div class="project-body">
+          <div><h4>Challenge</h4><p>Millions of events a day from many sources, needing real-time analysis, sentiment detection and intelligence extraction with minimal latency.</p></div>
+          <div><h4>Solution</h4><p>Kafka streaming with PySpark processing, custom NLP models for sentiment, and Elasticsearch for fast querying and visualisation.</p></div>
+          <div class="results">
+            <div><b>10M+</b><span>Events per day</span></div>
+            <div><b>&lt;100ms</b><span>Latency</span></div>
+            <div><b>85%</b><span>Analysis accuracy</span></div>
+          </div>
+        </div>
+      </article>
+      <article class="project">
+        <div>
+          <span class="project-label">Digital Transformation</span>
+          <h3>Legacy system modernisation</h3>
+          <p class="summary">A full platform overhaul for a financial services company moving to cloud-native.</p>
+          <ul class="tags" aria-label="Technologies"><li>.NET</li><li>Azure</li><li>Kubernetes</li><li>Terraform</li><li>GitHub Actions</li></ul>
+        </div>
+        <div class="project-body">
+          <div><h4>Challenge</h4><p>A 15-year-old monolith handling sensitive financial data had to be modernised with strict compliance and no downtime.</p></div>
+          <div><h4>Solution</h4><p>A strangler-fig migration to microservices, a full API layer, containerised workloads and solid CI/CD pipelines.</p></div>
+          <div class="results">
+            <div><b>60%</b><span>Cost reduction</span></div>
+            <div><b>Zero</b><span>Downtime</span></div>
+            <div><b>5&times;</b><span>Faster deploys</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="stack" aria-labelledby="stack-title">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Stack</span>
+      <h2 id="stack-title" style="margin-top:0.8rem">Tools we trust</h2>
+    </div>
+    <dl>
+      <div class="stack-row"><dt>Languages</dt><dd>Python, C#, JavaScript, TypeScript</dd></div>
+      <div class="stack-row"><dt>Frameworks</dt><dd>FastAPI, Flask, .NET, NestJS, React</dd></div>
+      <div class="stack-row"><dt>Data &amp; AI</dt><dd>PySpark, Kafka, TensorFlow, YOLO, spaCy</dd></div>
+      <div class="stack-row"><dt>Agents</dt><dd>MCP, LangGraph, Langfuse</dd></div>
+      <div class="stack-row"><dt>Databases</dt><dd>PostgreSQL, MongoDB, Redis, Elasticsearch</dd></div>
+      <div class="stack-row"><dt>Cloud &amp; DevOps</dt><dd>AWS, Azure, Docker, Kubernetes, Terraform</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="how" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">How we work</span>
+        <h2 id="how-title" style="margin-top:1rem">A small team that leaves you stronger</h2>
+      </div>
+      <p>We've worked with international clients for years, and we work the same way on every project.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-item"><h3>Global experience</h3><p>We collaborate with cross-cultural teams across time zones and deliver for clients in several countries.</p></div>
+      <div class="how-item"><h3>Production-ready</h3><p>Our code runs in production, with proper testing, monitoring and documentation.</p></div>
+      <div class="how-item"><h3>Full-stack capability</h3><p>From ML models to cloud infrastructure, we handle the complete technical picture.</p></div>
+      <div class="how-item"><h3>Knowledge transfer</h3><p>We mentor your team and share what we know, so your organisation keeps the expertise.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Contact</span>
+      <h2 id="contact-title" style="margin-top:1rem">Let's grow something <em>together.</em></h2>
+      <p class="intro">Whether you need a data pipeline, an AI solution or a complete backend, tell us what you're working on.</p>
+    </div>
+    <div class="contact-card">
+      <div>
+        <small>Email</small>
+        <span class="email" id="email">mulberry.systems.dev@gmail.com</span>
+      </div>
+      <div>
+        <small>Studio</small>
+        <span>Kakanj, Bosnia and Herzegovina</span>
+      </div>
+      <div class="row">
+        <a class="btn btn-solid" href="mailto:mulberry.systems.dev@gmail.com">Write to us &rarr;</a>
+        <button class="copy-btn" type="button" id="copy">Copy email</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Mulberry Systems MBS &middot; Made in Bosnia and Herzegovina</span>
+    <ul>
+      <li><a href="https://www.linkedin.com/company/mulberry-systems">LinkedIn</a></li>
+      <li><a href="https://github.com/mulberrysystems">GitHub</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#terms">Terms</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+document.getElementById('copy').addEventListener('click', function () {
+  var btn = this, text = document.getElementById('email').textContent;
+  function done(ok) { btn.textContent = ok ? 'Copied' : 'Select and copy above'; setTimeout(function () { btn.textContent = 'Copy email'; }, 2000); }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+  } else { done(false); }
+});
+(function () {
+  var root = document.documentElement, btn = document.getElementById('theme-toggle');
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  function current() { return root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light'); }
+  function sync() {
+    var t = current();
+    root.setAttribute('data-theme', t);
+    btn.setAttribute('aria-label', t === 'dark' ? 'Dark theme on. Switch to light theme' : 'Light theme on. Switch to dark theme');
+    btn.setAttribute('aria-pressed', t === 'dark');
+  }
+  function set(t, save) {
+    root.setAttribute('data-theme', t);
+    if (save) { try { localStorage.setItem('mbs-theme', t); } catch (e) {} }
+    sync();
+  }
+  btn.addEventListener('click', function () { set(current() === 'dark' ? 'light' : 'dark', true); });
+  window.addEventListener('hashchange', function () {
+    var h = location.hash.slice(1);
+    if (h === 'light' || h === 'dark') set(h, false);
+  });
+  sync();
+})();
+</script>
+</body>
+</html>

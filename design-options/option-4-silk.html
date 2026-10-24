@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mulberry Systems — Silk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Hanken+Grotesk:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: asymmetric 12-col editorial grid; a single fine "thread" runs down the left margin tying sections together. */
+:root {
+  --ground: #f7f3fb;      /* lilac-white */
+  --ground-2: #eee6f5;    /* deeper lilac panel */
+  --ink: #2a1033;         /* deep plum */
+  --ink-soft: #6a5873;    /* muted plum text */
+  --mulberry: #8a1fb8;    /* thread purple */
+  --leaf: #4f6a00;        /* thread green (text-safe) */
+  --leaf-bright: #b6e81c; /* thread highlight */
+  --rule: #d9cce4;
+
+  --display: 'Bodoni Moda', 'Didot', 'Bodoni 72', Georgia, serif;
+  --body: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --gutter: clamp(16px, 5vw, 72px);
+  --max: 1240px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--mulberry); outline-offset: 3px; border-radius: 2px; }
+::selection { background: var(--leaf-bright); color: var(--ink); }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); position: relative; }
+
+/* Labels */
+.label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; line-height: 1.05; }
+h2 { font-size: clamp(2.2rem, 5vw, 3.8rem); letter-spacing: -0.01em; }
+h2 em, h1 em { font-style: italic; color: var(--mulberry); }
+
+/* Nav */
+nav.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--ground) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+nav.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.9rem; }
+.brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+.brand svg { width: 44px; height: 36px; }
+.brand span { font-family: var(--display); font-size: 1.25rem; font-weight: 500; }
+.brand small { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-soft); letter-spacing: 0.1em; margin-left: 0.2rem; }
+nav.top ul { display: flex; gap: 2rem; list-style: none; align-items: center; }
+nav.top ul a { text-decoration: none; font-size: 0.95rem; color: var(--ink-soft); transition: color .2s; }
+nav.top ul a:hover { color: var(--ink); }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--body); font-weight: 600; font-size: 0.95rem;
+  padding: 0.8rem 1.4rem; border-radius: 999px; text-decoration: none;
+  background: var(--ink); color: var(--ground); border: 1px solid var(--ink);
+  transition: background .25s, color .25s;
+}
+.btn:hover { background: var(--mulberry); border-color: var(--mulberry); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { background: var(--ink); color: var(--ground); }
+nav.top .btn { padding: 0.55rem 1.1rem; font-size: 0.88rem; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--rule); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero .wrap {
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem;
+  padding-block: clamp(4rem, 10vw, 8rem) clamp(3.5rem, 8vw, 6.5rem);
+  position: relative; z-index: 1;
+}
+.hero-copy { grid-column: 1 / span 8; display: grid; gap: 1.8rem; }
+.hero h1 { font-size: clamp(2.9rem, 8vw, 6.6rem); font-weight: 400; letter-spacing: -0.02em; line-height: 0.98; }
+.hero h1 em { font-weight: 500; }
+.hero .lede { font-size: clamp(1.1rem, 1.6vw, 1.3rem); max-width: 34ch; color: var(--ink); }
+.hero-ctas { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.hero-aside {
+  grid-column: 10 / span 3; align-self: end;
+  border-left: 1px solid var(--mulberry); padding-left: 1.2rem;
+  display: grid; gap: 0.5rem; font-size: 0.95rem; color: var(--ink-soft);
+  background: color-mix(in srgb, var(--ground) 70%, transparent);
+}
+.hero-aside strong { font-family: var(--display); font-size: 1.15rem; color: var(--ink); font-weight: 500; font-style: italic; }
+
+/* Thread connector between sections */
+.thread {
+  display: flex; align-items: center; gap: 1rem; padding-block: 0; margin-bottom: 2.5rem;
+}
+.thread::before { content: ""; width: 3rem; height: 1px; background: var(--mulberry); }
+.thread::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--rule), transparent); }
+
+section { padding-block: clamp(4rem, 9vw, 7.5rem); }
+
+/* Featured case */
+.featured { background: var(--ground-2); position: relative; }
+.featured-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem 1.5rem; }
+.featured-head { grid-column: 1 / span 7; display: grid; gap: 1.2rem; }
+.featured-head p.intro { font-size: 1.2rem; max-width: 42ch; }
+.featured-stats {
+  grid-column: 9 / span 4; align-self: end;
+  display: grid; gap: 1.4rem;
+}
+.stat { border-top: 1px solid var(--ink); padding-top: 0.6rem; display: grid; }
+.stat b { font-family: var(--display); font-weight: 500; font-size: clamp(2.4rem, 4.5vw, 3.4rem); line-height: 1; font-variant-numeric: lining-nums tabular-nums; }
+.stat span { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-soft); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 0.4rem; }
+.spin {
+  grid-column: 1 / -1; margin-top: 2.5rem;
+  display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: start; gap: 1.2rem;
+}
+.spin > div { display: grid; gap: 0.5rem; min-width: 0; }
+.spin h3 { font-size: 1.5rem; }
+.spin p { color: var(--ink-soft); font-size: 1rem; }
+.spin .arrow { align-self: center; width: 3.5rem; height: 1px; background: var(--mulberry); position: relative; margin-top: 1.4rem; }
+.spin .arrow::after { content: ""; position: absolute; right: -1px; top: -3px; width: 7px; height: 7px; border-top: 1px solid var(--mulberry); border-right: 1px solid var(--mulberry); transform: rotate(45deg); }
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; font-family: var(--mono); font-size: 0.8rem; color: var(--leaf); }
+.featured .tags { grid-column: 1 / -1; margin-top: 1rem; }
+
+/* Services */
+.services-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+.services-intro { grid-column: 1 / span 4; display: grid; gap: 1rem; align-content: start; }
+.services-intro p { color: var(--ink-soft); max-width: 32ch; }
+.services-list { grid-column: 6 / span 7; display: grid; }
+.service {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 1.5rem;
+  padding-block: 1.8rem; border-top: 1px solid var(--rule);
+}
+.service:last-child { border-bottom: 1px solid var(--rule); }
+.service h3 { font-size: 1.7rem; }
+.service p { color: var(--ink-soft); font-size: 0.98rem; margin-top: 0.4rem; }
+.service ul { list-style: none; display: grid; gap: 0.25rem; font-size: 0.98rem; }
+.service li { padding-left: 1.1rem; position: relative; }
+.service li::before { content: ""; position: absolute; left: 0; top: 0.8em; width: 0.6rem; height: 1px; background: var(--leaf); }
+
+/* Selected work */
+.work-head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.work-head p { color: var(--ink-soft); max-width: 36ch; }
+.case { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; padding-block: 2.6rem; border-top: 1px solid var(--ink); }
+.case:last-child { border-bottom: 1px solid var(--ink); }
+.case-title { grid-column: 1 / span 4; display: grid; gap: 0.7rem; align-content: start; }
+.case-title h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+.case-title p { color: var(--ink-soft); font-size: 0.98rem; }
+.case-body { grid-column: 6 / span 4; display: grid; gap: 1.1rem; min-width: 0; }
+.case-body h4 { font-family: var(--mono); font-weight: 400; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mulberry); margin-bottom: 0.2rem; }
+.case-body p { font-size: 0.98rem; }
+.case-results { grid-column: 11 / span 2; display: grid; gap: 1rem; align-content: start; }
+.case-results div { display: grid; }
+.case-results b { font-family: var(--display); font-weight: 500; font-size: 1.9rem; line-height: 1; font-variant-numeric: lining-nums; }
+.case-results span { font-size: 0.8rem; color: var(--ink-soft); }
+.case .tags { grid-column: 6 / span 7; }
+
+/* Stack */
+.stack { background: var(--ink); color: var(--ground); }
+.stack .thread::after { background: linear-gradient(90deg, color-mix(in srgb, var(--ground) 30%, transparent), transparent); }
+.stack .thread::before { background: var(--leaf-bright); }
+.stack .label { color: color-mix(in srgb, var(--ground) 82%, transparent); }
+.stack-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+.stack-grid h2 { grid-column: 1 / span 4; }
+.stack-grid h2 em { color: var(--leaf-bright); }
+.stack-rows { grid-column: 6 / span 7; display: grid; }
+.stack-row { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding-block: 0.9rem; border-top: 1px solid color-mix(in srgb, var(--ground) 18%, transparent); }
+.stack-row dt { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--leaf-bright); padding-top: 0.2rem; }
+.stack-row dd { font-family: var(--display); font-size: 1.25rem; }
+
+/* How we work */
+.how-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+.how-grid > header { grid-column: 1 / span 5; display: grid; gap: 1rem; align-content: start; }
+.how-grid > header p { color: var(--ink-soft); max-width: 36ch; }
+.principles { grid-column: 7 / span 6; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 2rem; }
+.principle { display: grid; gap: 0.5rem; padding-top: 1rem; border-top: 1px solid var(--mulberry); }
+.principle h3 { font-size: 1.45rem; font-style: italic; }
+.principle p { color: var(--ink-soft); font-size: 0.98rem; }
+
+/* Contact */
+.contact { background: var(--ground-2); border-top: 1px solid var(--rule); }
+.contact-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem 1.5rem; align-items: end; }
+.contact h2 { grid-column: 1 / span 8; font-size: clamp(2.6rem, 7vw, 5.4rem); font-weight: 400; }
+.contact-side { grid-column: 9 / span 4; display: grid; gap: 1.2rem; }
+.contact-side p { color: var(--ink-soft); }
+.email {
+  font-family: var(--mono); font-size: clamp(0.9rem, 1.4vw, 1.05rem); user-select: all;
+  padding: 0.8rem 1rem; background: var(--ground); border: 1px solid var(--rule); border-radius: 6px;
+  overflow-wrap: anywhere;
+}
+.contact-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+footer { border-top: 1px solid var(--rule); }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding-block: 1.6rem; font-size: 0.85rem; color: var(--ink-soft); }
+footer nav { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--ink); }
+
+/* Responsive */
+@media (max-width: 960px) {
+  nav.top ul li:not(:last-child) { display: none; }
+  .hero-copy, .hero-aside, .featured-head, .featured-stats, .services-intro, .services-list,
+  .case-title, .case-body, .case-results, .case .tags, .stack-grid h2, .stack-rows,
+  .how-grid > header, .principles, .contact h2, .contact-side { grid-column: 1 / -1; }
+  .hero-aside { max-width: 28rem; }
+  .featured-stats { grid-template-columns: repeat(3, 1fr); }
+  .case-results { grid-template-columns: repeat(3, 1fr); }
+  .spin { grid-template-columns: 1fr; }
+  .spin .arrow { width: 1px; height: 2rem; margin: 0 0 0 0.2rem; }
+  .spin .arrow::after { right: -3px; top: auto; bottom: -1px; transform: rotate(135deg); }
+}
+@media (max-width: 600px) {
+  .brand small { display: none; }
+  .service { grid-template-columns: 1fr; gap: 1rem; }
+  .principles { grid-template-columns: 1fr; }
+  .featured-stats, .case-results { grid-template-columns: 1fr 1fr; }
+  .stack-row { grid-template-columns: 1fr; gap: 0.2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="mbs-logo" viewBox="0 0 264 213" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" fill="#c1ff00"/>
+      <path d="M55.7677 24.1096C100.554 9.65158 138.074 53.5974 122.479 58.3174C97.932 65.2051 67.7769 38.3821 55.7677 24.1096Z" fill="#85b000"/>
+      <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M99.5 36.9807C122.24 48.9807 125.496 53.314 124.281 53.9807" stroke="#0a0a0f" stroke-width="9" stroke-linecap="round"/>
+      <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" fill="#c1ff00"/>
+      <path d="M205.461 26.1096C160.675 11.6516 123.155 55.5974 138.75 60.3174C163.296 67.2051 193.452 40.3821 205.461 26.1096Z" fill="#85b000"/>
+      <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M161.728 38.9807C138.988 50.9807 135.733 55.314 136.947 55.9807" stroke="#0a0a0f" stroke-width="9" stroke-linecap="round"/>
+      <rect x="120.5" y="118.981" width="23" height="18" fill="#0a0a0f"/>
+      <path d="M72.5 131.57C83.5457 131.57 92.5 123.534 92.5 113.622C92.5 103.709 83.5457 95.673 72.5 95.673C61.4543 95.673 52.5 103.709 52.5 113.622C52.5 123.534 61.4543 131.57 72.5 131.57Z" fill="#7100a5"/>
+      <path d="M74.0628 121.576C84.9407 119.855 92.6706 112.919 91.3279 106.086C89.9853 99.2524 80.0786 95.1081 69.2007 96.8294C58.3228 98.5508 50.593 105.486 51.9356 112.319C53.2783 119.153 63.1849 123.297 74.0628 121.576Z" fill="#ae00ff"/>
+      <path d="M65.5 109.135C68.2614 109.135 70.5 107.126 70.5 104.647C70.5 102.169 68.2614 100.16 65.5 100.16C62.7386 100.16 60.5 102.169 60.5 104.647C60.5 107.126 62.7386 109.135 65.5 109.135Z" fill="#E3CEE0"/>
+      <path d="M72.5 134.263C85.2025 134.263 95.5 125.021 95.5 113.622C95.5 102.222 85.2025 92.9807 72.5 92.9807C59.7975 92.9807 49.5 102.222 49.5 113.622C49.5 125.021 59.7975 134.263 72.5 134.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M192.5 131.57C203.546 131.57 212.5 123.534 212.5 113.622C212.5 103.709 203.546 95.673 192.5 95.673C181.454 95.673 172.5 103.709 172.5 113.622C172.5 123.534 181.454 131.57 192.5 131.57Z" fill="#7100a5"/>
+      <path d="M194.063 121.576C204.941 119.855 212.671 112.919 211.328 106.086C209.985 99.2524 200.079 95.1081 189.201 96.8294C178.323 98.5508 170.593 105.486 171.936 112.319C173.278 119.153 183.185 123.297 194.063 121.576Z" fill="#ae00ff"/>
+      <path d="M185.5 109.135C188.261 109.135 190.5 107.126 190.5 104.647C190.5 102.169 188.261 100.16 185.5 100.16C182.739 100.16 180.5 102.169 180.5 104.647C180.5 107.126 182.739 109.135 185.5 109.135Z" fill="#E3CEE0"/>
+      <path d="M192.5 134.263C205.203 134.263 215.5 125.021 215.5 113.622C215.5 102.222 205.203 92.9807 192.5 92.9807C179.797 92.9807 169.5 102.222 169.5 113.622C169.5 125.021 179.797 134.263 192.5 134.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M170.5 93.5704C181.546 93.5704 190.5 85.5345 190.5 75.6217C190.5 65.7089 181.546 57.673 170.5 57.673C159.454 57.673 150.5 65.7089 150.5 75.6217C150.5 85.5345 159.454 93.5704 170.5 93.5704Z" fill="#7100a5"/>
+      <path d="M172.063 83.5759C182.941 81.8545 190.671 74.9194 189.328 68.0859C187.985 61.2524 178.079 57.1081 167.201 58.8294C156.323 60.5508 148.593 67.4859 149.936 74.3194C151.278 81.153 161.185 85.2972 172.063 83.5759Z" fill="#ae00ff"/>
+      <path d="M163.5 71.1345C166.261 71.1345 168.5 69.1255 168.5 66.6473C168.5 64.1691 166.261 62.1602 163.5 62.1602C160.739 62.1602 158.5 64.1691 158.5 66.6473C158.5 69.1255 160.739 71.1345 163.5 71.1345Z" fill="#E3CEE0"/>
+      <path d="M170.5 96.2627C183.203 96.2627 193.5 87.0214 193.5 75.6217C193.5 64.222 183.203 54.9807 170.5 54.9807C157.797 54.9807 147.5 64.222 147.5 75.6217C147.5 87.0214 157.797 96.2627 170.5 96.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M96.5 93.5704C107.546 93.5704 116.5 85.5345 116.5 75.6217C116.5 65.7089 107.546 57.673 96.5 57.673C85.4543 57.673 76.5 65.7089 76.5 75.6217C76.5 85.5345 85.4543 93.5704 96.5 93.5704Z" fill="#7100a5"/>
+      <path d="M98.0628 83.5759C108.941 81.8545 116.671 74.9194 115.328 68.0859C113.985 61.2524 104.079 57.1081 93.2007 58.8294C82.3228 60.5508 74.593 67.4859 75.9356 74.3194C77.2783 81.153 87.1849 85.2972 98.0628 83.5759Z" fill="#ae00ff"/>
+      <path d="M89.5 71.1345C92.2614 71.1345 94.5 69.1255 94.5 66.6473C94.5 64.1691 92.2614 62.1602 89.5 62.1602C86.7386 62.1602 84.5 64.1691 84.5 66.6473C84.5 69.1255 86.7386 71.1345 89.5 71.1345Z" fill="#E3CEE0"/>
+      <path d="M96.5 96.2627C109.203 96.2627 119.5 87.0214 119.5 75.6217C119.5 64.222 109.203 54.9807 96.5 54.9807C83.7975 54.9807 73.5 64.222 73.5 75.6217C73.5 87.0214 83.7975 96.2627 96.5 96.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M219.5 34.9807C231.5 34.9807 239.5 43.2187 239.5 55.5759V100.885C239.5 113.243 247.5 121.481 259.5 121.481C247.5 121.481 239.5 129.719 239.5 142.076V187.385C239.5 199.743 231.5 207.981 219.5 207.981" stroke="#1a1a22" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M44.5 34.9807C32.5 34.9807 24.5 43.2187 24.5 55.5759V100.885C24.5 113.243 16.5 121.481 4.5 121.481C16.5 121.481 24.5 129.719 24.5 142.076V187.385C24.5 199.743 32.5 207.981 44.5 207.981" stroke="#1a1a22" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M131.5 189.57C142.546 189.57 151.5 181.534 151.5 171.622C151.5 161.709 142.546 153.673 131.5 153.673C120.454 153.673 111.5 161.709 111.5 171.622C111.5 181.534 120.454 189.57 131.5 189.57Z" fill="#7100a5"/>
+      <path d="M124.5 167.135C127.261 167.135 129.5 165.126 129.5 162.647C129.5 160.169 127.261 158.16 124.5 158.16C121.739 158.16 119.5 160.169 119.5 162.647C119.5 165.126 121.739 167.135 124.5 167.135Z" fill="#E3CEE0"/>
+      <path d="M131.5 192.263C144.203 192.263 154.5 183.021 154.5 171.622C154.5 160.222 144.203 150.981 131.5 150.981C118.797 150.981 108.5 160.222 108.5 171.622C108.5 183.021 118.797 192.263 131.5 192.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M106.5 161.176C118.026 161.176 127.37 152.806 127.37 142.481C127.37 132.155 118.026 123.785 106.5 123.785C94.9741 123.785 85.6304 132.155 85.6304 142.481C85.6304 152.806 94.9741 161.176 106.5 161.176Z" fill="#7100a5"/>
+      <path d="M99.1957 137.807C102.077 137.807 104.413 135.714 104.413 133.133C104.413 130.552 102.077 128.459 99.1957 128.459C96.3142 128.459 93.9783 130.552 93.9783 133.133C93.9783 135.714 96.3142 137.807 99.1957 137.807Z" fill="#E3CEE0"/>
+      <path d="M106.5 163.981C119.755 163.981 130.5 154.355 130.5 142.481C130.5 130.607 119.755 120.981 106.5 120.981C93.2452 120.981 82.5 130.607 82.5 142.481C82.5 154.355 93.2452 163.981 106.5 163.981Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M156.5 161.176C168.026 161.176 177.37 152.806 177.37 142.481C177.37 132.155 168.026 123.785 156.5 123.785C144.974 123.785 135.63 132.155 135.63 142.481C135.63 152.806 144.974 161.176 156.5 161.176Z" fill="#7100a5"/>
+      <path d="M149.196 137.807C152.077 137.807 154.413 135.714 154.413 133.133C154.413 130.552 152.077 128.459 149.196 128.459C146.314 128.459 143.978 130.552 143.978 133.133C143.978 135.714 146.314 137.807 149.196 137.807Z" fill="#E3CEE0"/>
+      <path d="M156.5 163.981C169.755 163.981 180.5 154.355 180.5 142.481C180.5 130.607 169.755 120.981 156.5 120.981C143.245 120.981 132.5 130.607 132.5 142.481C132.5 154.355 143.245 163.981 156.5 163.981Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M108.5 127.57C119.546 127.57 128.5 119.534 128.5 109.622C128.5 99.7089 119.546 91.673 108.5 91.673C97.4543 91.673 88.5 99.7089 88.5 109.622C88.5 119.534 97.4543 127.57 108.5 127.57Z" fill="#7100a5"/>
+      <path d="M110.063 117.576C120.941 115.855 128.671 108.919 127.328 102.086C125.985 95.2524 116.079 91.1081 105.201 92.8294C94.3228 94.5508 86.593 101.486 87.9356 108.319C89.2783 115.153 99.1849 119.297 110.063 117.576Z" fill="#ae00ff"/>
+      <path d="M101.5 105.135C104.261 105.135 106.5 103.126 106.5 100.647C106.5 98.1691 104.261 96.1602 101.5 96.1602C98.7386 96.1602 96.5 98.1691 96.5 100.647C96.5 103.126 98.7386 105.135 101.5 105.135Z" fill="#E3CEE0"/>
+      <path d="M108.5 130.263C121.203 130.263 131.5 121.021 131.5 109.622C131.5 98.222 121.203 88.9807 108.5 88.9807C95.7975 88.9807 85.5 98.222 85.5 109.622C85.5 121.021 95.7975 130.263 108.5 130.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M154.5 127.57C165.546 127.57 174.5 119.534 174.5 109.622C174.5 99.7089 165.546 91.673 154.5 91.673C143.454 91.673 134.5 99.7089 134.5 109.622C134.5 119.534 143.454 127.57 154.5 127.57Z" fill="#7100a5"/>
+      <path d="M156.063 117.576C166.941 115.855 174.671 108.919 173.328 102.086C171.985 95.2524 162.079 91.1081 151.201 92.8294C140.323 94.5508 132.593 101.486 133.936 108.319C135.278 115.153 145.185 119.297 156.063 117.576Z" fill="#ae00ff"/>
+      <path d="M147.5 105.135C150.261 105.135 152.5 103.126 152.5 100.647C152.5 98.1691 150.261 96.1602 147.5 96.1602C144.739 96.1602 142.5 98.1691 142.5 100.647C142.5 103.126 144.739 105.135 147.5 105.135Z" fill="#E3CEE0"/>
+      <path d="M154.5 130.263C167.203 130.263 177.5 121.021 177.5 109.622C177.5 98.222 167.203 88.9807 154.5 88.9807C141.797 88.9807 131.5 98.222 131.5 109.622C131.5 121.021 141.797 130.263 154.5 130.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M131.5 92.5704C142.546 92.5704 151.5 84.5345 151.5 74.6217C151.5 64.7089 142.546 56.673 131.5 56.673C120.454 56.673 111.5 64.7089 111.5 74.6217C111.5 84.5345 120.454 92.5704 131.5 92.5704Z" fill="#7100a5"/>
+      <path d="M133.063 82.5759C143.941 80.8545 151.671 73.9194 150.328 67.0859C148.985 60.2524 139.079 56.1081 128.201 57.8294C117.323 59.5508 109.593 66.4859 110.936 73.3194C112.278 80.153 122.185 84.2972 133.063 82.5759Z" fill="#ae00ff"/>
+      <path d="M124.5 70.1345C127.261 70.1345 129.5 68.1255 129.5 65.6473C129.5 63.1691 127.261 61.1602 124.5 61.1602C121.739 61.1602 119.5 63.1691 119.5 65.6473C119.5 68.1255 121.739 70.1345 124.5 70.1345Z" fill="#E3CEE0"/>
+      <path d="M131.5 95.2627C144.203 95.2627 154.5 86.0214 154.5 74.6217C154.5 63.222 144.203 53.9807 131.5 53.9807C118.797 53.9807 108.5 63.222 108.5 74.6217C108.5 86.0214 118.797 95.2627 131.5 95.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+    </symbol>
+  </svg>
+
+<nav class="top" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Mulberry Systems home">
+      <svg viewBox="0 0 264 213" aria-hidden="true"><use href="#mbs-logo"></use></svg>
+      <span>Mulberry Systems</span><small>MBS</small>
+    </a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">How we work</a></li>
+      <li><a class="btn" href="#contact">Start a project</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="silk" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="label">AI · Python · Backend engineering</span>
+      <h1>Raw data in.<br><em>Strong systems</em> out.</h1>
+      <p class="lede">A development studio from Bosnia and Herzegovina. We turn handwritten records, event streams and legacy code into AI and backend systems that hold up in production.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="#contact">Start a project</a>
+        <a class="btn ghost" href="#work">See the work</a>
+      </div>
+    </div>
+    <aside class="hero-aside">
+      <strong>Why “Mulberry”?</strong>
+      Silkworms feed on mulberry leaves and spin them into one of the strongest natural fibres. We do the same with messy inputs.
+    </aside>
+  </div>
+</header>
+
+<section class="featured" id="work" aria-labelledby="featured-title">
+  <div class="wrap">
+    <div class="thread"><span class="label">Featured case · Humanitarian tech</span></div>
+    <div class="featured-grid">
+      <div class="featured-head">
+        <h2 id="featured-title">Reading <em>minefield records</em> so deminers don’t have to.</h2>
+        <p class="intro">A document understanding system that digitises handwritten minefield records supporting humanitarian demining in Bosnia and Herzegovina.</p>
+      </div>
+      <div class="featured-stats">
+        <div class="stat"><b>95%</b><span>Recognition accuracy</span></div>
+        <div class="stat"><b>10 hrs</b><span>Saved per batch</span></div>
+        <div class="stat"><b>1,000+</b><span>Documents processed</span></div>
+      </div>
+      <div class="spin">
+        <div>
+          <span class="label">Challenge</span>
+          <h3>Handwritten, critical, slow</h3>
+          <p>Minefield records hold life-critical handwritten data. Manual transcription was slow, error-prone and a bottleneck for the work on the ground.</p>
+        </div>
+        <span class="arrow" aria-hidden="true"></span>
+        <div>
+          <span class="label">Solution</span>
+          <h3>Detect, then read</h3>
+          <p>YOLO object detection locates fields on each page; custom TensorFlow models recognise the handwriting.</p>
+        </div>
+        <span class="arrow" aria-hidden="true"></span>
+        <div>
+          <span class="label">Delivery</span>
+          <h3>Real-time API</h3>
+          <p>A FastAPI backend processes documents as they arrive and returns structured, searchable records.</p>
+        </div>
+      </div>
+      <div class="tags"><span>Python</span><span>FastAPI</span><span>YOLO</span><span>TensorFlow</span><span>OpenCV</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" aria-labelledby="services-title">
+  <div class="wrap">
+    <div class="thread"><span class="label">Services</span></div>
+    <div class="services-grid">
+      <div class="services-intro">
+        <h2 id="services-title">Four threads, <em>one</em> system.</h2>
+        <p>From AI models to cloud infrastructure, we handle the complete technical picture end to end.</p>
+      </div>
+      <div class="services-list">
+        <article class="service">
+          <div><h3>AI &amp; Machine Learning</h3><p>Custom intelligent systems for your operations.</p></div>
+          <ul><li>Custom ML model development</li><li>Handwritten text recognition</li><li>NLP &amp; sentiment analysis</li><li>Computer vision (YOLO, TensorFlow)</li><li>Document understanding</li><li>Predictive analytics</li></ul>
+        </article>
+        <article class="service">
+          <div><h3>Python Development</h3><p>Production-grade applications built for scale.</p></div>
+          <ul><li>FastAPI &amp; Flask APIs</li><li>PySpark data pipelines</li><li>Streaming applications</li><li>Automation solutions</li><li>Performance optimisation</li></ul>
+        </article>
+        <article class="service">
+          <div><h3>Backend Engineering</h3><p>Scalable architectures for enterprise applications.</p></div>
+          <ul><li>Microservices architecture</li><li>RESTful API design</li><li>Database optimisation</li><li>Event-driven systems (Kafka)</li><li>ETL pipeline development</li><li>System integration</li></ul>
+        </article>
+        <article class="service">
+          <div><h3>Cloud &amp; DevOps</h3><p>Infrastructure that scales with your growth.</p></div>
+          <ul><li>AWS &amp; Azure solutions</li><li>Docker &amp; Kubernetes</li><li>Terraform IaC</li><li>CI/CD pipelines</li><li>Monitoring &amp; observability</li><li>Security best practices</li></ul>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="work-title" style="padding-top:0">
+  <div class="wrap">
+    <div class="thread"><span class="label">Selected work</span></div>
+    <div class="work-head">
+      <h2 id="work-title">More <em>systems</em> we’ve spun.</h2>
+      <p>Delivered for global companies in travel, research and financial services.</p>
+    </div>
+
+    <article class="case">
+      <div class="case-title">
+        <span class="label">Travel &amp; e-commerce</span>
+        <h3>Enterprise booking &amp; payment platform</h3>
+        <p>Multi-channel booking with integrated payments for a global travel company.</p>
+      </div>
+      <div class="case-body">
+        <div><h4>Challenge</h4><p>Consolidate several legacy booking systems and integrate payment providers including Klarna, at high transaction volumes across regions.</p></div>
+        <div><h4>Solution</h4><p>A unified FastAPI backend on microservices, with payment orchestration and real-time inventory across every sales channel.</p></div>
+      </div>
+      <div class="case-results">
+        <div><b>40%</b><span>Faster checkout</span></div>
+        <div><b>99.9%</b><span>Uptime</span></div>
+        <div><b>3×</b><span>Transaction capacity</span></div>
+      </div>
+      <div class="tags"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Redis</span><span>AWS</span></div>
+    </article>
+
+    <article class="case">
+      <div class="case-title">
+        <span class="label">Research &amp; intelligence</span>
+        <h3>Real-time data pipeline &amp; analytics</h3>
+        <p>Event processing for cyber intelligence and research data analysis.</p>
+      </div>
+      <div class="case-body">
+        <div><h4>Challenge</h4><p>Millions of events a day from diverse sources, needing real-time analysis, sentiment detection and intelligence extraction at minimal latency.</p></div>
+        <div><h4>Solution</h4><p>A Kafka streaming architecture with PySpark processing, custom NLP sentiment models, and Elasticsearch for fast querying.</p></div>
+      </div>
+      <div class="case-results">
+        <div><b>10M+</b><span>Events per day</span></div>
+        <div><b>&lt;100ms</b><span>Latency</span></div>
+        <div><b>85%</b><span>Analysis accuracy</span></div>
+      </div>
+      <div class="tags"><span>PySpark</span><span>Kafka</span><span>Elasticsearch</span><span>spaCy</span><span>Docker</span></div>
+    </article>
+
+    <article class="case">
+      <div class="case-title">
+        <span class="label">Digital transformation</span>
+        <h3>Legacy system modernisation</h3>
+        <p>A financial services platform moved to cloud-native architecture.</p>
+      </div>
+      <div class="case-body">
+        <div><h4>Challenge</h4><p>A 15-year-old monolith handling sensitive financial data, to be modernised under strict compliance with zero-downtime migration.</p></div>
+        <div><h4>Solution</h4><p>A strangler fig migration replacing components with microservices, a full API layer, containerised workloads and solid CI/CD.</p></div>
+      </div>
+      <div class="case-results">
+        <div><b>60%</b><span>Cost reduction</span></div>
+        <div><b>Zero</b><span>Downtime</span></div>
+        <div><b>5×</b><span>Faster deploys</span></div>
+      </div>
+      <div class="tags"><span>.NET</span><span>Azure</span><span>Kubernetes</span><span>Terraform</span><span>GitHub Actions</span></div>
+    </article>
+  </div>
+</section>
+
+<section class="stack" aria-labelledby="stack-title">
+  <div class="wrap">
+    <div class="thread"><span class="label">Stack</span></div>
+    <div class="stack-grid">
+      <h2 id="stack-title">Tools we <em>trust</em> in production.</h2>
+      <dl class="stack-rows">
+        <div class="stack-row"><dt>Languages</dt><dd>Python, C#, JavaScript, TypeScript</dd></div>
+        <div class="stack-row"><dt>Frameworks</dt><dd>FastAPI, Flask, .NET, NestJS, React</dd></div>
+        <div class="stack-row"><dt>Data &amp; AI</dt><dd>PySpark, Kafka, TensorFlow, YOLO, spaCy</dd></div>
+        <div class="stack-row"><dt>Databases</dt><dd>PostgreSQL, MongoDB, Redis, Elasticsearch</dd></div>
+        <div class="stack-row"><dt>Cloud</dt><dd>AWS, Azure, Docker, Kubernetes, Terraform</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="thread"><span class="label">How we work</span></div>
+    <div class="how-grid">
+      <header>
+        <h2 id="how-title">Fine thread, <em>high tensile</em> strength.</h2>
+        <p>A small senior team that writes code meant to run for years, and leaves your people stronger for it.</p>
+      </header>
+      <div class="principles">
+        <div class="principle"><h3>Production-ready</h3><p>Code that runs in production, with proper testing, monitoring and documentation.</p></div>
+        <div class="principle"><h3>Full stack</h3><p>From ML models to cloud infrastructure, we cover the complete technical picture.</p></div>
+        <div class="principle"><h3>Global experience</h3><p>Cross-cultural teams across time zones, delivering for international clients.</p></div>
+        <div class="principle"><h3>Knowledge transfer</h3><p>We mentor and share knowledge, so your organisation keeps what we build.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <div class="thread"><span class="label">Contact</span></div>
+    <div class="contact-grid">
+      <h2 id="contact-title">Bring us the <em>tangle</em>.</h2>
+      <div class="contact-side">
+        <p>A data pipeline, an AI system or a complete backend. Tell us what you’re working with.</p>
+        <div class="email" id="email">mulberry.systems.dev@gmail.com</div>
+        <div class="contact-actions">
+          <a class="btn" href="mailto:mulberry.systems.dev@gmail.com">Email us</a>
+          <button class="btn ghost" type="button" id="copy">Copy address</button>
+        </div>
+        <span class="label">Kakanj, Bosnia and Herzegovina</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Mulberry Systems MBS · Made in Bosnia and Herzegovina</span>
+    <nav aria-label="Footer">
+      <a href="https://www.linkedin.com/company/mulberry-systems">LinkedIn</a>
+      <a href="https://github.com/mulberrysystems">GitHub</a>
+      <a href="#privacy">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const canvas = document.getElementById('silk');
+  const ctx = canvas.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const colors = ['138,31,184', '111,148,0', '182,232,28', '42,16,51'];
+  let w = 0, h = 0, dpr = 1, threads = [];
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const r = canvas.getBoundingClientRect();
+    w = r.width; h = r.height;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = w < 600 ? 22 : 38;
+    threads = Array.from({ length: n }, (_, i) => ({
+      y: h * (0.15 + 0.8 * (i / n)),
+      amp: 30 + Math.random() * 90,
+      freq: 0.0015 + Math.random() * 0.002,
+      phase: Math.random() * Math.PI * 2,
+      speed: 0.00015 + Math.random() * 0.0003,
+      color: colors[i % 7 === 0 ? 2 : i % 3 === 0 ? 1 : i % 11 === 0 ? 3 : 0],
+      alpha: 0.12 + Math.random() * 0.22,
+      width: 0.5 + Math.random() * 0.9
+    }));
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, w, h);
+    for (const th of threads) {
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(${th.color},${th.alpha})`;
+      ctx.lineWidth = th.width;
+      // threads gather toward the right, like fibres converging into a strand
+      for (let x = -10; x <= w + 10; x += 8) {
+        const k = x / w;
+        const converge = 1 - 0.75 * k;
+        const yBase = th.y * converge + h * 0.55 * (1 - converge);
+        const y = yBase + Math.sin(x * th.freq + th.phase + t * th.speed) * th.amp * converge
+                        + Math.sin(x * th.freq * 2.3 - t * th.speed * 1.7) * 8;
+        x === -10 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  }
+
+  resize();
+  addEventListener('resize', () => { resize(); if (reduce) draw(0); });
+  reduce ? draw(4000) : requestAnimationFrame(draw);
+
+  const copy = document.getElementById('copy');
+  copy.addEventListener('click', () => {
+    const text = document.getElementById('email').textContent;
+    const done = () => { copy.textContent = 'Copied'; setTimeout(() => copy.textContent = 'Copy address', 1800); };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(done).catch(selectIt);
+    } else selectIt();
+    function selectIt() {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+  });
+})();
+</script>
+</body>
+</html>

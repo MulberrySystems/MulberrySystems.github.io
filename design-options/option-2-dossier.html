@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mulberry Systems — Case Files</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* Layout: case-file grid — 12-col sheet on faint graph paper, label column left, content right, hairline rules between records */
+:root {
+  --paper: #f6f7f9;
+  --sheet: #ffffff;
+  --ink: #1d1426;
+  --ink-2: #4a4152;
+  --ink-3: #645d6e;
+  --rule: #d9d6de;
+  --rule-strong: #1d1426;
+  --grid: rgba(29, 20, 38, 0.045);
+  --mulberry: #7a1fa8;
+  --mulberry-deep: #5a1380;
+  --lime: #d8ff3d;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --wrap: 1200px;
+  --gutter: clamp(16px, 4vw, 48px);
+  color-scheme: light;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: var(--mulberry); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--mulberry-deep); }
+:focus-visible { outline: 2px solid var(--mulberry); outline-offset: 3px; }
+.wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+.mono { font-family: var(--mono); }
+.label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+mark { background: linear-gradient(transparent 55%, var(--lime) 55%, var(--lime) 92%, transparent 92%); color: inherit; padding: 0 0.1em; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -0.01em; text-wrap: balance; line-height: 1.08; }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: rgba(246, 247, 249, 0.94); border-bottom: 1px solid var(--rule); backdrop-filter: blur(6px); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.75rem; }
+.brand { display: flex; align-items: center; gap: 0.6rem; color: var(--ink); text-decoration: none; }
+.brand svg { width: 40px; height: 32px; flex: none; }
+.brand-name { font-family: var(--display); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.01em; }
+.brand-name small { font-family: var(--mono); font-weight: 400; font-size: 0.7rem; color: var(--ink-3); margin-left: 0.35rem; letter-spacing: 0.06em; }
+.nav ul { display: flex; gap: 1.75rem; list-style: none; align-items: center; }
+.nav ul a { color: var(--ink-2); text-decoration: none; font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.04em; }
+.nav ul a:hover { color: var(--ink); }
+.nav .btn { padding: 0.5rem 0.9rem; }
+@media (max-width: 760px) { .nav ul li:not(:last-child) { display: none; } .brand-name small { display: none; } }
+
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.04em; text-decoration: none; border: 1px solid var(--ink); padding: 0.7rem 1.1rem; color: var(--ink); background: transparent; transition: background 0.15s, color 0.15s; }
+.btn:hover { background: var(--ink); color: var(--sheet); }
+.btn.solid { background: var(--ink); color: var(--sheet); }
+.btn.solid:hover { background: var(--mulberry-deep); border-color: var(--mulberry-deep); color: #fff; }
+
+/* Hero */
+.hero { padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2.5rem, 5vw, 4rem); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.hero h1 { font-size: clamp(2.4rem, 5.6vw, 4.4rem); font-weight: 600; }
+.hero-lede { margin-top: 1.5rem; max-width: 34rem; font-size: 1.1rem; color: var(--ink-2); }
+.hero-meta { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+.hero-actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+.casefile { background: var(--sheet); border: 1px solid var(--rule-strong); position: relative; min-width: 0; }
+.casefile-tab { position: absolute; top: -1px; right: 1.25rem; transform: translateY(-100%); background: var(--ink); color: var(--sheet); font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.65rem; }
+.casefile-head { padding: 1.1rem 1.25rem; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.casefile-head h2 { font-size: 1.35rem; margin-top: 0.35rem; }
+.rows { display: grid; }
+.row { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1rem; padding: 0.75rem 1.25rem; border-bottom: 1px solid var(--rule); }
+.row:last-child { border-bottom: 0; }
+.row dt { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); padding-top: 0.15rem; }
+.row dd { font-size: 0.95rem; color: var(--ink); min-width: 0; }
+.stack-list { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.stack-list span { font-family: var(--mono); font-size: 0.74rem; border: 1px solid var(--rule); padding: 0.1rem 0.45rem; color: var(--ink-2); background: var(--paper); }
+.figures { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--rule-strong); }
+.fig { padding: 1rem 1.25rem; border-right: 1px solid var(--rule); }
+.fig:last-child { border-right: 0; }
+.fig b { display: block; font-family: var(--display); font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1; color: var(--mulberry); font-variant-numeric: tabular-nums; }
+.fig span { display: block; margin-top: 0.45rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+
+/* Section scaffolding */
+section.block { padding-block: clamp(3rem, 6vw, 5rem); border-top: 1px solid var(--rule-strong); }
+.block-head { display: grid; grid-template-columns: 14rem minmax(0, 1fr); gap: 2rem; margin-bottom: 2.5rem; align-items: end; }
+.block-head h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+.block-head p { color: var(--ink-2); max-width: 40rem; margin-top: 0.75rem; }
+
+/* Featured */
+.featured { display: grid; grid-template-columns: 14rem minmax(0, 1fr); gap: 2rem; }
+.featured-side { display: grid; gap: 1rem; align-content: start; }
+.featured-side .label + p { font-size: 0.9rem; color: var(--ink-2); }
+.featured-body { background: var(--sheet); border: 1px solid var(--rule-strong); min-width: 0; }
+.featured-body .narr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.narr > div { padding: 1.5rem; border-bottom: 1px solid var(--rule); }
+.narr > div:first-child { border-right: 1px solid var(--rule); }
+.narr h3 { font-family: var(--mono); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.6rem; }
+.narr p { font-size: 1rem; }
+.pipeline { padding: 1.5rem; border-bottom: 1px solid var(--rule); }
+.pipeline ol { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: 0.9rem; counter-reset: step; }
+.pipeline li { counter-increment: step; border-top: 2px solid var(--ink); padding: 0.7rem 0.8rem 0 0; font-size: 0.9rem; position: relative; }
+.pipeline li::before { content: "Step " counter(step); display: block; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mulberry); margin-bottom: 0.2rem; }
+.pipeline li b { display: block; font-family: var(--display); font-weight: 600; font-size: 1.02rem; }
+
+/* Services */
+.services { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--rule-strong); background: var(--sheet); }
+.svc { padding: 1.5rem 1.25rem; border-right: 1px solid var(--rule); min-width: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+.svc:last-child { border-right: 0; }
+.svc .code { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--mulberry); text-transform: uppercase; }
+.svc h3 { font-size: 1.3rem; }
+.svc > p { font-size: 0.92rem; color: var(--ink-2); }
+.svc ul { list-style: none; border-top: 1px solid var(--rule); margin-top: 0.25rem; }
+.svc li { font-size: 0.9rem; padding: 0.45rem 0; border-bottom: 1px dashed var(--rule); display: flex; gap: 0.5rem; }
+.svc li::before { content: "—"; color: var(--ink-3); font-family: var(--mono); }
+.svc li:last-child { border-bottom: 0; }
+
+/* Work */
+.work { display: grid; gap: 1.5rem; }
+.case { background: var(--sheet); border: 1px solid var(--rule-strong); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); }
+.case-id { padding: 1.5rem; border-right: 1px solid var(--rule); display: flex; flex-direction: column; gap: 0.9rem; min-width: 0; }
+.case-id h3 { font-size: clamp(1.35rem, 2.4vw, 1.7rem); }
+.case-id p { color: var(--ink-2); font-size: 0.95rem; }
+.case-id .figures { margin-top: auto; border-top: 1px solid var(--rule); margin-inline: -1.5rem; margin-bottom: -1.5rem; }
+.case-id .fig { padding: 0.9rem 1rem; }
+.case-id .fig b { font-size: 1.6rem; }
+.case .rows { align-content: start; }
+.case .row { grid-template-columns: 6.5rem minmax(0, 1fr); padding: 0.9rem 1.25rem; }
+
+/* Stack */
+.stack-table { width: 100%; border-collapse: collapse; background: var(--sheet); border: 1px solid var(--rule-strong); }
+.stack-table th, .stack-table td { text-align: left; padding: 0.8rem 1.25rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.stack-table tr:last-child th, .stack-table tr:last-child td { border-bottom: 0; }
+.stack-table th { width: 12rem; font-family: var(--mono); font-weight: 400; font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+.stack-table td { font-family: var(--mono); font-size: 0.88rem; color: var(--ink); }
+.stack-table td span + span::before { content: " / "; color: var(--rule); }
+
+/* How we work */
+.principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--rule-strong); }
+.pr { padding: 1.5rem 1.5rem 1.5rem 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 1rem; }
+.pr:nth-child(odd) { border-right: 1px solid var(--rule); }
+.pr:nth-child(even) { padding-left: 1.5rem; }
+.pr h3 { font-size: 1.15rem; }
+.pr p { color: var(--ink-2); font-size: 0.95rem; }
+
+/* Contact */
+.contact { background: var(--ink); color: #efeaf3; border-top: 0; }
+.contact .label { color: #a99fb3; }
+.contact-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); align-items: end; }
+.contact h2 { font-size: clamp(2rem, 4.6vw, 3.4rem); color: #fff; }
+.contact p { color: #c9c0d2; margin-top: 1rem; max-width: 32rem; }
+.contact-card { border: 1px solid #4a3f55; }
+.contact-card .row { border-bottom-color: #3a3044; grid-template-columns: 6rem minmax(0, 1fr); }
+.contact-card dt { color: #a99fb3; }
+.contact-card dd { color: #fff; }
+.email { font-family: var(--mono); font-size: 0.95rem; user-select: all; word-break: break-all; }
+.contact-actions { padding: 1rem 1.25rem; display: flex; flex-wrap: wrap; gap: 0.6rem; border-top: 1px solid #3a3044; }
+.contact .btn { border-color: #efeaf3; color: #efeaf3; }
+.contact .btn:hover { background: #efeaf3; color: var(--ink); }
+.contact .btn.lime { background: var(--lime); border-color: var(--lime); color: var(--ink); }
+.contact .btn.lime:hover { background: #fff; border-color: #fff; }
+.contact a:not(.btn) { color: #e6c8ff; }
+.contact :focus-visible { outline-color: var(--lime); }
+
+footer { background: var(--ink); color: #a99fb3; border-top: 1px solid #3a3044; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem 2rem; padding-block: 1.25rem; font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.03em; }
+footer a { color: #d9cfe3; text-decoration: none; }
+footer a:hover { color: #fff; text-decoration: underline; }
+footer nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+
+/* Responsive */
+@media (max-width: 980px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .casefile { margin-top: 1.25rem; }
+  .services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .svc:nth-child(2) { border-right: 0; }
+  .svc:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
+  .block-head, .featured { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .case { grid-template-columns: minmax(0, 1fr); }
+  .case-id { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .contact-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .services { grid-template-columns: minmax(0, 1fr); }
+  .svc { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .svc:last-child { border-bottom: 0; }
+  .featured-body .narr { grid-template-columns: minmax(0, 1fr); }
+  .narr > div:first-child { border-right: 0; }
+  .pipeline ol { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1rem; }
+  .row, .case .row { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
+  .principles { grid-template-columns: minmax(0, 1fr); }
+  .pr, .pr:nth-child(even) { grid-template-columns: minmax(0, 1fr); padding: 1.25rem 0; border-right: 0; gap: 0.4rem; }
+  .pr:nth-child(odd) { border-right: 0; }
+  .stack-table th { width: auto; display: block; padding-bottom: 0.2rem; border-bottom: 0; }
+  .stack-table td { display: block; padding-top: 0; }
+  .stack-table tr { display: block; border-bottom: 1px solid var(--rule); padding-block: 0.4rem; }
+  .stack-table tr:last-child { border-bottom: 0; }
+  .stack-table th, .stack-table td { border-bottom: 0; padding-inline: 1rem; }
+  .fig { padding: 0.85rem 0.75rem; }
+  .fig b { font-size: 1.35rem; }
+  .case-id .fig b { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="mbs-logo" viewBox="0 0 264 213" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" fill="#c1ff00"/>
+      <path d="M55.7677 24.1096C100.554 9.65158 138.074 53.5974 122.479 58.3174C97.932 65.2051 67.7769 38.3821 55.7677 24.1096Z" fill="#85b000"/>
+      <path d="M56.2113 20.943C107.708 -4.52195 140.797 46.6905 122.922 55.1507C94.8834 67.7663 66.7654 37.6021 56.2113 20.943Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M99.5 36.9807C122.24 48.9807 125.496 53.314 124.281 53.9807" stroke="#0a0a0f" stroke-width="9" stroke-linecap="round"/>
+      <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" fill="#c1ff00"/>
+      <path d="M205.461 26.1096C160.675 11.6516 123.155 55.5974 138.75 60.3174C163.296 67.2051 193.452 40.3821 205.461 26.1096Z" fill="#85b000"/>
+      <path d="M205.017 22.943C153.52 -2.52195 120.431 48.6905 138.306 57.1507C166.345 69.7663 194.463 39.6021 205.017 22.943Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M161.728 38.9807C138.988 50.9807 135.733 55.314 136.947 55.9807" stroke="#0a0a0f" stroke-width="9" stroke-linecap="round"/>
+      <rect x="120.5" y="118.981" width="23" height="18" fill="#0a0a0f"/>
+      <path d="M72.5 131.57C83.5457 131.57 92.5 123.534 92.5 113.622C92.5 103.709 83.5457 95.673 72.5 95.673C61.4543 95.673 52.5 103.709 52.5 113.622C52.5 123.534 61.4543 131.57 72.5 131.57Z" fill="#7100a5"/>
+      <path d="M74.0628 121.576C84.9407 119.855 92.6706 112.919 91.3279 106.086C89.9853 99.2524 80.0786 95.1081 69.2007 96.8294C58.3228 98.5508 50.593 105.486 51.9356 112.319C53.2783 119.153 63.1849 123.297 74.0628 121.576Z" fill="#ae00ff"/>
+      <path d="M65.5 109.135C68.2614 109.135 70.5 107.126 70.5 104.647C70.5 102.169 68.2614 100.16 65.5 100.16C62.7386 100.16 60.5 102.169 60.5 104.647C60.5 107.126 62.7386 109.135 65.5 109.135Z" fill="#E3CEE0"/>
+      <path d="M72.5 134.263C85.2025 134.263 95.5 125.021 95.5 113.622C95.5 102.222 85.2025 92.9807 72.5 92.9807C59.7975 92.9807 49.5 102.222 49.5 113.622C49.5 125.021 59.7975 134.263 72.5 134.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M192.5 131.57C203.546 131.57 212.5 123.534 212.5 113.622C212.5 103.709 203.546 95.673 192.5 95.673C181.454 95.673 172.5 103.709 172.5 113.622C172.5 123.534 181.454 131.57 192.5 131.57Z" fill="#7100a5"/>
+      <path d="M194.063 121.576C204.941 119.855 212.671 112.919 211.328 106.086C209.985 99.2524 200.079 95.1081 189.201 96.8294C178.323 98.5508 170.593 105.486 171.936 112.319C173.278 119.153 183.185 123.297 194.063 121.576Z" fill="#ae00ff"/>
+      <path d="M185.5 109.135C188.261 109.135 190.5 107.126 190.5 104.647C190.5 102.169 188.261 100.16 185.5 100.16C182.739 100.16 180.5 102.169 180.5 104.647C180.5 107.126 182.739 109.135 185.5 109.135Z" fill="#E3CEE0"/>
+      <path d="M192.5 134.263C205.203 134.263 215.5 125.021 215.5 113.622C215.5 102.222 205.203 92.9807 192.5 92.9807C179.797 92.9807 169.5 102.222 169.5 113.622C169.5 125.021 179.797 134.263 192.5 134.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M170.5 93.5704C181.546 93.5704 190.5 85.5345 190.5 75.6217C190.5 65.7089 181.546 57.673 170.5 57.673C159.454 57.673 150.5 65.7089 150.5 75.6217C150.5 85.5345 159.454 93.5704 170.5 93.5704Z" fill="#7100a5"/>
+      <path d="M172.063 83.5759C182.941 81.8545 190.671 74.9194 189.328 68.0859C187.985 61.2524 178.079 57.1081 167.201 58.8294C156.323 60.5508 148.593 67.4859 149.936 74.3194C151.278 81.153 161.185 85.2972 172.063 83.5759Z" fill="#ae00ff"/>
+      <path d="M163.5 71.1345C166.261 71.1345 168.5 69.1255 168.5 66.6473C168.5 64.1691 166.261 62.1602 163.5 62.1602C160.739 62.1602 158.5 64.1691 158.5 66.6473C158.5 69.1255 160.739 71.1345 163.5 71.1345Z" fill="#E3CEE0"/>
+      <path d="M170.5 96.2627C183.203 96.2627 193.5 87.0214 193.5 75.6217C193.5 64.222 183.203 54.9807 170.5 54.9807C157.797 54.9807 147.5 64.222 147.5 75.6217C147.5 87.0214 157.797 96.2627 170.5 96.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M96.5 93.5704C107.546 93.5704 116.5 85.5345 116.5 75.6217C116.5 65.7089 107.546 57.673 96.5 57.673C85.4543 57.673 76.5 65.7089 76.5 75.6217C76.5 85.5345 85.4543 93.5704 96.5 93.5704Z" fill="#7100a5"/>
+      <path d="M98.0628 83.5759C108.941 81.8545 116.671 74.9194 115.328 68.0859C113.985 61.2524 104.079 57.1081 93.2007 58.8294C82.3228 60.5508 74.593 67.4859 75.9356 74.3194C77.2783 81.153 87.1849 85.2972 98.0628 83.5759Z" fill="#ae00ff"/>
+      <path d="M89.5 71.1345C92.2614 71.1345 94.5 69.1255 94.5 66.6473C94.5 64.1691 92.2614 62.1602 89.5 62.1602C86.7386 62.1602 84.5 64.1691 84.5 66.6473C84.5 69.1255 86.7386 71.1345 89.5 71.1345Z" fill="#E3CEE0"/>
+      <path d="M96.5 96.2627C109.203 96.2627 119.5 87.0214 119.5 75.6217C119.5 64.222 109.203 54.9807 96.5 54.9807C83.7975 54.9807 73.5 64.222 73.5 75.6217C73.5 87.0214 83.7975 96.2627 96.5 96.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M219.5 34.9807C231.5 34.9807 239.5 43.2187 239.5 55.5759V100.885C239.5 113.243 247.5 121.481 259.5 121.481C247.5 121.481 239.5 129.719 239.5 142.076V187.385C239.5 199.743 231.5 207.981 219.5 207.981" stroke="#1a1a22" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M44.5 34.9807C32.5 34.9807 24.5 43.2187 24.5 55.5759V100.885C24.5 113.243 16.5 121.481 4.5 121.481C16.5 121.481 24.5 129.719 24.5 142.076V187.385C24.5 199.743 32.5 207.981 44.5 207.981" stroke="#1a1a22" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M131.5 189.57C142.546 189.57 151.5 181.534 151.5 171.622C151.5 161.709 142.546 153.673 131.5 153.673C120.454 153.673 111.5 161.709 111.5 171.622C111.5 181.534 120.454 189.57 131.5 189.57Z" fill="#7100a5"/>
+      <path d="M124.5 167.135C127.261 167.135 129.5 165.126 129.5 162.647C129.5 160.169 127.261 158.16 124.5 158.16C121.739 158.16 119.5 160.169 119.5 162.647C119.5 165.126 121.739 167.135 124.5 167.135Z" fill="#E3CEE0"/>
+      <path d="M131.5 192.263C144.203 192.263 154.5 183.021 154.5 171.622C154.5 160.222 144.203 150.981 131.5 150.981C118.797 150.981 108.5 160.222 108.5 171.622C108.5 183.021 118.797 192.263 131.5 192.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M106.5 161.176C118.026 161.176 127.37 152.806 127.37 142.481C127.37 132.155 118.026 123.785 106.5 123.785C94.9741 123.785 85.6304 132.155 85.6304 142.481C85.6304 152.806 94.9741 161.176 106.5 161.176Z" fill="#7100a5"/>
+      <path d="M99.1957 137.807C102.077 137.807 104.413 135.714 104.413 133.133C104.413 130.552 102.077 128.459 99.1957 128.459C96.3142 128.459 93.9783 130.552 93.9783 133.133C93.9783 135.714 96.3142 137.807 99.1957 137.807Z" fill="#E3CEE0"/>
+      <path d="M106.5 163.981C119.755 163.981 130.5 154.355 130.5 142.481C130.5 130.607 119.755 120.981 106.5 120.981C93.2452 120.981 82.5 130.607 82.5 142.481C82.5 154.355 93.2452 163.981 106.5 163.981Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M156.5 161.176C168.026 161.176 177.37 152.806 177.37 142.481C177.37 132.155 168.026 123.785 156.5 123.785C144.974 123.785 135.63 132.155 135.63 142.481C135.63 152.806 144.974 161.176 156.5 161.176Z" fill="#7100a5"/>
+      <path d="M149.196 137.807C152.077 137.807 154.413 135.714 154.413 133.133C154.413 130.552 152.077 128.459 149.196 128.459C146.314 128.459 143.978 130.552 143.978 133.133C143.978 135.714 146.314 137.807 149.196 137.807Z" fill="#E3CEE0"/>
+      <path d="M156.5 163.981C169.755 163.981 180.5 154.355 180.5 142.481C180.5 130.607 169.755 120.981 156.5 120.981C143.245 120.981 132.5 130.607 132.5 142.481C132.5 154.355 143.245 163.981 156.5 163.981Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M108.5 127.57C119.546 127.57 128.5 119.534 128.5 109.622C128.5 99.7089 119.546 91.673 108.5 91.673C97.4543 91.673 88.5 99.7089 88.5 109.622C88.5 119.534 97.4543 127.57 108.5 127.57Z" fill="#7100a5"/>
+      <path d="M110.063 117.576C120.941 115.855 128.671 108.919 127.328 102.086C125.985 95.2524 116.079 91.1081 105.201 92.8294C94.3228 94.5508 86.593 101.486 87.9356 108.319C89.2783 115.153 99.1849 119.297 110.063 117.576Z" fill="#ae00ff"/>
+      <path d="M101.5 105.135C104.261 105.135 106.5 103.126 106.5 100.647C106.5 98.1691 104.261 96.1602 101.5 96.1602C98.7386 96.1602 96.5 98.1691 96.5 100.647C96.5 103.126 98.7386 105.135 101.5 105.135Z" fill="#E3CEE0"/>
+      <path d="M108.5 130.263C121.203 130.263 131.5 121.021 131.5 109.622C131.5 98.222 121.203 88.9807 108.5 88.9807C95.7975 88.9807 85.5 98.222 85.5 109.622C85.5 121.021 95.7975 130.263 108.5 130.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M154.5 127.57C165.546 127.57 174.5 119.534 174.5 109.622C174.5 99.7089 165.546 91.673 154.5 91.673C143.454 91.673 134.5 99.7089 134.5 109.622C134.5 119.534 143.454 127.57 154.5 127.57Z" fill="#7100a5"/>
+      <path d="M156.063 117.576C166.941 115.855 174.671 108.919 173.328 102.086C171.985 95.2524 162.079 91.1081 151.201 92.8294C140.323 94.5508 132.593 101.486 133.936 108.319C135.278 115.153 145.185 119.297 156.063 117.576Z" fill="#ae00ff"/>
+      <path d="M147.5 105.135C150.261 105.135 152.5 103.126 152.5 100.647C152.5 98.1691 150.261 96.1602 147.5 96.1602C144.739 96.1602 142.5 98.1691 142.5 100.647C142.5 103.126 144.739 105.135 147.5 105.135Z" fill="#E3CEE0"/>
+      <path d="M154.5 130.263C167.203 130.263 177.5 121.021 177.5 109.622C177.5 98.222 167.203 88.9807 154.5 88.9807C141.797 88.9807 131.5 98.222 131.5 109.622C131.5 121.021 141.797 130.263 154.5 130.263Z" stroke="#0a0a0f" stroke-width="9"/>
+      <path d="M131.5 92.5704C142.546 92.5704 151.5 84.5345 151.5 74.6217C151.5 64.7089 142.546 56.673 131.5 56.673C120.454 56.673 111.5 64.7089 111.5 74.6217C111.5 84.5345 120.454 92.5704 131.5 92.5704Z" fill="#7100a5"/>
+      <path d="M133.063 82.5759C143.941 80.8545 151.671 73.9194 150.328 67.0859C148.985 60.2524 139.079 56.1081 128.201 57.8294C117.323 59.5508 109.593 66.4859 110.936 73.3194C112.278 80.153 122.185 84.2972 133.063 82.5759Z" fill="#ae00ff"/>
+      <path d="M124.5 70.1345C127.261 70.1345 129.5 68.1255 129.5 65.6473C129.5 63.1691 127.261 61.1602 124.5 61.1602C121.739 61.1602 119.5 63.1691 119.5 65.6473C119.5 68.1255 121.739 70.1345 124.5 70.1345Z" fill="#E3CEE0"/>
+      <path d="M131.5 95.2627C144.203 95.2627 154.5 86.0214 154.5 74.6217C154.5 63.222 144.203 53.9807 131.5 53.9807C118.797 53.9807 108.5 63.222 108.5 74.6217C108.5 86.0214 118.797 95.2627 131.5 95.2627Z" stroke="#0a0a0f" stroke-width="9"/>
+    </symbol>
+  </svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Mulberry Systems home">
+      <svg viewBox="0 0 264 213" aria-hidden="true"><use href="#mbs-logo"></use></svg>
+      <span class="brand-name">Mulberry Systems<small>MBS</small></span>
+    </a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#featured">Case files</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#contact" class="btn">Start a project</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="label">AI · Python · Backend engineering — Kakanj, Bosnia and Herzegovina</p>
+        <h1 style="margin-top:1rem">We build intelligent systems that hold up in production.</h1>
+        <p class="hero-lede">A small engineering studio specialising in AI solutions, Python development and backend systems. We've delivered for global companies in travel, finance and research. The record below is how we'd rather introduce ourselves.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn solid">Start a project →</a>
+          <a href="#work" class="btn">Read the case files</a>
+        </div>
+      </div>
+
+      <article class="casefile" aria-labelledby="cf-hero">
+        <span class="casefile-tab">Open file</span>
+        <div class="casefile-head">
+          <div>
+            <p class="label">Case file 04 · Humanitarian</p>
+            <h2 id="cf-hero">AI-powered minefield documentation</h2>
+          </div>
+        </div>
+        <dl class="rows">
+          <div class="row"><dt>Sector</dt><dd>Humanitarian demining, Bosnia and Herzegovina</dd></div>
+          <div class="row"><dt>Problem</dt><dd>Critical minefield records are handwritten. Manual transcription was slow, error-prone and held up life-saving work.</dd></div>
+          <div class="row"><dt>Approach</dt><dd>YOLO object detection plus custom TensorFlow models for <mark>handwritten text recognition</mark>, served in real time by FastAPI.</dd></div>
+          <div class="row"><dt>Stack</dt><dd><div class="stack-list"><span>Python</span><span>FastAPI</span><span>YOLO</span><span>TensorFlow</span><span>OpenCV</span></div></dd></div>
+        </dl>
+        <div class="figures">
+          <div class="fig"><b>95%</b><span>Recognition accuracy</span></div>
+          <div class="fig"><b>10 hrs</b><span>Saved per batch</span></div>
+          <div class="fig"><b>1,000+</b><span>Docs processed</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="featured">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="label">Featured case</p>
+        <div>
+          <h2>Reading handwriting on the records that clear minefields</h2>
+          <p>The project we're proudest of, and a fair summary of how we work: a hard recognition problem, a real operational constraint, and a system that runs every day.</p>
+        </div>
+      </div>
+      <div class="featured">
+        <aside class="featured-side">
+          <div><p class="label">Reference</p><p class="mono" style="font-size:0.85rem">MBS-CF-04</p></div>
+          <div><p class="label">Domain</p><p>Document understanding, computer vision</p></div>
+          <div><p class="label">Delivery</p><p>Model, API and processing pipeline</p></div>
+        </aside>
+        <div class="featured-body">
+          <div class="narr">
+            <div>
+              <h3>Challenge</h3>
+              <p>Minefield records contain critical handwritten data that must be digitised to support demining operations. Manual transcription was slow, error-prone, and created bottlenecks in life-saving work.</p>
+            </div>
+            <div>
+              <h3>Solution</h3>
+              <p>An AI system combining YOLO for object detection with custom TensorFlow models for handwritten text recognition. A FastAPI backend processes documents in real time.</p>
+            </div>
+          </div>
+          <div class="pipeline">
+            <p class="label">Processing pipeline</p>
+            <ol>
+              <li><b>Ingest</b>Scanned record enters the API</li>
+              <li><b>Detect</b>YOLO locates fields and handwriting regions</li>
+              <li><b>Recognise</b>TensorFlow models read the handwritten text</li>
+              <li><b>Structure</b>Results returned as structured data</li>
+            </ol>
+          </div>
+          <div class="figures" style="border-top:0">
+            <div class="fig"><b>95%</b><span>Recognition accuracy</span></div>
+            <div class="fig"><b>10 hrs</b><span>Saved per batch</span></div>
+            <div class="fig"><b>1,000+</b><span>Docs processed</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="services">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="label">Services</p>
+        <div>
+          <h2>Four areas, one team, end to end</h2>
+          <p>From AI models to cloud infrastructure. We take a system from first model to running deployment.</p>
+        </div>
+      </div>
+      <div class="services">
+        <div class="svc">
+          <span class="code">AI / ML</span>
+          <h3>AI &amp; Machine Learning</h3>
+          <p>Custom intelligent systems that change how your operations run.</p>
+          <ul>
+            <li>Custom ML model development</li>
+            <li>Handwritten text recognition</li>
+            <li>NLP &amp; sentiment analysis</li>
+            <li>Computer vision (YOLO, TensorFlow)</li>
+            <li>Document understanding</li>
+            <li>Predictive analytics</li>
+          </ul>
+        </div>
+        <div class="svc">
+          <span class="code">PY</span>
+          <h3>Python Development</h3>
+          <p>Production-grade applications built for scale and reliability.</p>
+          <ul>
+            <li>Production-grade applications</li>
+            <li>FastAPI &amp; Flask APIs</li>
+            <li>PySpark data pipelines</li>
+            <li>Streaming applications</li>
+            <li>Automation solutions</li>
+            <li>Performance optimisation</li>
+          </ul>
+        </div>
+        <div class="svc">
+          <span class="code">BE</span>
+          <h3>Backend Engineering</h3>
+          <p>Scalable architectures that power enterprise applications.</p>
+          <ul>
+            <li>Microservices architecture</li>
+            <li>RESTful API design</li>
+            <li>Database optimisation</li>
+            <li>Event-driven systems (Kafka)</li>
+            <li>ETL pipeline development</li>
+            <li>System integration</li>
+          </ul>
+        </div>
+        <div class="svc">
+          <span class="code">OPS</span>
+          <h3>Cloud &amp; DevOps</h3>
+          <p>Infrastructure that scales with your growth.</p>
+          <ul>
+            <li>AWS &amp; Azure solutions</li>
+            <li>Docker &amp; Kubernetes</li>
+            <li>Terraform IaC</li>
+            <li>CI/CD pipelines</li>
+            <li>Monitoring &amp; observability</li>
+            <li>Security best practices</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="label">Selected work</p>
+        <div>
+          <h2>More case files</h2>
+          <p>Three more engagements, each with the problem, what we built and what changed.</p>
+        </div>
+      </div>
+      <div class="work">
+        <article class="case">
+          <div class="case-id">
+            <p class="label">Case file 01 · Travel &amp; e-commerce</p>
+            <h3>Enterprise booking &amp; payment platform</h3>
+            <p>Multi-channel booking with integrated payment processing for a global travel company.</p>
+            <div class="figures">
+              <div class="fig"><b>40%</b><span>Faster checkout</span></div>
+              <div class="fig"><b>99.9%</b><span>Uptime</span></div>
+              <div class="fig"><b>3×</b><span>Transaction capacity</span></div>
+            </div>
+          </div>
+          <dl class="rows">
+            <div class="row"><dt>Problem</dt><dd>Consolidate several legacy booking systems and integrate diverse payment providers, including Klarna, while handling high transaction volumes across regions.</dd></div>
+            <div class="row"><dt>Approach</dt><dd>A unified FastAPI backend on a microservices architecture, with payment orchestration and <mark>real-time inventory</mark> across every sales channel.</dd></div>
+            <div class="row"><dt>Stack</dt><dd><div class="stack-list"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Redis</span><span>AWS</span></div></dd></div>
+          </dl>
+        </article>
+
+        <article class="case">
+          <div class="case-id">
+            <p class="label">Case file 02 · Research &amp; intelligence</p>
+            <h3>Real-time data pipeline &amp; analytics platform</h3>
+            <p>Event processing for cyber intelligence and research data analysis.</p>
+            <div class="figures">
+              <div class="fig"><b>10M+</b><span>Events / day</span></div>
+              <div class="fig"><b>&lt;100 ms</b><span>Latency</span></div>
+              <div class="fig"><b>85%</b><span>Analysis accuracy</span></div>
+            </div>
+          </div>
+          <dl class="rows">
+            <div class="row"><dt>Problem</dt><dd>Millions of events a day from diverse sources, needing real-time analysis, sentiment detection and intelligence extraction with minimal latency.</dd></div>
+            <div class="row"><dt>Approach</dt><dd>A Kafka streaming architecture with PySpark processing, custom NLP models for sentiment analysis, and Elasticsearch for fast querying and visualisation.</dd></div>
+            <div class="row"><dt>Stack</dt><dd><div class="stack-list"><span>PySpark</span><span>Kafka</span><span>Elasticsearch</span><span>spaCy</span><span>Docker</span></div></dd></div>
+          </dl>
+        </article>
+
+        <article class="case">
+          <div class="case-id">
+            <p class="label">Case file 03 · Financial services</p>
+            <h3>Legacy system modernisation</h3>
+            <p>A full platform overhaul for a financial services company moving to cloud-native architecture.</p>
+            <div class="figures">
+              <div class="fig"><b>60%</b><span>Cost reduction</span></div>
+              <div class="fig"><b>Zero</b><span>Downtime</span></div>
+              <div class="fig"><b>5×</b><span>Faster deploys</span></div>
+            </div>
+          </div>
+          <dl class="rows">
+            <div class="row"><dt>Problem</dt><dd>A 15-year-old monolith handling sensitive financial data had to be modernised under strict compliance, with <mark>zero-downtime migration</mark>.</dd></div>
+            <div class="row"><dt>Approach</dt><dd>A strangler fig pattern, replacing components with microservices one at a time, plus a full API layer, containerised workloads and CI/CD pipelines.</dd></div>
+            <div class="row"><dt>Stack</dt><dd><div class="stack-list"><span>.NET</span><span>Azure</span><span>Kubernetes</span><span>Terraform</span><span>GitHub Actions</span></div></dd></div>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="stack">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="label">Stack</p>
+        <div><h2>Tools we run in production</h2></div>
+      </div>
+      <table class="stack-table">
+        <tbody>
+          <tr><th scope="row">Languages</th><td><span>Python</span><span>C#</span><span>JavaScript</span><span>TypeScript</span></td></tr>
+          <tr><th scope="row">Frameworks</th><td><span>FastAPI</span><span>Flask</span><span>.NET</span><span>NestJS</span><span>React</span></td></tr>
+          <tr><th scope="row">Databases</th><td><span>PostgreSQL</span><span>MongoDB</span><span>Redis</span><span>Elasticsearch</span></td></tr>
+          <tr><th scope="row">Cloud &amp; DevOps</th><td><span>AWS</span><span>Azure</span><span>Docker</span><span>Kubernetes</span><span>Terraform</span></td></tr>
+          <tr><th scope="row">Data &amp; AI</th><td><span>PySpark</span><span>Kafka</span><span>TensorFlow</span><span>YOLO</span><span>spaCy</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="block" id="how">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="label">How we work</p>
+        <div><h2>What you can expect from us</h2></div>
+      </div>
+      <div class="principles">
+        <div class="pr"><h3>Production-ready</h3><p>We write code that runs in production, with proper testing, monitoring and documentation.</p></div>
+        <div class="pr"><h3>Full stack</h3><p>From ML models to cloud infrastructure, we handle the complete technical picture.</p></div>
+        <div class="pr"><h3>Global experience</h3><p>We've worked with cross-cultural teams across time zones, delivering for international clients.</p></div>
+        <div class="pr"><h3>Knowledge transfer</h3><p>We mentor your team and document what we build, so your organisation is stronger when we leave.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="label">Contact</p>
+        <h2 style="margin-top:0.75rem">Open a new case file.</h2>
+        <p>Whether you need a data pipeline, an AI system or a complete backend, tell us what you're working on. We reply to every enquiry.</p>
+      </div>
+      <div class="contact-card">
+        <dl class="rows">
+          <div class="row"><dt>Email</dt><dd class="email">mulberry.systems.dev@gmail.com</dd></div>
+          <div class="row"><dt>Studio</dt><dd>Kakanj, Bosnia and Herzegovina</dd></div>
+          <div class="row"><dt>Elsewhere</dt><dd><a href="https://www.linkedin.com/company/mulberry-systems">LinkedIn</a> · <a href="https://github.com/mulberrysystems">GitHub</a></dd></div>
+        </dl>
+        <div class="contact-actions">
+          <a href="mailto:mulberry.systems.dev@gmail.com" class="btn lime">Email us →</a>
+          <button type="button" class="btn" id="copy-email">Copy address</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Mulberry Systems MBS · Kakanj, Bosnia and Herzegovina</span>
+    <nav aria-label="Footer">
+      <a href="#privacy">Privacy</a>
+      <a href="#terms">Terms</a>
+      <a href="#top">Back to top ↑</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-email');
+  var addr = 'mulberry.systems.dev@gmail.com';
+  btn.addEventListener('click', function () {
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy address'; }, 1800); };
+    var fallback = function () {
+      var el = document.querySelector('.email');
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected — press ⌘C';
+    };
+    try { navigator.clipboard.writeText(addr).then(done, fallback); } catch (e) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
